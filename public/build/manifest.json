@@ -1,6 +1,30 @@
 {
+  "public/letiarepa/fonts/Bilqust-DemoVersion-Regular.otf": {
+    "file": "assets/Bilqust-DemoVersion-Regular-C6c1F6Ku.otf",
+    "src": "public/letiarepa/fonts/Bilqust-DemoVersion-Regular.otf"
+  },
+  "public/letiarepa/fonts/Bilqust-DemoVersion-Regular.ttf": {
+    "file": "assets/Bilqust-DemoVersion-Regular-Ep0ObctK.ttf",
+    "src": "public/letiarepa/fonts/Bilqust-DemoVersion-Regular.ttf"
+  },
+  "public/letiarepa/fonts/NexaBold.otf": {
+    "file": "assets/NexaBold-CGC_93Iw.otf",
+    "src": "public/letiarepa/fonts/NexaBold.otf"
+  },
+  "public/letiarepa/fonts/NexaLight.otf": {
+    "file": "assets/NexaLight-DohsbLqI.otf",
+    "src": "public/letiarepa/fonts/NexaLight.otf"
+  },
+  "public/letiarepa/fonts/Rockybilly.ttf": {
+    "file": "assets/Rockybilly-CpSPv-3d.ttf",
+    "src": "public/letiarepa/fonts/Rockybilly.ttf"
+  },
+  "public/letiarepa/images/BACKGROUND.png": {
+    "file": "assets/BACKGROUND-Yh_Siyce.png",
+    "src": "public/letiarepa/images/BACKGROUND.png"
+  },
   "resources/css/app.css": {
-    "file": "assets/app-Cwh8lL3V.css",
+    "file": "assets/app-BY67m-NG.css",
     "src": "resources/css/app.css",
     "isEntry": true,
     "name": "app",
@@ -9,7 +33,7 @@
     ]
   },
   "resources/js/app.js": {
-    "file": "assets/app-BJgssCIR.js",
+    "file": "assets/app-6I3BDBGV.js",
     "name": "app",
     "src": "resources/js/app.js",
     "isEntry": true

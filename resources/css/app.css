@@ -1,54 +1,61 @@
-@import 'tailwindcss';
+@import "tailwindcss";
 
 @source '../../vendor/laravel/framework/src/Illuminate/Pagination/resources/views/*.blade.php';
 @source '../../storage/framework/views/*.php';
 @source '../**/*.blade.php';
 @source '../**/*.js';
 
-/* ─── Gutural Fonts ─────────────────────────────────────────── */
+/* ─── Leti Arepa Fonts ─────────────────────────────────────────── */
 @font-face {
-    font-family: 'CYGUN';
-    src: url('/fonts/cygun-regular.woff2') format('woff2'),
-         url('/fonts/cygun-regular.woff') format('woff'),
-         url('/fonts/CYGUN-Regular.otf') format('opentype'),
-         url('/fonts/FontsFree-Net-CYGUN-Regular.ttf') format('truetype');
+    font-family: 'Bilqust';
+    src: url('../../public/letiarepa/fonts/Bilqust-DemoVersion-Regular.ttf') format('truetype'),
+        url('../../public/letiarepa/fonts/Bilqust-DemoVersion-Regular.otf') format('opentype');
     font-weight: 400;
     font-style: normal;
     font-display: swap;
 }
 
 @font-face {
-    font-family: 'Futura';
-    src: url('/fonts/Futura-Book.woff2') format('woff2'),
-         url('/fonts/Futura-Book.woff') format('woff');
-    font-weight: 400;
-    font-style: normal;
-    font-display: swap;
-}
-
-@font-face {
-    font-family: 'Futura';
-    src: url('/fonts/Futura-Extra-Bold.woff2') format('woff2'),
-         url('/fonts/Futura-Extra-Bold.woff') format('woff');
+    font-family: 'Nexa';
+    src: url('../../public/letiarepa/fonts/NexaBold.otf') format('opentype');
     font-weight: 700;
     font-style: normal;
     font-display: swap;
 }
 
-/* ─── Gutural Design Tokens ─────────────────────────────────── */
+@font-face {
+    font-family: 'Nexa Light';
+    src: url('../../public/letiarepa/fonts/NexaLight.otf') format('opentype');
+    font-weight: 300;
+    font-style: normal;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'Rockybilly';
+    src: url('../../public/letiarepa/fonts/Rockybilly.ttf') format('truetype');
+    font-weight: 400;
+    font-style: normal;
+    font-display: swap;
+}
+
+/* ─── Leti Arepa Design Tokens ─────────────────────────────────── */
 @theme {
-    --font-sans: 'Futura', ui-sans-serif, system-ui, sans-serif;
-    --font-display: 'CYGUN', sans-serif;
+    --font-sans: 'Nexa Light', ui-sans-serif, system-ui, sans-serif;
+    --font-nexa-bold: 'Nexa', sans-serif;
+    --font-nexa-light: 'Nexa Light', sans-serif;
+    --font-display: 'Rockybilly', sans-serif;
+    --font-script: 'Bilqust', cursive;
 
-    --color-gutural-black:    #0a0a0a;
-    --color-gutural-dark:     #1a1a1a;
-    --color-gutural-charcoal: #2a2a2a;
-    --color-gutural-gray:     #6b6b6b;
-    --color-gutural-light:    #c0c0c0;
-    --color-gutural-white:    #f5f5f5;
-    --color-gutural-accent:   #e8e8e8;
+    --color-letiarepa-gold: #CC9438;
+    --color-letiarepa-dark: #121212;
+    --color-letiarepa-black: #0A0A0A;
+}
 
-    --spacing-section: 5rem;
+@layer utilities {
+    .tracking-ultra-wide {
+        letter-spacing: 0.25em;
+    }
 }
 
 /* ─── Base Styles ────────────────────────────────────────────── */
@@ -57,60 +64,91 @@ html {
 }
 
 body {
-    background-image: url('/images/background-desktop.png');
+    background-image: url('../../public/letiarepa/images/BACKGROUND.png');
     background-size: cover;
     background-position: center top;
-    background-attachment: scroll;
-    color: var(--color-gutural-dark);
+    background-attachment: fixed;
+    color: #ffffff;
     font-family: var(--font-sans);
 }
 
-h1, h2, h3, h4, .font-display {
-    font-family: var(--font-display);
-    letter-spacing: 0.08em;
-    text-transform: uppercase;
+
+.font-script {
+    font-family: var(--font-script), cursive !important;
+    text-transform: none !important;
 }
 
-.font-futura {
-    font-family: var(--font-sans) !important;
+.font-nexa {
+    font-family: var(--font-nexa-light) !important;
 }
 
-.btn-primary {
-    display: inline-block;
-    padding: 0.75rem 2.5rem;
-    background-color: var(--color-gutural-white);
-    color: var(--color-gutural-black);
-    font-family: var(--font-sans);
-    font-weight: 700;
-    font-size: 0.75rem;
-    letter-spacing: 0.15em;
-    text-transform: uppercase;
+.font-nexa-bold {
+    font-family: var(--font-nexa-bold) !important;
+}
+
+.font-nexa-light {
+    font-family: var(--font-nexa-light) !important;
+}
+
+/* Scrollbar Cuadrado Personalizado */
+::-webkit-scrollbar {
+    width: 22px;
+}
+
+::-webkit-scrollbar-track {
+    background: #0A0A0A;
+}
+
+::-webkit-scrollbar-thumb {
+    background: #CC9438;
+    border-radius: 0;
+    border: 2px solid #0A0A0A;
+}
+
+::-webkit-scrollbar-thumb:hover {
+    background: #B8832E;
+}
+
+/* Botón superior (flecha arriba) */
+::-webkit-scrollbar-button:vertical:decrement {
+    background: #CC9438;
+    height: 16px;
+    display: block;
     border: none;
-    cursor: pointer;
-    transition: background-color 0.2s, color 0.2s;
+    background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='10' height='10' viewBox='0 0 10 10'><path fill='black' d='M5 1L1 9h8z'/></svg>");
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: 10px;
 }
 
-.btn-primary:hover {
-    background-color: var(--color-gutural-accent);
+/* Botón inferior (flecha abajo) */
+::-webkit-scrollbar-button:vertical:increment {
+    background: #CC9438;
+    height: 16px;
+    display: block;
+    border: none;
+    background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='10' height='10' viewBox='0 0 10 10'><path fill='black' d='M5 9L1 1h8z'/></svg>");
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: 10px;
 }
 
-.btn-outline {
-    display: inline-block;
-    padding: 0.75rem 2.5rem;
-    background-color: transparent;
-    color: var(--color-gutural-white);
-    font-family: var(--font-sans);
-    font-weight: 700;
-    font-size: 0.75rem;
-    letter-spacing: 0.15em;
-    text-transform: uppercase;
-    border: 1px solid var(--color-gutural-white);
-    cursor: pointer;
-    transition: background-color 0.2s, color 0.2s;
+::-webkit-scrollbar-button:vertical:decrement:hover,
+::-webkit-scrollbar-button:vertical:increment:hover {
+    background: #B8832E;
 }
 
-.btn-outline:hover {
-    background-color: var(--color-gutural-white);
-    color: var(--color-gutural-black);
+/* Para Firefox */
+* {
+    scrollbar-width: thin;
+    scrollbar-color: #CC9438 #0A0A0A;
 }
 
+/* Category styling helper */
+.category-item {
+    transition: all 0.3s ease;
+}
+
+.category-item.active {
+    color: #CC9438;
+}
