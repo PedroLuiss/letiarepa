@@ -18,7 +18,13 @@
 @font-face {
     font-family: 'Nexa';
     src: url('../../public/letiarepa/fonts/NexaBold.otf') format('opentype');
-    font-weight: 700;
+    font-style: normal;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'Nexa bold';
+    src: url('../../public/letiarepa/fonts/Nexa-Heavy.ttf') format('opentype');
     font-style: normal;
     font-display: swap;
 }
@@ -26,7 +32,6 @@
 @font-face {
     font-family: 'Nexa Light';
     src: url('../../public/letiarepa/fonts/NexaLight.otf') format('opentype');
-    font-weight: 300;
     font-style: normal;
     font-display: swap;
 }
@@ -151,4 +156,9 @@ body {
 
 .category-item.active {
     color: #CC9438;
+}
+
+input[type="checkbox"]:checked {
+    background-image: none !important;
+    /* Quita el icono de check estandar de Tailwind/Browser */
 }

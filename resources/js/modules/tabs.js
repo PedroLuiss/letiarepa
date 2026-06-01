@@ -1,6 +1,31 @@
 let currentTab = 'restaurant';
 
-export function switchTab(tabId) {
+function setLabelState(tabId) {
+    const labels = {
+        'restaurant': document.getElementById('label-restaurant'),
+        'catering': document.getElementById('label-catering'),
+        'frozen': document.getElementById('label-frozen')
+    };
+
+    Object.keys(labels).forEach(key => {
+        const label = labels[key];
+        if (label) {
+            if (key === tabId) {
+                label.classList.remove('text-transparent');
+                label.style.webkitTextStroke = "0px #c29545";
+                label.style.webkitTextStrokeWidth = "2px";
+                label.style.color = "#c29545";
+            } else {
+                label.classList.add('text-transparent');
+                label.style.webkitTextStroke = "";
+                label.style.webkitTextStrokeWidth = "";
+                label.style.color = "";
+            }
+        }
+    });
+}
+
+export function initTab(tabId) {
     currentTab = tabId;
 
     document.querySelectorAll('[data-tab-section]').forEach(sec => {
@@ -49,26 +74,7 @@ export function switchTab(tabId) {
         containerFrozen.classList.remove('hidden');
     }
 
-    const labels = {
-        'restaurant': document.getElementById('label-restaurant'),
-        'catering': document.getElementById('label-catering'),
-        'frozen': document.getElementById('label-frozen')
-    };
-
-    Object.keys(labels).forEach(key => {
-        const label = labels[key];
-        if (label) {
-            if (key === tabId) {
-                label.classList.remove('text-transparent');
-                label.classList.add('text-letiarepa-gold', 'font-black');
-                label.style.webkitTextStroke = "0px";
-            } else {
-                label.classList.add('text-transparent');
-                label.classList.remove('text-letiarepa-gold', 'font-black');
-                label.style.webkitTextStroke = "1px #CC9438";
-            }
-        }
-    });
+    setLabelState(tabId);
 
     const bannerMsg = document.getElementById('banner-message');
     const bannerTabName = document.getElementById('banner-tab-name');
@@ -85,7 +91,10 @@ export function switchTab(tabId) {
             bannerTabName.textContent = "CONGELADOS";
         }
     }
+}
 
+export function switchTab(tabId) {
+    initTab(tabId);
     window.scrollTo({ top: 0, behavior: 'smooth' });
 }
 
@@ -93,12 +102,13 @@ export function getCurrentTab() {
     return currentTab;
 }
 
-// Initialize
 window.switchTab = switchTab;
 
 document.addEventListener('DOMContentLoaded', () => {
     const hash = window.location.hash;
     if (hash === '#equipo' || hash === '#contacto') {
-        switchTab('restaurant');
+        initTab('restaurant');
+    } else {
+        initTab('restaurant');
     }
 });
