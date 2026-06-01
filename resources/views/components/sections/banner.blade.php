@@ -1,18 +1,30 @@
 <div class="relative overflow-hidden">
-    <div class="py-4 relative">
-        <div class="absolute inset-0 z-0 opacity-10 pointer-events-none" style="background-image: url('/letiarepa/images/BACKGROUND.png'); background-size: cover; background-position: center;"></div>
-        <div class="max-w-7xl mx-auto px-4 relative z-10 flex justify-start items-center gap-3 sm:gap-6 text-[10px] sm:text-xs font-nexa tracking-[0.2em] uppercase italic select-none">
-            <span id="label-restaurant" class="transition-all duration-300 font-black text-letiarepa-gold">RESTAURANT</span>
-            <span class="text-letiarepa-gold/30 font-light">/</span>
-            <span id="label-catering" class="transition-all duration-300 font-bold text-transparent" style="-webkit-text-stroke: 1px #CC9438;">CATERING</span>
-            <span class="text-letiarepa-gold/30 font-light">/</span>
-            <span id="label-frozen" class="transition-all duration-300 font-bold text-transparent" style="-webkit-text-stroke: 1px #CC9438;">FROZEN PRODUCTS</span>
+    <div class="py-2 relative">
+        <div class="absolute inset-0 z-0 opacity-10 pointer-events-none"
+            style="background-image: url('/letiarepa/images/BACKGROUND.png'); background-size: cover; background-position: center;">
+        </div>
+        <div class="max-w-7xl mx-auto px-4 relative z-10 flex justify-start items-center gap-3 sm:gap-2 select-none">
+            <span id="label-restaurant"
+                class="font-nexa-bold transition-all duration-300 font-['Chakra_Petch'] italic uppercase text-[26px] tracking-[4px] text-[#121212] [-webkit-text-stroke:1px_#c29545] [text-shadow:2px_2px_4px_rgba(0,0,0,0.5)]">RESTAURANT</span>
+            <span class="text-[#c29545] font-light text-[30px]"
+                style="-webkit-text-stroke: 2.5px currentColor; text-shadow: 0 0 0.5px currentColor;">/</span>
+            <span id="label-catering"
+                class="font-nexa-bold transition-all duration-300 font-['Chakra_Petch'] italic uppercase text-[26px] tracking-[4px] text-[#121212] [-webkit-text-stroke:1px_#c29545] [text-shadow:2px_2px_4px_rgba(0,0,0,0.5)]">CATERING</span>
+            <span class="text-[#c29545] font-light text-[30px]"
+                style="-webkit-text-stroke: 2.5px currentColor; text-shadow: 0 0 0.5px currentColor;">/</span>
+            <span id="label-frozen"
+                class="font-nexa-bold transition-all duration-300 font-['Chakra_Petch']  italic uppercase text-[26px] tracking-[4px] text-[#121212] [-webkit-text-stroke:1px_#c29545] [text-shadow:2px_2px_4px_rgba(0,0,0,0.5)]">FROZEN
+                PRODUCTS</span>
         </div>
     </div>
-    <div class="bg-letiarepa-gold text-letiarepa-black py-4 shadow-xl">
+    <div class="bg-letiarepa-gold text-letiarepa-black py-1 shadow-xl">
         <div class="max-w-7xl mx-auto px-4 flex flex-row items-center justify-between">
-            <span id="banner-message" class="font-nexa text-[11px] sm:text-sm tracking-[0.1em] font-medium uppercase">¿ LISTO PARA ORDENAR ?</span>
-            <span id="banner-tab-name" class="text-2xl sm:text-4xl font-black italic uppercase leading-none tracking-tighter">RESTAURANT</span>
+            <span id="banner-message" class="font-nexa text-[30px]  tracking-[1px]  font-medium uppercase">LISTO PARA
+                ORDENAR
+                ?</span>
+            <span id="banner-tab-name"
+                class="text-2xl sm:text-4xl font-black italic font-nexa-bold uppercase leading-none tracking-[3px]"
+                style="-webkit-text-stroke: 2.5px currentColor; text-shadow: 0 0 0.5px currentColor;">RESTAURANT</span>
         </div>
     </div>
 </div>
