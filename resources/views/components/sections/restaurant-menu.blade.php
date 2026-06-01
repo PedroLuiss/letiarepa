@@ -53,9 +53,9 @@
                         <button onclick="showUpcomingAlert('{{ $cat }}')"
                             class="w-full flex items-center justify-between group">
                             <span
-                                class="font-nexa-bold transition-all duration-300 font-['Chakra_Petch'] italic uppercase text-[26px] tracking-[4px] text-[#121212] [-webkit-text-stroke:1px_#c29545] [text-shadow:2px_2px_4px_rgba(0,0,0,0.5)]">{{ $cat }}</span>
+                                class="font-nexa-bold transition-all duration-300 italic uppercase text-[26px] tracking-[4px] text-[#121212] [-webkit-text-stroke:1px_#c29545] [text-shadow:2px_2px_4px_rgba(0,0,0,0.5)]">{{ $cat }}</span>
                             <span
-                                class="text-2xl text-letiarepa-gold/50 font-bold group-hover:text-letiarepa-gold transition-colors">+</span>
+                                class="text-2xl text-letiarepa-gold/50 font-bold group-hover:text-letiarepa-gold transition-colors font-nexa-bold transition-all duration-300 italic uppercase text-[26px] tracking-[4px] text-[#121212] [-webkit-text-stroke:1px_#c29545] [text-shadow:2px_2px_4px_rgba(0,0,0,0.5)]">+</span>
                         </button>
                     </div>
                 @endforeach

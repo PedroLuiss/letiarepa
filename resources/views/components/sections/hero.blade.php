@@ -1,4 +1,4 @@
-<section class="relative overflow-hidden pt-16 pb-20 md:pt-24 md:pb-32">
+<section class="relative overflow-hidden pt-16 pb-20 md:pt-10 md:pb-32">
     <div class="absolute inset-0 z-0 opacity-15 pointer-events-none"
         style="background-image: url('/letiarepa/images/BACKGROUND.png'); background-size: cover; background-position: center;">
     </div>
