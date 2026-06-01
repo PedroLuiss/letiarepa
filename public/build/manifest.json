@@ -7,6 +7,10 @@
     "file": "assets/Bilqust-DemoVersion-Regular-Ep0ObctK.ttf",
     "src": "public/letiarepa/fonts/Bilqust-DemoVersion-Regular.ttf"
   },
+  "public/letiarepa/fonts/Nexa-Heavy.ttf": {
+    "file": "assets/Nexa-Heavy-C4LswGRq.ttf",
+    "src": "public/letiarepa/fonts/Nexa-Heavy.ttf"
+  },
   "public/letiarepa/fonts/NexaBold.otf": {
     "file": "assets/NexaBold-CGC_93Iw.otf",
     "src": "public/letiarepa/fonts/NexaBold.otf"
@@ -24,7 +28,7 @@
     "src": "public/letiarepa/images/BACKGROUND.png"
   },
   "resources/css/app.css": {
-    "file": "assets/app-BY67m-NG.css",
+    "file": "assets/app-PXC_73mw.css",
     "src": "resources/css/app.css",
     "isEntry": true,
     "name": "app",
@@ -33,7 +37,7 @@
     ]
   },
   "resources/js/app.js": {
-    "file": "assets/app-6I3BDBGV.js",
+    "file": "assets/app-C01CxiSN.js",
     "name": "app",
     "src": "resources/js/app.js",
     "isEntry": true
