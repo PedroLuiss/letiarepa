@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\CateringPackage;
 use App\Models\RestaurantCategory;
 use App\Models\RestaurantMenuItem;
 use App\Models\TeamMember;
@@ -36,49 +37,8 @@ class HomeController extends Controller
             ]
         ];
 
-        // 3. Catering Packages
-        $cateringMenu = [
-            [
-                'id' => 'paquete_dorado',
-                'nombre' => 'PAQUETE DORADO',
-                'precio' => 150.00,
-                'items' => [
-                    '20 TEQUEÑOS',
-                    '20 CACHAPITAS CON QUESO',
-                    '20 AREPITAS RELLENAS',
-                    '20 PASTELITOS',
-                    '20 EMPANADITAS',
-                    '1 SALSA DE AJO 8oz',
-                    'SERVILLETAS'
-                ]
-            ],
-            [
-                'id' => 'paquete_plata',
-                'nombre' => 'PAQUETE PLATA',
-                'precio' => 110.00,
-                'items' => [
-                    '20 TEQUEÑOS',
-                    '20 CACHAPITAS CON QUESO',
-                    '20 PASTELITOS',
-                    '20 EMPANADITAS',
-                    '1 SALSA DE AJO 8oz',
-                    'SERVILLETAS'
-                ]
-            ],
-            [
-                'id' => 'paquete_bronce',
-                'nombre' => 'PAQUETE BRONCE',
-                'precio' => 80.00,
-                'items' => [
-                    '20 TEQUEÑOS',
-                    '20 PASTELITOS',
-                    '20 EMPANADITAS',
-                    '1 SALSA DE AJO 8oz',
-                    'SERVILLETAS'
-                ]
-            ]
-        ];
+        $cateringPackages = CateringPackage::with('items')->orderBy('sort_order')->get();
 
-        return view('home', compact('restaurantCategories', 'menuItems', 'frozenMenu', 'cateringMenu', 'teamMembers'));
+        return view('home', compact('restaurantCategories', 'menuItems', 'frozenMenu', 'cateringPackages', 'teamMembers'));
     }
 }

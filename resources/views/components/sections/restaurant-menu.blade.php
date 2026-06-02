@@ -38,7 +38,13 @@
                                     style="-webkit-text-stroke: 1px #c29545; text-shadow: 2px 2px 4px rgba(0,0,0,0.5);"
                                 @endif>{{ $cat->name }}</span>
                             <span id="icon-cat-{{ $cat->slug }}"
-                                class="text-2xl text-letiarepa-gold/50 font-bold group-hover:text-letiarepa-gold transition-colors">{{ $isFirst ? '-' : '+' }}</span>
+                                @if ($isFirst)
+                                    class="text-letiarepa-gold text-2xl sm:text-1xl font-black italic font-nexa-bold uppercase leading-none tracking-[3px]"
+                                    style="-webkit-text-stroke: 1px currentColor; text-shadow: 0 0 0.5px currentColor;"
+                                @else
+                                    class="font-nexa-bold italic uppercase text-[26px] tracking-[4px] text-[#121212]"
+                                    style="-webkit-text-stroke: 1px #c29545; text-shadow: 2px 2px 4px rgba(0,0,0,0.5);"
+                                @endif>{{ $isFirst ? '-' : '+' }}</span>
                         </button>
                         <div id="cat-{{ $cat->slug }}"
                             class="flex flex-col gap-3 mt-4 pl-4 overflow-hidden transition-all duration-300 {{ $isFirst ? '' : 'hidden' }}">

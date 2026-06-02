@@ -7,7 +7,7 @@
     <div class="py-16 md:py-18" id="menu-section">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <x-sections.restaurant-menu :restaurantCategories="$restaurantCategories" :menuItems="$menuItems" />
-            <x-sections.catering-menu :cateringMenu="$cateringMenu" />
+            <x-sections.catering-menu :cateringPackages="$cateringPackages" />
             <x-sections.frozen-menu :frozenMenu="$frozenMenu" />
         </div>
     </div>

@@ -24,27 +24,28 @@
             </div>
             <hr class="border-white/35 w-full my-0">
             <div class="flex flex-col gap-4">
-                @foreach ($cateringMenu as $pkg)
+                @foreach ($cateringPackages as $pkg)
                     <div class="flex flex-col">
-                        <button onclick="selectCateringPackage('{{ $pkg['id'] }}')" id="btn-pkg-{{ $pkg['id'] }}"
+                        <button onclick="selectCateringPackage('{{ $pkg->slug }}')" id="btn-pkg-{{ $pkg->slug }}"
+                            data-image="/{{ $pkg->image }}"
                             class="w-full flex items-center justify-between group transition-all">
                             <span
                                 class="text-3xl tracking-widest uppercase font-nexa-bold transition-all duration-300 italic uppercase text-[26px] tracking-[4px] text-[#121212] [-webkit-text-stroke:1px_#c29545] [text-shadow:2px_2px_4px_rgba(0,0,0,0.5)] {{ $loop->first ? 'text-letiarepa-gold font-black' : 'text-transparent' }}"
-                                style="{{ !$loop->first ? '-webkit-text-stroke: 1px #CC9438;' : '' }}">{{ $pkg['nombre'] }}</span>
+                                style="{{ !$loop->first ? '-webkit-text-stroke: 1px #CC9438;' : '' }}">{{ $pkg->name }}</span>
                             <span
-                                class="text-2xl text-letiarepa-gold font-bold transition-all duration-300 font-nexa-bold italic uppercase text-[26px] tracking-[4px] text-[#121212] [-webkit-text-stroke:1px_#c29545] [text-shadow:2px_2px_4px_rgba(0,0,0,0.5)] {{ $loop->first ? 'text-letiarepa-gold font-black' : 'text-transparent' }}"
+                                class="text-3xl tracking-widest uppercase font-nexa-bold transition-all duration-300 italic uppercase text-[26px] tracking-[4px] text-[#121212] [-webkit-text-stroke:1px_#c29545] [text-shadow:2px_2px_4px_rgba(0,0,0,0.5)] {{ $loop->first ? 'text-letiarepa-gold font-black' : 'text-transparent' }}"
                                 style="{{ !$loop->first ? '-webkit-text-stroke: 1px #CC9438;' : '' }}">{{ $loop->first ? '-' : '+' }}</span>
                         </button>
-                        <div id="details-pkg-{{ $pkg['id'] }}"
+                        <div id="details-pkg-{{ $pkg->slug }}"
                             class="{{ $loop->first ? 'block' : 'hidden' }} mt-4 pl-4 space-y-2">
-                            @foreach ($pkg['items'] as $item)
+                            @foreach ($pkg->items as $item)
                                 <p class="text-letiarepa-gold font-nexa text-[13px] uppercase tracking-wider">-
-                                    {{ $item }}</p>
+                                    {{ $item->name }}</p>
                             @endforeach
                             <div class="mt-8 space-y-4">
                                 <div class="flex items-center gap-4">
                                     <button
-                                        onclick="addToCart('{{ $pkg['id'] }}', '{{ $pkg['nombre'] }}', {{ $pkg['precio'] }}, 'letiarepa/images/cateringheader.png')"
+                                        onclick="addToCart('{{ $pkg->slug }}', '{{ $pkg->name }}', {{ $pkg->price }}, '{{ $pkg->image }}')"
                                         class="flex items-right gap-3 px-2 py-2 rounded-xl border border-letiarepa-gold/60 text-white font-nexa font-bold text-[10px] uppercase hover:bg-letiarepa-gold/10 transition-all">
                                         <span class="text-right">AGREGAR AL<br>CARRITO </span>
                                         <svg class="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
@@ -56,12 +57,12 @@
                                         <span
                                             class="text-[10px] text-white font-black uppercase text-center mb-1 tracking-widest">CANTIDAD</span>
                                         <div class="grid grid-cols-3 h-full border border-letiarepa-gold/60">
-                                            <button onclick="changeQty('{{ $pkg['id'] }}', -1)"
+                                            <button onclick="changeQty('{{ $pkg->slug }}', -1)"
                                                 class="h-10 min-w-0 flex items-center justify-center text-white hover:bg-letiarepa-gold/20 text-xl font-bold border-r border-letiarepa-gold/60">-</button>
-                                            <input type="number" id="qty-{{ $pkg['id'] }}" value="1"
+                                            <input type="number" id="qty-{{ $pkg->slug }}" value="1"
                                                 min="1" readonly
                                                 class="h-10 min-w-0 text-center text-lg font-nexa font-black text-white bg-transparent border-none focus:ring-0" />
-                                            <button onclick="changeQty('{{ $pkg['id'] }}', 1)"
+                                            <button onclick="changeQty('{{ $pkg->slug }}', 1)"
                                                 class="h-10 min-w-0 flex items-center justify-center text-white hover:bg-letiarepa-gold/20 text-xl font-bold border-l border-letiarepa-gold/60">+</button>
                                         </div>
                                     </div>
@@ -78,7 +79,10 @@
             </div>
         </aside>
         <div class="relative flex items-center justify-center min-h-[600px]">
-            <img src="/letiarepa/images/catering-ifografia.png" alt="Bandeja de Catering"
+            @php $firstPkg = $cateringPackages->first(); @endphp
+            <img id="catering-main-image"
+                src="/{{ $firstPkg ? $firstPkg->image : 'letiarepa/images/catering-ifografia.png' }}"
+                alt="Bandeja de Catering"
                 class="w-full max-w-[650px] object-contain drop-shadow-[0_35px_50px_rgba(0,0,0,0.8)] z-10">
         </div>
     </div>

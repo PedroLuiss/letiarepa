@@ -46,16 +46,29 @@ export function selectRestaurantCategory(slug) {
 
     document.querySelectorAll('[id^="sidebar-cat-"]').forEach(el => {
         const catSlug = el.id.replace('sidebar-cat-', '');
+        const icon = document.getElementById('icon-cat-' + catSlug);
         if (catSlug === slug) {
             el.className = 'text-letiarepa-gold text-2xl sm:text-1xl font-black italic font-nexa-bold uppercase leading-none tracking-[3px]';
             el.style.webkitTextStroke = '1px currentColor';
             el.style.textShadow = '0 0 0.5px currentColor';
+            if (icon) {
+                icon.className = 'text-letiarepa-gold text-2xl sm:text-1xl font-black italic font-nexa-bold uppercase leading-none tracking-[3px]';
+                icon.style.webkitTextStroke = '1px currentColor';
+                icon.style.textShadow = '0 0 0.5px currentColor';
+            }
         } else {
             el.className = 'font-nexa-bold italic uppercase text-[26px] tracking-[4px] text-[#121212]';
             el.style.webkitTextStroke = '';
             el.style.textShadow = '';
             el.style.setProperty('-webkit-text-stroke', '1px #c29545');
             el.style.setProperty('text-shadow', '2px 2px 4px rgba(0,0,0,0.5)');
+            if (icon) {
+                icon.className = 'font-nexa-bold italic uppercase text-[26px] tracking-[4px] text-[#121212]';
+                icon.style.webkitTextStroke = '';
+                icon.style.textShadow = '';
+                icon.style.setProperty('-webkit-text-stroke', '1px #c29545');
+                icon.style.setProperty('text-shadow', '2px 2px 4px rgba(0,0,0,0.5)');
+            }
         }
     });
 
@@ -86,14 +99,31 @@ export function selectCateringPackage(pkgId) {
             span.classList.remove('text-transparent');
             span.classList.add('text-letiarepa-gold', 'font-black');
             span.style.webkitTextStroke = "0px";
+            
+            icon.classList.remove('text-transparent');
+            icon.classList.add('text-letiarepa-gold', 'font-black');
+            icon.style.webkitTextStroke = "0px";
             icon.textContent = "-";
         } else {
             span.classList.add('text-transparent');
             span.classList.remove('text-letiarepa-gold', 'font-black');
             span.style.webkitTextStroke = "1px #CC9438";
+            
+            icon.classList.add('text-transparent');
+            icon.classList.remove('text-letiarepa-gold', 'font-black');
+            icon.style.webkitTextStroke = "1px #CC9438";
             icon.textContent = "+";
         }
     });
+
+    const btn = document.getElementById(`btn-pkg-${pkgId}`);
+    if (btn) {
+        const imgSrc = btn.getAttribute('data-image');
+        const mainImg = document.getElementById('catering-main-image');
+        if (imgSrc && mainImg) {
+            mainImg.src = imgSrc;
+        }
+    }
 }
 
 function loadRandomUSMap() {
