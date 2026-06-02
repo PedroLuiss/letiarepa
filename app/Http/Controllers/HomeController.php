@@ -2,12 +2,14 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\TeamMember;
 use Illuminate\View\View;
 
 class HomeController extends Controller
 {
     public function show(): View
     {
+        $teamMembers = TeamMember::orderBy('sort_order')->get();
         // 1. Restaurant Menu Items (Arepas)
         $restaurantMenu = [
             [
@@ -107,6 +109,6 @@ class HomeController extends Controller
             ]
         ];
 
-        return view('home', compact('restaurantMenu', 'frozenMenu', 'cateringMenu'));
+        return view('home', compact('restaurantMenu', 'frozenMenu', 'cateringMenu', 'teamMembers'));
     }
 }

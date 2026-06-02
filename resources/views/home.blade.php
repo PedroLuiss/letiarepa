@@ -12,6 +12,6 @@
         </div>
     </div>
 
-    <x-sections.team />
+    <x-sections.team :teamMembers="$teamMembers" />
     <x-sections.frozen-modal />
 @endsection

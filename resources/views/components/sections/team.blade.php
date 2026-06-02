@@ -16,93 +16,37 @@
         <div class="max-w-6xl mx-auto touch-pan-y">
             <div id="team-carousel" class="overflow-hidden select-none" style="touch-action: pan-y; cursor: grab;">
                 <div id="team-track" class="flex gap-10 lg:gap-14">
-                    <div
-                        class="flex flex-col rounded-[9px] overflow-hidden shadow-2xl transition-transform hover:-translate-y-2 group shrink-0">
-                        <div class="h-36 bg-letiarepa-gold relative"></div>
-                        <div class="bg-white pt-24 pb-10 px-8 text-center flex flex-col items-center relative">
+                    @foreach ($teamMembers as $member)
+                        @php
+                            $parts = explode(' ', $member->name);
+                            $initials = collect($parts)->map(fn($p) => strtoupper($p[0] ?? ''))->take(2)->implode('');
+                        @endphp
+                        <div
+                            class="flex flex-col rounded-[9px] overflow-hidden shadow-2xl transition-transform hover:-translate-y-2 group shrink-0">
                             <div
-                                class="absolute top-0 left-1/2 -translate-x-1/2 -translate-y-1/2 w-40 h-40 rounded-full border-[3px] border-white overflow-hidden shadow-xl bg-gray-200">
-                                <img src="/letiarepa/images/equipo/josmar.jpg" alt="Josmar Mendoza"
-                                    class="w-full h-full object-cover">
+                                class="h-36 @if ($member->image) bg-letiarepa-gold @else bg-letiarepa-gold @endif relative">
                             </div>
-                            <h4 class="font-nexa text-2xl text-black font-black uppercase tracking-tight">JOSMAR MENDOZA
-                            </h4>
-                            <p class="font-nexa text-sm text-gray-500 font-bold uppercase tracking-widest mt-1 mb-6">
-                                C.E.O</p>
-                            <p class="text-[12px] text-black leading-relaxed text-justify">"Lorem ipsum dolor sit amet,
-                                consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet dolore
-                                magna aliquam erat volutpat."</p>
-                        </div>
-                    </div>
-                    <div
-                        class="flex flex-col rounded-[9px] overflow-hidden shadow-2xl transition-transform hover:-translate-y-2 group shrink-0">
-                        <div class="h-36 bg-letiarepa-gold relative"></div>
-                        <div class="bg-white pt-24 pb-10 px-8 text-center flex flex-col items-center relative">
-                            <div
-                                class="absolute top-0 left-1/2 -translate-x-1/2 -translate-y-1/2 w-40 h-40 rounded-full border-[3px] border-white overflow-hidden shadow-xl bg-gray-200">
-                                <img src="/letiarepa/images/equipo/julio.jpg" alt="Julio Paredes"
-                                    class="w-full h-full object-cover">
+                            <div class="bg-white pt-24 pb-10 px-8 text-center flex flex-col items-center relative">
+                                <div
+                                    class="absolute top-0 left-1/2 -translate-x-1/2 -translate-y-1/2 w-40 h-40 rounded-full border-[3px] border-white overflow-hidden shadow-xl @if ($member->image) bg-gray-200 @else bg-letiarepa-gold @endif flex items-center justify-center">
+                                    @if ($member->image)
+                                        <img src="{{ $member->image }}" alt="{{ $member->name }}"
+                                            class="w-full h-full object-cover">
+                                    @else
+                                        <span
+                                            class="text-5xl font-black font-nexa text-white drop-shadow-lg">{{ $initials }}</span>
+                                    @endif
+                                </div>
+                                <h4 class="font-nexa-bold text-2xl text-black font-black uppercase tracking-tight">
+                                    {{ $member->name }}</h4>
+                                <p
+                                    class="font-nexa text-sm text-gray-500 font-bold uppercase tracking-widest mt-1 mb-6">
+                                    {{ $member->title }}</p>
+                                <p class="text-[12px] text-black leading-relaxed text-justify">
+                                    {{ $member->description }}</p>
                             </div>
-                            <h4 class="font-nexa text-2xl text-black font-black uppercase tracking-tight">JULIO PAREDES
-                            </h4>
-                            <p class="font-nexa text-sm text-gray-500 font-bold uppercase tracking-widest mt-1 mb-6">
-                                FUNDADOR</p>
-                            <p class="text-[12px] text-black leading-relaxed text-justify">"Lorem ipsum dolor sit amet,
-                                consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet dolore
-                                magna aliquam erat volutpat."</p>
                         </div>
-                    </div>
-                    <div
-                        class="flex flex-col rounded-[9px] overflow-hidden shadow-2xl transition-transform hover:-translate-y-2 group shrink-0">
-                        <div class="h-36 bg-letiarepa-gold relative"></div>
-                        <div class="bg-white pt-24 pb-10 px-8 text-center flex flex-col items-center relative">
-                            <div
-                                class="absolute top-0 left-1/2 -translate-x-1/2 -translate-y-1/2 w-40 h-40 rounded-full border-[3px] border-white overflow-hidden shadow-xl bg-gray-200">
-                                <img src="/letiarepa/images/equipo/maria.jpg" alt="María Quiñones"
-                                    class="w-full h-full object-cover">
-                            </div>
-                            <h4 class="font-nexa text-2xl text-black font-black uppercase tracking-tight">MARÍA QUIÑONES
-                            </h4>
-                            <p class="font-nexa text-sm text-gray-500 font-bold uppercase tracking-widest mt-1 mb-6">
-                                ATENCIÓN AL CLIENTE</p>
-                            <p class="text-[12px] text-black leading-relaxed text-justify">"Lorem ipsum dolor sit amet,
-                                consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet dolore
-                                magna aliquam erat volutpat."</p>
-                        </div>
-                    </div>
-                    <div
-                        class="flex flex-col rounded-[9px] overflow-hidden shadow-2xl transition-transform hover:-translate-y-2 group shrink-0">
-                        <div class="h-36 bg-letiarepa-gold relative"></div>
-                        <div class="bg-white pt-24 pb-10 px-8 text-center flex flex-col items-center relative">
-                            <div
-                                class="absolute top-0 left-1/2 -translate-x-1/2 -translate-y-1/2 w-40 h-40 rounded-full border-[3px] border-white overflow-hidden shadow-xl bg-gradient-to-br from-amber-500 to-yellow-300 flex items-center justify-center">
-                                <span class="text-5xl font-black font-nexa text-white drop-shadow-lg">CG</span>
-                            </div>
-                            <h4 class="font-nexa text-2xl text-black font-black uppercase tracking-tight">CARLOS GÓMEZ
-                            </h4>
-                            <p class="font-nexa text-sm text-gray-500 font-bold uppercase tracking-widest mt-1 mb-6">
-                                CHEF EJECUTIVO</p>
-                            <p class="text-[12px] text-black leading-relaxed text-justify">"Apasionado por la cocina
-                                venezolana, cada plato que preparamos lleva el sabor de casa y el corazón de nuestra
-                                tierra."</p>
-                        </div>
-                    </div>
-                    <div
-                        class="flex flex-col rounded-[9px] overflow-hidden shadow-2xl transition-transform hover:-translate-y-2 group shrink-0">
-                        <div class="h-36 bg-letiarepa-gold relative"></div>
-                        <div class="bg-white pt-24 pb-10 px-8 text-center flex flex-col items-center relative">
-                            <div
-                                class="absolute top-0 left-1/2 -translate-x-1/2 -translate-y-1/2 w-40 h-40 rounded-full border-[3px] border-white overflow-hidden shadow-xl bg-gradient-to-br from-amber-500 to-yellow-300 flex items-center justify-center">
-                                <span class="text-5xl font-black font-nexa text-white drop-shadow-lg">AT</span>
-                            </div>
-                            <h4 class="font-nexa text-2xl text-black font-black uppercase tracking-tight">ANA TORRES
-                            </h4>
-                            <p class="font-nexa text-sm text-gray-500 font-bold uppercase tracking-widest mt-1 mb-6">
-                                COORDINADORA DE EVENTOS</p>
-                            <p class="text-[12px] text-black leading-relaxed text-justify">"Hacemos de cada evento una
-                                experiencia inolvidable con el auténtico sabor venezolano que nos caracteriza."</p>
-                        </div>
-                    </div>
+                    @endforeach
                 </div>
             </div>
         </div>
