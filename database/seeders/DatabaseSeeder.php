@@ -12,6 +12,7 @@ class DatabaseSeeder extends Seeder
             TeamMemberSeeder::class,
             RestaurantMenuSeeder::class,
             CateringMenuSeeder::class,
+            FrozenMenuSeeder::class,
         ]);
     }
 }

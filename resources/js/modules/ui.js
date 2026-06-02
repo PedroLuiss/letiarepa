@@ -218,6 +218,51 @@ function initHeaderScroll() {
     }, { passive: true });
 }
 
+function filterFrozenCategory(slug) {
+    const cards = document.querySelectorAll('#frozen-products-grid > [data-frozen-category]');
+    cards.forEach(card => {
+        if (slug === 'all' || card.dataset.frozenCategory === slug) {
+            card.classList.remove('hidden');
+        } else {
+            card.classList.add('hidden');
+        }
+    });
+}
+
+function selectFrozenCategory(slug) {
+    document.querySelectorAll('[id^="fsidebar-cat-"]').forEach(el => {
+        const catSlug = el.id.replace('fsidebar-cat-', '');
+        const icon = document.getElementById('ficon-cat-' + catSlug);
+        const content = document.getElementById('fcat-' + catSlug);
+        if (catSlug === slug) {
+            el.className = 'text-letiarepa-gold text-2xl sm:text-1xl font-black italic font-nexa-bold uppercase leading-none tracking-[3px]';
+            el.style.webkitTextStroke = '1px currentColor';
+            el.style.textShadow = '0 0 0.5px currentColor';
+            if (icon) {
+                icon.className = 'text-2xl text-letiarepa-gold font-bold';
+                icon.style.webkitTextStroke = '';
+                icon.style.textShadow = '';
+                icon.textContent = '-';
+            }
+            if (content) content.classList.remove('hidden');
+        } else {
+            el.className = 'font-nexa-bold italic uppercase text-[26px] tracking-[4px] text-[#121212]';
+            el.style.webkitTextStroke = '';
+            el.style.textShadow = '';
+            el.style.setProperty('-webkit-text-stroke', '1px #c29545');
+            el.style.setProperty('text-shadow', '2px 2px 4px rgba(0,0,0,0.5)');
+            if (icon) {
+                icon.className = 'text-2xl text-letiarepa-gold/50 font-bold group-hover:text-letiarepa-gold transition-colors font-nexa-bold italic uppercase text-[26px] tracking-[4px] text-[#121212]';
+                icon.style.setProperty('-webkit-text-stroke', '1px #c29545');
+                icon.style.setProperty('text-shadow', '2px 2px 4px rgba(0,0,0,0.5)');
+                icon.textContent = '+';
+            }
+            if (content) content.classList.add('hidden');
+        }
+    });
+    filterFrozenCategory(slug);
+}
+
 // Expose to window for onclick handlers
 window.toggleMobileNav = toggleMobileNav;
 window.toggleAccordion = toggleAccordion;
@@ -225,6 +270,15 @@ window.filterRestaurantCategory = filterRestaurantCategory;
 window.showUpcomingAlert = showUpcomingAlert;
 window.selectCateringPackage = selectCateringPackage;
 window.selectRestaurantCategory = selectRestaurantCategory;
+window.selectFrozenCategory = selectFrozenCategory;
+window.filterFrozenCategory = filterFrozenCategory;
+window.showAllFrozen = function() {
+    filterFrozenCategory('all');
+    const firstCat = document.querySelector('[id^="fsidebar-cat-"]');
+    if (firstCat) {
+        window.selectFrozenCategory(firstCat.id.replace('fsidebar-cat-', ''));
+    }
+};
 window.showAllRestaurant = function() {
     filterRestaurantCategory('all');
     const firstCat = document.querySelector('[id^="sidebar-cat-"]');
