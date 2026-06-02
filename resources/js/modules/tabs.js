@@ -83,6 +83,15 @@ export function initTab(tabId) {
         if (tabId === 'restaurant') {
             bannerMsg.textContent = "¿ LISTO PARA ORDENAR ?";
             bannerTabName.textContent = "RESTAURANT";
+
+            if (window.initAllImageCarousels) {
+                window.initAllImageCarousels();
+            }
+            const firstCat = document.querySelector('[id^="sidebar-cat-"]');
+            if (firstCat && window.selectRestaurantCategory) {
+                const slug = firstCat.id.replace('sidebar-cat-', '');
+                window.selectRestaurantCategory(slug);
+            }
         } else if (tabId === 'catering') {
             bannerMsg.textContent = "¿ LISTO PARA AGENDAR ?";
             bannerTabName.textContent = "EVENTOS";

@@ -2,6 +2,8 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\RestaurantCategory;
+use App\Models\RestaurantMenuItem;
 use App\Models\TeamMember;
 use Illuminate\View\View;
 
@@ -10,41 +12,9 @@ class HomeController extends Controller
     public function show(): View
     {
         $teamMembers = TeamMember::orderBy('sort_order')->get();
-        // 1. Restaurant Menu Items (Arepas)
-        $restaurantMenu = [
-            [
-                'id' => 'pabellon',
-                'nombre' => 'AREPA DE PABELLÓN',
-                'descripcion' => 'Carne mechada, caraotas, plátanos maduros, queso blanco.',
-                'precio' => 13.00,
-                'imagen' => 'letiarepa/images/arepas/AREPA-DE-PABELLON-MINIATURA.png',
-                'dots' => 3
-            ],
-            [
-                'id' => 'reina_pepiada',
-                'nombre' => 'AREPA DE REINA PEPIADA',
-                'descripcion' => 'Pollo mechado, aguacate (Palta), mayonesa, queso blanco.',
-                'precio' => 12.00,
-                'imagen' => 'letiarepa/images/arepas/AREPA-REINA-PEPIADA-MINIATURA.png',
-                'dots' => 3
-            ],
-            [
-                'id' => 'letiarepa',
-                'nombre' => 'AREPA DE LETIAREPA',
-                'descripcion' => 'Carne asada, pico de gallo (ensalada típica), queso blanco.',
-                'precio' => 14.00,
-                'imagen' => 'letiarepa/images/arepas/AREPA-LETIAREPA-MINIATURA.png',
-                'dots' => 3
-            ],
-            [
-                'id' => 'pelua',
-                'nombre' => 'AREPA PELUA',
-                'descripcion' => 'Carne mechada, queso amarillo.',
-                'precio' => 12.00,
-                'imagen' => 'letiarepa/images/arepas/AREPA-DE-PABELLON-MINIATURA.png', // Fallback to Pabellón style
-                'dots' => 3
-            ]
-        ];
+
+        $restaurantCategories = RestaurantCategory::orderBy('sort_order')->with('menuItems')->get();
+        $menuItems = RestaurantMenuItem::with('category', 'images')->where('is_available', true)->orderBy('sort_order')->get();
 
         // 2. Frozen Products Menu Items
         $frozenMenu = [
@@ -109,6 +79,6 @@ class HomeController extends Controller
             ]
         ];
 
-        return view('home', compact('restaurantMenu', 'frozenMenu', 'cateringMenu', 'teamMembers'));
+        return view('home', compact('restaurantCategories', 'menuItems', 'frozenMenu', 'cateringMenu', 'teamMembers'));
     }
 }

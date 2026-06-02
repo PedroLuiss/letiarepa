@@ -31,7 +31,8 @@
                                     class="absolute top-0 left-1/2 -translate-x-1/2 -translate-y-1/2 w-40 h-40 rounded-full border-[3px] border-white overflow-hidden shadow-xl @if ($member->image) bg-gray-200 @else bg-letiarepa-gold @endif flex items-center justify-center">
                                     @if ($member->image)
                                         <img src="{{ $member->image }}" alt="{{ $member->name }}"
-                                            class="w-full h-full object-cover">
+                                            draggable="false"
+                                            class="w-full h-full object-cover select-none">
                                     @else
                                         <span
                                             class="text-5xl font-black font-nexa text-white drop-shadow-lg">{{ $initials }}</span>

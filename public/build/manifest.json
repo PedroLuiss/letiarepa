@@ -28,7 +28,7 @@
     "src": "public/letiarepa/images/BACKGROUND.png"
   },
   "resources/css/app.css": {
-    "file": "assets/app-Camy6_1V.css",
+    "file": "assets/app-CG7d3K4x.css",
     "src": "resources/css/app.css",
     "isEntry": true,
     "name": "app",
@@ -37,7 +37,7 @@
     ]
   },
   "resources/js/app.js": {
-    "file": "assets/app-BCORqIP3.js",
+    "file": "assets/app-BN_yo8ny.js",
     "name": "app",
     "src": "resources/js/app.js",
     "isEntry": true

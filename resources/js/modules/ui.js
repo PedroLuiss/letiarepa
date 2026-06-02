@@ -20,12 +20,12 @@ export function toggleAccordion(id) {
     }
 }
 
-export function filterRestaurantCategory(catId) {
+export function filterRestaurantCategory(catSlug) {
     const cards = document.querySelectorAll('[data-product-card][data-product-tab="restaurant"]');
 
     cards.forEach(card => {
-        const productCat = card.getAttribute('data-product-cat');
-        if (catId === 'all' || productCat === catId) {
+        const cardCat = card.getAttribute('data-category-slug');
+        if (catSlug === 'all' || cardCat === catSlug) {
             card.style.display = '';
         } else {
             card.style.display = 'none';
@@ -35,6 +35,41 @@ export function filterRestaurantCategory(catId) {
 
 export function showUpcomingAlert(categoryName) {
     alert(`¡Muy pronto! Nuestro delicioso menú de ${categoryName} estará disponible para ordenar. ¡Gracias por tu paciencia! 🥟🇻🇪`);
+}
+
+export function selectRestaurantCategory(slug) {
+    filterRestaurantCategory(slug);
+
+    if (window.initAllImageCarousels) {
+        window.initAllImageCarousels();
+    }
+
+    document.querySelectorAll('[id^="sidebar-cat-"]').forEach(el => {
+        const catSlug = el.id.replace('sidebar-cat-', '');
+        if (catSlug === slug) {
+            el.className = 'text-letiarepa-gold text-2xl sm:text-1xl font-black italic font-nexa-bold uppercase leading-none tracking-[3px]';
+            el.style.webkitTextStroke = '1px currentColor';
+            el.style.textShadow = '0 0 0.5px currentColor';
+        } else {
+            el.className = 'font-nexa-bold italic uppercase text-[26px] tracking-[4px] text-[#121212]';
+            el.style.webkitTextStroke = '';
+            el.style.textShadow = '';
+            el.style.setProperty('-webkit-text-stroke', '1px #c29545');
+            el.style.setProperty('text-shadow', '2px 2px 4px rgba(0,0,0,0.5)');
+        }
+    });
+
+    document.querySelectorAll('[id^="cat-"]').forEach(el => {
+        const catSlug = el.id.replace('cat-', '');
+        const icon = document.getElementById('icon-cat-' + catSlug);
+        if (catSlug === slug) {
+            el.classList.remove('hidden');
+            if (icon) icon.textContent = '-';
+        } else {
+            el.classList.add('hidden');
+            if (icon) icon.textContent = '+';
+        }
+    });
 }
 
 export function selectCateringPackage(pkgId) {
@@ -159,6 +194,14 @@ window.toggleAccordion = toggleAccordion;
 window.filterRestaurantCategory = filterRestaurantCategory;
 window.showUpcomingAlert = showUpcomingAlert;
 window.selectCateringPackage = selectCateringPackage;
+window.selectRestaurantCategory = selectRestaurantCategory;
+window.showAllRestaurant = function() {
+    filterRestaurantCategory('all');
+    const firstCat = document.querySelector('[id^="sidebar-cat-"]');
+    if (firstCat) {
+        window.selectRestaurantCategory(firstCat.id.replace('sidebar-cat-', ''));
+    }
+};
 
 document.addEventListener('DOMContentLoaded', () => {
     loadRandomUSMap();

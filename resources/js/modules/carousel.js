@@ -20,6 +20,12 @@ function calculateCardWidth() {
         card.style.flex = `0 0 ${cardWidth}px`;
         card.style.maxWidth = `${cardWidth}px`;
         card.style.minWidth = `${cardWidth}px`;
+        card.querySelectorAll('img').forEach(img => {
+            img.style.userSelect = 'none';
+            img.style.webkitUserDrag = 'none';
+            img.setAttribute('draggable', 'false');
+            img.addEventListener('dragstart', e => e.preventDefault());
+        });
     }
     return cardWidth;
 }

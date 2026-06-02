@@ -5,3 +5,4 @@ import './modules/search';
 import './modules/ui';
 import './modules/frozen-modal';
 import './modules/carousel';
+import './modules/carousel-images';
