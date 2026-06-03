@@ -2,11 +2,11 @@
     <div class="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div class="flex flex-col lg:flex-row items-center lg:items-end justify-between mb-20 gap-8">
             <div class="text-center lg:text-left flex flex-col">
-                <span class="text-letiarepa-gold text-5xl leading-none lowercase ml-1">Nuestro</span>
+                <span class="text-letiarepa-gold text-5xl leading-none lowercase ml-1">{{ __('team.our') }}</span>
                 <h2
                     class="font-script text-letiarepa-gold font-weight[100] text-9xl leading-[0.8] tracking-tighter uppercase">
-                    TEAM</h2>
-                <p class="font-nexa text-[20px] text-letiarepa-gold uppercase mt-[-8px]">EN MEJORES MANOS IMPOSIBLE !!!
+                    {{ __('team.title') }}</h2>
+                <p class="font-nexa text-[20px] text-letiarepa-gold uppercase mt-[-8px]">{{ __('team.subtitle') }}
                 </p>
             </div>
             <div class="hidden lg:block flex-1 h-28 ml-16 relative overflow-hidden rounded-sm"
@@ -53,8 +53,7 @@
         </div>
         <div id="team-dots" class="flex justify-center gap-3 mt-16"></div>
         <div class="flex justify-center mt-24">
-            <p class="font-display text-letiarepa-gold text-7xl md:text-[42px] leading-none drop-shadow-lg">Gracias por
-                tu Visita!!!</p>
+            <p class="font-display text-letiarepa-gold text-7xl md:text-[42px] leading-none drop-shadow-lg">{{ __('team.thanks') }}</p>
         </div>
     </div>
 </section>

@@ -16,9 +16,9 @@
         <div class="w-full max-w-5xl flex justify-end mb-8">
             <div class="flex bg-letiarepa-gold rounded-sm overflow-hidden shadow-lg">
                 <button
-                    class="px-6 py-2 text-black font-nexa font-black text-xs uppercase border-r border-black/20 hover:bg-black/10 transition-all">ATRAS</button>
+                    class="px-6 py-2 text-black font-nexa font-black text-xs uppercase border-r border-black/20 hover:bg-black/10 transition-all">{{ __('modal.back') }}</button>
                 <button
-                    class="px-6 py-2 bg-black text-white font-nexa font-black text-xs uppercase hover:bg-white/10 transition-all">SIGUIENTE</button>
+                    class="px-6 py-2 bg-black text-white font-nexa font-black text-xs uppercase hover:bg-white/10 transition-all">{{ __('modal.next') }}</button>
             </div>
         </div>
 
@@ -31,7 +31,7 @@
                     class="absolute w-[300px] h-[300px] md:w-[600px] md:h-[600px] bg-letiarepa-gold/5 blur-[120px] rounded-full">
                 </div>
                 <img id="modal-frozen-img" src="/letiarepa/images/arepas/detalle/AREPA-DE-PABELLON-DETALLE.png"
-                    alt="Producto"
+                    alt="{{ __('modal.product_alt') }}"
                     class="w-full max-w-[600px] h-auto object-contain drop-shadow-[0_45px_55px_rgba(0,0,0,0.8)] rotate-[-5deg] hover:rotate-0 transition-transform duration-700">
             </div>
 
@@ -40,8 +40,7 @@
 
                 <!-- Título Dinámico -->
                 <div class="flex flex-col items-start leading-none mb-2">
-                    <span class="font-script text-letiarepa-gold text-5xl lowercase tracking-wider mb-1">Arepa de
-                        ,</span>
+                    <span class="font-script text-letiarepa-gold text-5xl lowercase tracking-wider mb-1">{{ __('modal.arepa_of') }}</span>
                     <h3 id="modal-frozen-name"
                         class="text-letiarepa-gold text-7xl md:text-8xl font-black uppercase tracking-tighter leading-[0.8]">
                         PABELLON
@@ -54,7 +53,7 @@
                 <div class="w-full mb-2">
                     <h4
                         class="font-nexa font-black text-letiarepa-gold text-xl uppercase tracking-widest mb-6 leading-none">
-                        SELECCIONA LOS <br> INGREDIENTES
+                        {!! __('modal.select_ingredients', ['linebreak' => '<br>']) !!}
                     </h4>
 
                     <div id="ingredients-container" class="flex flex-col gap-4">
@@ -67,7 +66,7 @@
                 <!-- Precio Dinámico -->
                 <div class="mb-2">
                     <h4 class="text-letiarepa-gold text-5xl font-black uppercase">
-                        COSTO: <span id="modal-frozen-price" class="text-white ml-2">$ 13</span>
+                        {{ __('modal.cost') }} <span id="modal-frozen-price" class="text-white ml-2">$ 13</span>
                     </h4>
                 </div>
 
@@ -78,7 +77,7 @@
                     <!-- SECCIÓN: CANTIDAD -->
                     <div class="flex flex-col items-start gap-2">
                         <span
-                            class="text-letiarepa-gold font-nexa-bold text-xs uppercase tracking-widest leading-none">CANTIDAD</span>
+                            class="text-letiarepa-gold font-nexa-bold text-xs uppercase tracking-widest leading-none">{{ __('modal.quantity') }}</span>
                         <div
                             class="grid grid-cols-3 w-40 h-12 border border-letiarepa-gold rounded-sm overflow-hidden bg-black/20">
                             <button onclick="changeQtyModal(-1)"
@@ -99,7 +98,7 @@
                                 class="appearance-none w-6 h-6 border-2 border-letiarepa-gold bg-transparent checked:bg-letiarepa-gold transition-all duration-200 cursor-pointer rounded-sm">
                             <span
                                 class="text-letiarepa-gold font-nexa-bold text-4xl tracking-tighter group-hover:text-white transition-colors leading-none">
-                                Uber Eats
+                                {{ __('modal.uber_eats') }}
                             </span>
                         </label>
 
@@ -114,7 +113,7 @@
                                 </svg>
                                 <span
                                     class="text-letiarepa-gold font-nexa-bold text-4xl tracking-tighter group-hover:text-white transition-colors uppercase leading-none">
-                                    DOORDASH
+                                    {{ __('modal.doordash') }}
                                 </span>
                             </div>
                         </label>
@@ -127,7 +126,7 @@
                 <div class="w-full space-y-4  pb-10">
                     <button onclick="addFrozenToCart()"
                         class="w-full flex items-center justify-center gap-4 px-8 py-4 rounded-full border-2 border-white text-white font-nexa font-black text-xl uppercase hover:bg-white hover:text-black transition-all group">
-                        <span>AGREGAR AL CARRITO</span>
+                        <span>{{ __('modal.add_to_cart') }}</span>
                         <svg class="w-7 h-7 fill-current" viewBox="0 0 24 24">
                             <path
                                 d="M7 18c-1.1 0-1.99.9-1.99 2S5.9 22 7 22s2-.9 2-2-.9-2-2-2zM1 2v2h2l3.6 7.59-1.35 2.45c-.16.28-.25.61-.25.96 0 1.1.9 2 2 2h12v-2H7.42c-.14 0-.25-.11-.25-.25l.03-.12.9-1.63h7.45c.75 0 1.41-.41 1.75-1.03l3.58-6.49c.08-.14.12-.27.12-.41 0-.55-.45-1-1-1H5.21l-.94-2H1zm16 16c-1.1 0-1.99.9-1.99 2s.89 2 1.99 2 2-.9 2-2-.9-2-2-2z" />
@@ -135,7 +134,7 @@
                     </button>
                     <button onclick="addFrozenToCart(); checkoutWhatsApp();"
                         class="w-full py-5 bg-letiarepa-gold text-black font-nexa font-black text-3xl rounded-2xl uppercase shadow-xl shadow-letiarepa-gold/20 hover:scale-[1.02] transition-transform">
-                        IR PAGAR AHORA !!!
+                        {{ __('modal.checkout_now') }}
                     </button>
                 </div>
             </div>

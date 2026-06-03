@@ -1,11 +1,11 @@
 <!DOCTYPE html>
-<html lang="es" class="scroll-smooth">
+<html lang="{{ __('html.lang') }}" class="scroll-smooth">
 
 <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta name="whatsapp-number" content="{{ config('whatsapp.number', '584141578602') }}">
-    <title>Leti Arepa | Sabores de Venezuela en Orlando</title>
+    <title>{{ __('site.title') }}</title>
     <link rel="icon" type="image/png" href="/letiarepa/images/arepas/AREPA-REINA-PEPIADA-MINIATURA.png" />
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.4/css/all.min.css"
         integrity="sha512-Po1+I/5d8+CByWj1mcwZhCzZ9g7qL5k6UKgoDLjnF0p5Sl+kODsnxJzyf5uCt8Tki8MPRSk5zY5Zy5qT9q0u/Q=="

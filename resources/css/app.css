@@ -72,7 +72,6 @@ body {
     background-image: url('../../public/letiarepa/images/BACKGROUND.png');
     background-size: cover;
     background-position: center top;
-    background-attachment: fixed;
     color: #ffffff;
     font-family: var(--font-sans);
 }

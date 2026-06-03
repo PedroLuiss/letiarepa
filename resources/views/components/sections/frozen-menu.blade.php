@@ -3,12 +3,11 @@
     <div class="flex flex-col mb-16 select-none">
         <h2 onclick="showAllFrozen()" class="cursor-pointer text-letiarepa-gold text-2xl sm:text-5xl font-black italic font-nexa-bold uppercase leading-none tracking-[3px]"
             style="-webkit-text-stroke: 1.5px currentColor; text-shadow: 0 0 0.5px currentColor;">
-            PRODUCTOS</h2>
+            {{ __('frozen.title') }}</h2>
         <h2 onclick="showAllFrozen()" style="font-weight: 200; cursor: pointer;"
             class="font-script text-letiarepa-gold text-[160px] leading-[0.8] font-black tracking-[6px] uppercase">
-            CONGELADOS</h2>
-        <p class="font-nexa text-[18px] text-letiarepa-gold tracking-widest  mt-[-10px]">Ahora puedes llevar nuestros
-            productos estrella para consumirlos en tu hogar cuando se te antoje !!!</p>
+            {{ __('frozen.subtitle') }}</h2>
+        <p class="font-nexa text-[18px] text-letiarepa-gold tracking-widest  mt-[-10px]">{{ __('frozen.description') }}</p>
     </div>
 
     <div class="grid grid-cols-1 lg:grid-cols-[300px_1fr] gap-12 lg:gap-16 items-start">
@@ -19,7 +18,7 @@
 
             <!-- Buscador Estilizado -->
             <div class="relative w-full group">
-                <input type="text" placeholder="¿ Buscas algo en específico ?"
+                <input type="text" placeholder="{{ __('frozen.search_placeholder') }}"
                     class="w-full bg-transparent border border-letiarepa-gold/50 rounded-xl py-2.5 px-4 text-xs text-white/70 placeholder-letiarepa-gold/80 focus:outline-none focus:border-letiarepa-gold transition-all"
                     oninput="handleSearch(this.value)">
                 <svg class="w-4 h-4 text-letiarepa-gold absolute right-4 top-1/2 -translate-y-1/2 opacity-50"
@@ -54,7 +53,7 @@
                             class="overflow-hidden transition-all duration-300 {{ $isFirst ? '' : 'hidden' }}">
                             @if ($cat->presentationItems->count() > 0)
                                 <div class="pl-4 space-y-2 mt-4 mb-0">
-                                    <p class="text-[11px] text-letiarepa-gold font-black uppercase tracking-widest">PRESENTACIONES:</p>
+                                    <p class="text-[11px] text-letiarepa-gold font-black uppercase tracking-widest">{{ __('frozen.presentations') }}</p>
                                     @foreach ($cat->presentationItems as $pi)
                                         <p class="text-[12px] text-letiarepa-gold font-nexa uppercase opacity-80">- {{ $pi->name }}</p>
                                     @endforeach
@@ -66,7 +65,7 @@
                                         <button
                                             onclick="addToCart('{{ $cat->combo_slug }}', '{{ $cat->combo_name }}', {{ $cat->combo_price }}, '{{ $cat->combo_image }}')"
                                             class="flex items-center justify-center gap-3 px-3 py-2 rounded-xl border border-letiarepa-gold/60 text-white font-nexa font-bold text-[9px] uppercase hover:bg-letiarepa-gold/10 transition-all group/btn">
-                                            <span class="leading-tight text-right">AGREGAR AL<br>CARRITO</span>
+                                            <span class="leading-tight text-right">{!! __('frozen.add_to_cart', ['linebreak' => '<br>']) !!}</span>
                                             <svg class="w-6 h-6 text-white group-hover/btn:text-letiarepa-gold transition-colors"
                                                 fill="none" viewBox="0 0 24 24" stroke="currentColor">
                                                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
@@ -75,7 +74,7 @@
                                         </button>
                                         <div class="flex flex-col">
                                             <span
-                                                class="text-[10px] text-white font-black uppercase text-center mb-1 tracking-widest">CANTIDAD</span>
+                                                class="text-[10px] text-white font-black uppercase text-center mb-1 tracking-widest">{{ __('frozen.quantity') }}</span>
                                             <div class="grid grid-cols-3 h-full border border-letiarepa-gold/60">
                                                 <button onclick="changeQty('{{ $cat->combo_slug }}', -1)"
                                                     class="h-10 min-w-0 flex items-center justify-center text-white hover:bg-letiarepa-gold/20 text-xl font-bold border-r border-letiarepa-gold/60">-</button>
@@ -89,7 +88,7 @@
                                     <button onclick="checkoutWhatsApp()"
                                         class="font-nexa-bold italic w-full py-2 rounded-2xl bg-letiarepa-gold hover:bg-letiarepa-gold/90 text-black font-nexa font-black text-2xl tracking-[2px] uppercase transition-all shadow-lg shadow-letiarepa-gold/20"
                                         style="-webkit-text-stroke: 1px currentColor; text-shadow: 0 0 0.5px currentColor;">
-                                        ORDENAR AHORA !!!
+                                        {{ __('frozen.order_now') }}
                                     </button>
                                 </div>
                             @endif
@@ -136,14 +135,14 @@
                                 onclick="addToCart('{{ $item->slug }}', '{{ $item->name }}', {{ $item->price }}, '{{ $item->image }}'); checkoutWhatsApp();"
                                 class="font-nexa-bold italic w-full py-4 rounded-2xl bg-letiarepa-gold hover:bg-letiarepa-gold/90 text-black font-nexa font-black text-2xl tracking-[2px] uppercase transition-all shadow-lg shadow-letiarepa-gold/20"
                                 style="-webkit-text-stroke: 1px currentColor; text-shadow: 0 0 0.5px currentColor;">
-                                ORDENAR AHORA !!!
+                                {{ __('frozen.order_now') }}
                             </button>
 
                             <div class="grid grid-cols-[1.3fr_0.7fr] gap-4">
                                 <button
                                     onclick="addToCart('{{ $item->slug }}', '{{ $item->name }}', {{ $item->price }}, '{{ $item->image }}')"
                                     class="flex items-center justify-center gap-3 px-5 py-3 rounded-2xl border border-letiarepa-gold/60 text-white font-nexa font-bold text-[11px] uppercase hover:bg-letiarepa-gold/10 transition-all group/btn">
-                                    <span class="leading-tight text-right">AGREGAR AL<br>CARRITO</span>
+                                    <span class="leading-tight text-right">{!! __('frozen.add_to_cart', ['linebreak' => '<br>']) !!}</span>
                                     <svg class="w-9 h-9 text-white group-hover/btn:text-letiarepa-gold transition-colors"
                                         fill="none" viewBox="0 0 24 24" stroke="currentColor">
                                         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5"
@@ -153,7 +152,7 @@
 
                                 <div class="flex flex-col">
                                     <span
-                                        class="text-[10px] text-white font-black uppercase text-center mb-1 tracking-widest">CANTIDAD</span>
+                                        class="text-[10px] text-white font-black uppercase text-center mb-1 tracking-widest">{{ __('frozen.quantity') }}</span>
                                     <div class="grid grid-cols-3 h-full border border-letiarepa-gold/60">
                                         <button onclick="changeQty('{{ $item->slug }}', -1)"
                                             class="h-10 min-w-0 flex items-center justify-center text-white hover:bg-letiarepa-gold/20 text-xl font-bold border-r border-letiarepa-gold/60">-</button>

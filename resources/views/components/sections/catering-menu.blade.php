@@ -2,19 +2,17 @@
     <div class="flex flex-col items-start mb-10">
         <span
             class="text-letiarepa-gold text-2xl sm:text-5xl font-black italic font-nexa-bold uppercase leading-none tracking-[3px]"
-            style="-webkit-text-stroke: 1.5px currentColor; text-shadow: 0 0 0.5px currentColor;">EVENTOS
-            &</span>
+            style="-webkit-text-stroke: 1.5px currentColor; text-shadow: 0 0 0.5px currentColor;">{{ __('catering.events') }}</span>
         <h2 class="font-script text-letiarepa-gold text-[160px] leading-[0.8] font-black tracking-[6px] uppercase">
-            CATERING</h2>
-        <p class="font-nexa text-[16px] text-letiarepa-gold tracking-widest mt-[-10px] lowercase">¿ quieres marcar la
-            diferencia en los paladares de tus invitados ?</p>
+            {{ __('catering.title') }}</h2>
+        <p class="font-nexa text-[16px] text-letiarepa-gold tracking-widest mt-[-10px] lowercase">{{ __('catering.subtitle') }}</p>
     </div>
     <div class="grid grid-cols-1 lg:grid-cols-[300px_1fr] gap-12 lg:gap-16 items-start">
         <aside class="flex flex-col gap-3 sticky top-24 select-none">
 
             <hr class="border-white/35 w-full my-0">
             <div class="relative w-full group">
-                <input type="text" placeholder="¿ Buscas algo en específico ?"
+                <input type="text" placeholder="{{ __('catering.search_placeholder') }}"
                     class="w-full bg-transparent border border-letiarepa-gold/50 rounded-xl py-2.5 px-4 text-xs text-white/70 placeholder-letiarepa-gold/40 focus:outline-none focus:border-letiarepa-gold transition-all">
                 <svg class="w-4 h-4 text-letiarepa-gold absolute right-4 top-1/2 -translate-y-1/2 opacity-50"
                     fill="none" viewBox="0 0 24 24" stroke="currentColor">
@@ -47,7 +45,7 @@
                                     <button
                                         onclick="addToCart('{{ $pkg->slug }}', '{{ $pkg->name }}', {{ $pkg->price }}, '{{ $pkg->image }}')"
                                         class="flex items-right gap-3 px-2 py-2 rounded-xl border border-letiarepa-gold/60 text-white font-nexa font-bold text-[10px] uppercase hover:bg-letiarepa-gold/10 transition-all">
-                                        <span class="text-right">AGREGAR AL<br>CARRITO </span>
+                                        <span class="text-right">{!! __('catering.add_to_cart', ['linebreak' => '<br>']) !!}</span>
                                         <svg class="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                                             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
                                                 d="M3 3h2l.4 2M7 13h10l4-8H5.4M7 13L5.4 5M7 13l-2.293 2.293c-.63.63-.184 1.707.707 1.707H17m0 0a2 2 0 100 4 2 2 0 000-4zm-8 2a2 2 0 11-4 0 2 2 0 014 0z" />
@@ -55,7 +53,7 @@
                                     </button>
                                     <div class="flex flex-col">
                                         <span
-                                            class="text-[10px] text-white font-black uppercase text-center mb-1 tracking-widest">CANTIDAD</span>
+                                            class="text-[10px] text-white font-black uppercase text-center mb-1 tracking-widest">{{ __('catering.quantity') }}</span>
                                         <div class="grid grid-cols-3 h-full border border-letiarepa-gold/60">
                                             <button onclick="changeQty('{{ $pkg->slug }}', -1)"
                                                 class="h-10 min-w-0 flex items-center justify-center text-white hover:bg-letiarepa-gold/20 text-xl font-bold border-r border-letiarepa-gold/60">-</button>
@@ -69,8 +67,7 @@
                                 </div>
                                 <button onclick="checkoutWhatsApp()"
                                     class="font-nexa-bold italic w-full py-2 rounded-2xl bg-letiarepa-gold hover:bg-letiarepa-gold/90 text-black font-nexa font-black text-2xl tracking-[2px] uppercase transition-all shadow-lg shadow-letiarepa-gold/20"
-                                    style="-webkit-text-stroke: 1px currentColor; text-shadow: 0 0 0.5px currentColor;">ORDENAR
-                                    AHORA !!!</button>
+                                    style="-webkit-text-stroke: 1px currentColor; text-shadow: 0 0 0.5px currentColor;">{{ __('catering.order_now') }}</button>
                             </div>
                         </div>
                     </div>
@@ -82,7 +79,7 @@
             @php $firstPkg = $cateringPackages->first(); @endphp
             <img id="catering-main-image"
                 src="/{{ $firstPkg ? $firstPkg->image : 'letiarepa/images/catering-ifografia.png' }}"
-                alt="Bandeja de Catering"
+                alt="{{ __('catering.image_alt') }}"
                 class="w-full max-w-[650px] object-contain drop-shadow-[0_35px_50px_rgba(0,0,0,0.8)] z-10">
         </div>
     </div>
