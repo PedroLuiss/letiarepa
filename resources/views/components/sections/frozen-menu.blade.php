@@ -105,9 +105,14 @@
                     class="flex flex-col border border-letiarepa-gold/40 rounded-[2.5rem] p-8 transition-all hover:bg-white/5 relative bg-transparent group overflow-hidden">
 
                     <!-- Imagen de Empaque Inclinada (Exacto a la imagen) -->
-                    <div class="flex justify-center mb-10 relative">
-                        <img src="/{{ $item->image }}" alt="{{ $item->name }}"
-                            class="w-full max-w-[240px] object-contain drop-shadow-[0_25px_45px_rgba(0,0,0,0.7)] rotate-[-12deg] group-hover:rotate-[-5deg] transition-transform duration-700">
+                    <div class="flex justify-center mb-10">
+                        <div class="relative inline-block">
+                            <div class="skeleton absolute inset-0 rounded-xl" id="sk-fr-{{ $item->slug }}"></div>
+                            <img src="/{{ $item->image }}" alt="{{ $item->name }}"
+                                class="w-full max-w-[240px] object-contain drop-shadow-[0_25px_45px_rgba(0,0,0,0.7)] rotate-[-12deg] group-hover:rotate-[-5deg] transition duration-700 relative z-10 opacity-0"
+                                onload="this.style.opacity='1'; document.getElementById('sk-fr-{{ $item->slug }}')?.classList.add('skeleton-hidden')"
+                                onerror="this.style.opacity='1'; document.getElementById('sk-fr-{{ $item->slug }}')?.classList.add('skeleton-hidden')" />
+                        </div>
                     </div>
 
                     <!-- Detalles del Producto -->

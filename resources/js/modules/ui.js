@@ -121,6 +121,9 @@ export function selectCateringPackage(pkgId) {
         const imgSrc = btn.getAttribute('data-image');
         const mainImg = document.getElementById('catering-main-image');
         if (imgSrc && mainImg) {
+            const skel = document.getElementById('sk-catering-main');
+            if (skel) skel.classList.remove('skeleton-hidden');
+            mainImg.style.opacity = '0';
             mainImg.src = imgSrc;
         }
     }
