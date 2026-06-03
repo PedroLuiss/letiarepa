@@ -105,5 +105,8 @@
     "social.instagram": "Instagram",
     "social.facebook": "Facebook",
     "social.twitter": "Twitter",
-    "social.whatsapp": "WhatsApp"
+    "social.whatsapp": "WhatsApp",
+
+    "search.no_results": "No se encontraron productos",
+    "search.results_label": "resultados"
 }
