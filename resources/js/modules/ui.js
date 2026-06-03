@@ -20,12 +20,12 @@ export function toggleAccordion(id) {
     }
 }
 
-export function filterRestaurantCategory(catId) {
+export function filterRestaurantCategory(catSlug) {
     const cards = document.querySelectorAll('[data-product-card][data-product-tab="restaurant"]');
 
     cards.forEach(card => {
-        const productCat = card.getAttribute('data-product-cat');
-        if (catId === 'all' || productCat === catId) {
+        const cardCat = card.getAttribute('data-category-slug');
+        if (catSlug === 'all' || cardCat === catSlug) {
             card.style.display = '';
         } else {
             card.style.display = 'none';
@@ -35,6 +35,54 @@ export function filterRestaurantCategory(catId) {
 
 export function showUpcomingAlert(categoryName) {
     alert(`¡Muy pronto! Nuestro delicioso menú de ${categoryName} estará disponible para ordenar. ¡Gracias por tu paciencia! 🥟🇻🇪`);
+}
+
+export function selectRestaurantCategory(slug) {
+    filterRestaurantCategory(slug);
+
+    if (window.initAllImageCarousels) {
+        window.initAllImageCarousels();
+    }
+
+    document.querySelectorAll('[id^="sidebar-cat-"]').forEach(el => {
+        const catSlug = el.id.replace('sidebar-cat-', '');
+        const icon = document.getElementById('icon-cat-' + catSlug);
+        if (catSlug === slug) {
+            el.className = 'text-letiarepa-gold text-2xl sm:text-1xl font-black italic font-nexa-bold uppercase leading-none tracking-[3px]';
+            el.style.webkitTextStroke = '1px currentColor';
+            el.style.textShadow = '0 0 0.5px currentColor';
+            if (icon) {
+                icon.className = 'text-letiarepa-gold text-2xl sm:text-1xl font-black italic font-nexa-bold uppercase leading-none tracking-[3px]';
+                icon.style.webkitTextStroke = '1px currentColor';
+                icon.style.textShadow = '0 0 0.5px currentColor';
+            }
+        } else {
+            el.className = 'font-nexa-bold italic uppercase text-[26px] tracking-[4px] text-[#121212]';
+            el.style.webkitTextStroke = '';
+            el.style.textShadow = '';
+            el.style.setProperty('-webkit-text-stroke', '1px #c29545');
+            el.style.setProperty('text-shadow', '2px 2px 4px rgba(0,0,0,0.5)');
+            if (icon) {
+                icon.className = 'font-nexa-bold italic uppercase text-[26px] tracking-[4px] text-[#121212]';
+                icon.style.webkitTextStroke = '';
+                icon.style.textShadow = '';
+                icon.style.setProperty('-webkit-text-stroke', '1px #c29545');
+                icon.style.setProperty('text-shadow', '2px 2px 4px rgba(0,0,0,0.5)');
+            }
+        }
+    });
+
+    document.querySelectorAll('[id^="cat-"]').forEach(el => {
+        const catSlug = el.id.replace('cat-', '');
+        const icon = document.getElementById('icon-cat-' + catSlug);
+        if (catSlug === slug) {
+            el.classList.remove('hidden');
+            if (icon) icon.textContent = '-';
+        } else {
+            el.classList.add('hidden');
+            if (icon) icon.textContent = '+';
+        }
+    });
 }
 
 export function selectCateringPackage(pkgId) {
@@ -51,14 +99,31 @@ export function selectCateringPackage(pkgId) {
             span.classList.remove('text-transparent');
             span.classList.add('text-letiarepa-gold', 'font-black');
             span.style.webkitTextStroke = "0px";
+            
+            icon.classList.remove('text-transparent');
+            icon.classList.add('text-letiarepa-gold', 'font-black');
+            icon.style.webkitTextStroke = "0px";
             icon.textContent = "-";
         } else {
             span.classList.add('text-transparent');
             span.classList.remove('text-letiarepa-gold', 'font-black');
             span.style.webkitTextStroke = "1px #CC9438";
+            
+            icon.classList.add('text-transparent');
+            icon.classList.remove('text-letiarepa-gold', 'font-black');
+            icon.style.webkitTextStroke = "1px #CC9438";
             icon.textContent = "+";
         }
     });
+
+    const btn = document.getElementById(`btn-pkg-${pkgId}`);
+    if (btn) {
+        const imgSrc = btn.getAttribute('data-image');
+        const mainImg = document.getElementById('catering-main-image');
+        if (imgSrc && mainImg) {
+            mainImg.src = imgSrc;
+        }
+    }
 }
 
 function loadRandomUSMap() {
@@ -153,12 +218,74 @@ function initHeaderScroll() {
     }, { passive: true });
 }
 
+function filterFrozenCategory(slug) {
+    const cards = document.querySelectorAll('#frozen-products-grid > [data-frozen-category]');
+    cards.forEach(card => {
+        if (slug === 'all' || card.dataset.frozenCategory === slug) {
+            card.classList.remove('hidden');
+        } else {
+            card.classList.add('hidden');
+        }
+    });
+}
+
+function selectFrozenCategory(slug) {
+    document.querySelectorAll('[id^="fsidebar-cat-"]').forEach(el => {
+        const catSlug = el.id.replace('fsidebar-cat-', '');
+        const icon = document.getElementById('ficon-cat-' + catSlug);
+        const content = document.getElementById('fcat-' + catSlug);
+        if (catSlug === slug) {
+            el.className = 'text-letiarepa-gold text-2xl sm:text-1xl font-black italic font-nexa-bold uppercase leading-none tracking-[3px]';
+            el.style.webkitTextStroke = '1px currentColor';
+            el.style.textShadow = '0 0 0.5px currentColor';
+            if (icon) {
+                icon.className = 'text-2xl text-letiarepa-gold font-bold';
+                icon.style.webkitTextStroke = '';
+                icon.style.textShadow = '';
+                icon.textContent = '-';
+            }
+            if (content) content.classList.remove('hidden');
+        } else {
+            el.className = 'font-nexa-bold italic uppercase text-[26px] tracking-[4px] text-[#121212]';
+            el.style.webkitTextStroke = '';
+            el.style.textShadow = '';
+            el.style.setProperty('-webkit-text-stroke', '1px #c29545');
+            el.style.setProperty('text-shadow', '2px 2px 4px rgba(0,0,0,0.5)');
+            if (icon) {
+                icon.className = 'text-2xl text-letiarepa-gold/50 font-bold group-hover:text-letiarepa-gold transition-colors font-nexa-bold italic uppercase text-[26px] tracking-[4px] text-[#121212]';
+                icon.style.setProperty('-webkit-text-stroke', '1px #c29545');
+                icon.style.setProperty('text-shadow', '2px 2px 4px rgba(0,0,0,0.5)');
+                icon.textContent = '+';
+            }
+            if (content) content.classList.add('hidden');
+        }
+    });
+    filterFrozenCategory(slug);
+}
+
 // Expose to window for onclick handlers
 window.toggleMobileNav = toggleMobileNav;
 window.toggleAccordion = toggleAccordion;
 window.filterRestaurantCategory = filterRestaurantCategory;
 window.showUpcomingAlert = showUpcomingAlert;
 window.selectCateringPackage = selectCateringPackage;
+window.selectRestaurantCategory = selectRestaurantCategory;
+window.selectFrozenCategory = selectFrozenCategory;
+window.filterFrozenCategory = filterFrozenCategory;
+window.showAllFrozen = function() {
+    filterFrozenCategory('all');
+    const firstCat = document.querySelector('[id^="fsidebar-cat-"]');
+    if (firstCat) {
+        window.selectFrozenCategory(firstCat.id.replace('fsidebar-cat-', ''));
+    }
+};
+window.showAllRestaurant = function() {
+    filterRestaurantCategory('all');
+    const firstCat = document.querySelector('[id^="sidebar-cat-"]');
+    if (firstCat) {
+        window.selectRestaurantCategory(firstCat.id.replace('sidebar-cat-', ''));
+    }
+};
 
 document.addEventListener('DOMContentLoaded', () => {
     loadRandomUSMap();

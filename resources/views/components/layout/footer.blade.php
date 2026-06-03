@@ -5,45 +5,31 @@
             <div class="flex flex-col items-center lg:items-start">
                 <img src="/letiarepa/images/7-años-footer.png" alt="7 Años" class="w-60 h-auto" />
                 <div class="mt-6 space-y-4 max-w-[280px]">
-                    <p class="font-nexa font-bold text-[16px] tracking-tight">- Sirviendo en Orlando y Kissimmee</p>
-                    <p class="font-nexa font-bold text-[16px] tracking-tighttext-justify">- Ordena y descubre por qué
-                        somos
-                        la
-                        elección favorita de quienes buscan calidad, sabor y tradición.</p>
+                    <p class="font-nexa font-bold text-[16px] tracking-tight">{{ __('footer.serving') }}</p>
+                    <p class="font-nexa font-bold text-[16px] tracking-tighttext-justify">{{ __('footer.invitation') }}</p>
                 </div>
             </div>
             <div class="lg:px-12">
                 <h3 class="text-4xl font-black tracking-widest mb-3 font-nexa-bold"
-                    style="-webkit-text-stroke: 3.5px currentColor; text-shadow: 0 0 0.5px currentColor;">SERVICIOS</h3>
+                    style="-webkit-text-stroke: 3.5px currentColor; text-shadow: 0 0 0.5px currentColor;">{{ __('footer.services') }}</h3>
                 <div class="space-y-6">
                     <div class="flex gap-2">
                         <span class="text-lg leading-none">•</span>
                         <p class="text-[16px] leading-5 text-justify text-black"><strong
                                 class="font-nexa-bold font-black tracking-[2px]"
-                                style="-webkit-text-stroke: 0.5px currentColor; text-shadow: 0 0 0.5px currentColor;">Leti
-                                arepa:</strong> Nos especializamos en
-                            arepas, cachapas, pepitos y hamburguesas al estilo venezolano, preparadas con ingredientes
-                            frescos, recetas caseras y ese toque especial que nos conecta con nuestras raíces.</p>
+                                style="-webkit-text-stroke: 0.5px currentColor; text-shadow: 0 0 0.5px currentColor;">{{ __('footer.service_restaurant') }}</strong> {{ __('footer.service_restaurant_desc') }}</p>
                     </div>
                     <div class="flex gap-2">
                         <span class="text-lg leading-none">•</span>
                         <p class="text-[16px] leading-5 text-justify text-black"><strong
                                 class="font-nexa-bold font-black tracking-[2px]"
-                                style="-webkit-text-stroke: 0.5px currentColor; text-shadow: 0 0 0.5px currentColor;">Catering:</strong>
-                            En Leti Arepa Orlando,
-                            llevamos mucho más que platos a tu evento… llevamos sabor, frescura y una experiencia que
-                            conecta a las personas alrededor de la mesa.</p>
+                                style="-webkit-text-stroke: 0.5px currentColor; text-shadow: 0 0 0.5px currentColor;">{{ __('footer.service_catering') }}</strong> {{ __('footer.service_catering_desc') }}</p>
                     </div>
                     <div class="flex gap-2">
                         <span class="text-lg leading-none">•</span>
                         <p class="text-[16px] leading-5 text-justify text-black"><strong
                                 class="font-nexa-bold font-black tracking-[2px]"
-                                style="-webkit-text-stroke: 0.5px currentColor; text-shadow: 0 0 0.5px currentColor;">Productos
-                                congelados:</strong> Sabemos lo
-                            que es
-                            llegar a casa cansado… sin tiempo, sin energía, pero con ganas de darle lo mejor a tu
-                            familia, por eso creamos Leti Arepa Frozen Foods: una solución real para tu día a día, sin
-                            sacrificar sabor, calidad ni tradición.</p>
+                                style="-webkit-text-stroke: 0.5px currentColor; text-shadow: 0 0 0.5px currentColor;">{{ __('footer.service_frozen') }}</strong> {{ __('footer.service_frozen_desc') }}</p>
                     </div>
                 </div>
             </div>
@@ -57,13 +43,13 @@
                         <a href="{{ $link }}"
                             class="w-10 h-10 flex items-center justify-center hover:scale-110 transition-transform shadow-lg">
                             @if ($net === 'instagram')
-                                <img src="/letiarepa/images/icon-ig.png" alt="Instagram" class="w-full h-full" />
+                                <img src="/letiarepa/images/icon-ig.png" alt="{{ __('social.instagram') }}" class="w-full h-full" />
                             @elseif($net === 'facebook')
-                                <img src="/letiarepa/images/icon-fb.png" alt="Facebook" class="w-full h-full" />
+                                <img src="/letiarepa/images/icon-fb.png" alt="{{ __('social.facebook') }}" class="w-full h-full" />
                             @elseif($net === 'twitter')
-                                <img src="/letiarepa/images/icon-X.png" alt="Twitter" class="w-full h-full" />
+                                <img src="/letiarepa/images/icon-X.png" alt="{{ __('social.twitter') }}" class="w-full h-full" />
                             @elseif($net === 'whatsapp')
-                                <img src="/letiarepa/images/icon-ws.png" alt="WhatsApp" class="w-full h-full" />
+                                <img src="/letiarepa/images/icon-ws.png" alt="{{ __('social.whatsapp') }}" class="w-full h-full" />
                             @endif
                         </a>
                     @endforeach
@@ -76,13 +62,12 @@
                                 <div
                                     class="animate-spin rounded-full h-8 w-8 border-b-2 border-letiarepa-gold mx-auto mb-2">
                                 </div>
-                                <p class="text-xs text-letiarepa-black font-nexa font-bold">Cargando mapa...</p>
+                                <p class="text-xs text-letiarepa-black font-nexa font-bold">{{ __('footer.loading_map') }}</p>
                             </div>
                         </div>
                     </div>
                 </div>
-                <p class="font-nexa font-black text-[10px] tracking-widest uppercase">All Rights Reserved by: <span
-                        class="text-letiarepa-black">Leti Arepa Orlando</span></p>
+                <p class="font-nexa font-black text-[10px] tracking-widest uppercase">{!! __('footer.rights', ['brand_full' => 'Leti Arepa Orlando']) !!}</p>
             </div>
         </div>
     </div>

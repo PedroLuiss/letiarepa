@@ -72,7 +72,6 @@ body {
     background-image: url('../../public/letiarepa/images/BACKGROUND.png');
     background-size: cover;
     background-position: center top;
-    background-attachment: fixed;
     color: #ffffff;
     font-family: var(--font-sans);
 }
@@ -161,4 +160,35 @@ body {
 input[type="checkbox"]:checked {
     background-image: none !important;
     /* Quita el icono de check estandar de Tailwind/Browser */
+}
+
+/* ─── Global Search Dropdown ───────────────────────────────────── */
+.search-dropdown {
+    transform: translateY(-6px);
+}
+
+.search-dropdown.opacity-100 {
+    transform: translateY(0);
+}
+
+.search-dropdown-scroll::-webkit-scrollbar {
+    width: 6px;
+}
+
+.search-dropdown-scroll::-webkit-scrollbar-track {
+    background: #0a0a0a;
+}
+
+.search-dropdown-scroll::-webkit-scrollbar-thumb {
+    background: #CC9438;
+    border-radius: 3px;
+}
+
+.search-dropdown-scroll::-webkit-scrollbar-thumb:hover {
+    background: #B8832E;
+}
+
+.search-dropdown-scroll {
+    scrollbar-width: thin;
+    scrollbar-color: #CC9438 #0A0A0A;
 }

@@ -154,6 +154,17 @@ function renderCart() {
     subtotalText.textContent = `$${subtotal.toFixed(2)}`;
 }
 
+export function addToCartSimple(id, nombre, precio, imagen) {
+    const index = cart.findIndex(item => item.id === id && item.option === null);
+    if (index > -1) {
+        cart[index].cantidad += 1;
+    } else {
+        cart.push({ id, nombre, precio: parseFloat(precio), imagen, option: null, cantidad: 1 });
+    }
+    saveCart();
+    toggleCart(true);
+}
+
 export function checkoutWhatsApp() {
     if (cart.length === 0) return;
 
@@ -185,6 +196,7 @@ export function checkoutWhatsApp() {
 
 // Expose to window for onclick handlers
 window.addToCart = addToCart;
+window.addToCartSimple = addToCartSimple;
 window.changeQty = changeQty;
 window.toggleCart = toggleCart;
 window.updateCartQuantity = updateCartQuantity;
