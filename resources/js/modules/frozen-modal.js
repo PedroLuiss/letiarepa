@@ -73,7 +73,38 @@ export function addFrozenToCart() {
     closeFrozenModal();
 }
 
+function findCardById(id) {
+    const grid = document.getElementById('restaurant-grid');
+    if (!grid) return null;
+    return grid.querySelector(`[data-product-id="${id}"]`);
+}
+
+function getVisibleSibling(card, direction) {
+    let el = direction === 1 ? card.nextElementSibling : card.previousElementSibling;
+    while (el) {
+        if (el.matches('[data-product-card]') && el.offsetParent !== null) return el;
+        el = direction === 1 ? el.nextElementSibling : el.previousElementSibling;
+    }
+    return null;
+}
+
+export function navigateFrozenModal(direction) {
+    if (!activeFrozenItem) return;
+    const currentCard = findCardById(activeFrozenItem.id);
+    if (!currentCard) return;
+    const nextCard = getVisibleSibling(currentCard, direction);
+    if (!nextCard) return;
+    const slug = nextCard.dataset.productId;
+    const name = nextCard.dataset.productName;
+    const price = nextCard.dataset.productPrice;
+    const image = nextCard.dataset.productImage;
+    if (slug && name && price != null && image) {
+        openFrozenModal(slug, name, price, image);
+    }
+}
+
 window.openFrozenModal = openFrozenModal;
 window.closeFrozenModal = closeFrozenModal;
 window.changeQtyModal = changeQtyModal;
 window.addFrozenToCart = addFrozenToCart;
+window.navigateFrozenModal = navigateFrozenModal;

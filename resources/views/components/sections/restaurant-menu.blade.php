@@ -69,6 +69,8 @@
                     <div data-product-card data-product-name="{{ $item->name }}"
                         data-product-desc="{{ $item->description }}" data-product-tab="restaurant"
                         data-product-id="{{ $item->slug }}"
+                        data-product-price="{{ $item->price }}"
+                        data-product-image="{{ $item->image }}"
                         data-category-slug="{{ $item->category->slug }}"
                         class="flex flex-col border border-letiarepa-gold/60 rounded-[9px] p-6 transition-all group hover:bg-white/5 relative overflow-hidden bg-transparent">
 
