@@ -102,12 +102,23 @@
         <div id="frozen-products-grid" class="grid grid-cols-1 md:grid-cols-2 gap-10 xl:gap-14">
             @foreach ($frozenProducts as $item)
                 <div data-frozen-category="{{ $item->category_slug }}"
+                    data-product-id="{{ $item->slug }}"
+                    data-product-name="{{ $item->name }}"
+                    data-product-price="{{ $item->price }}"
+                    data-product-image="{{ $item->image }}"
+                    data-product-desc="{{ $item->description }}"
+                    data-product-presentation="{{ $item->presentation }}"
                     class="flex flex-col border border-letiarepa-gold/40 rounded-[2.5rem] p-8 transition-all hover:bg-white/5 relative bg-transparent group overflow-hidden">
 
                     <!-- Imagen de Empaque Inclinada (Exacto a la imagen) -->
-                    <div class="flex justify-center mb-10 relative">
-                        <img src="/{{ $item->image }}" alt="{{ $item->name }}"
-                            class="w-full max-w-[240px] object-contain drop-shadow-[0_25px_45px_rgba(0,0,0,0.7)] rotate-[-12deg] group-hover:rotate-[-5deg] transition-transform duration-700">
+                    <div class="flex justify-center mb-10">
+                        <div class="relative inline-block">
+                            <div class="skeleton absolute inset-0 rounded-xl" id="sk-fr-{{ $item->slug }}"></div>
+                            <img src="/{{ $item->image }}" alt="{{ $item->name }}"
+                                class="w-full max-w-[240px] object-contain drop-shadow-[0_25px_45px_rgba(0,0,0,0.7)] rotate-[-12deg] group-hover:rotate-[-5deg] transition duration-700 relative z-10 opacity-0"
+                                onload="this.style.opacity='1'; document.getElementById('sk-fr-{{ $item->slug }}')?.classList.add('skeleton-hidden')"
+                                onerror="this.style.opacity='1'; document.getElementById('sk-fr-{{ $item->slug }}')?.classList.add('skeleton-hidden')" />
+                        </div>
                     </div>
 
                     <!-- Detalles del Producto -->
@@ -132,7 +143,7 @@
                         <!-- Botones de la Tarjeta -->
                         <div class="w-full space-y-4">
                             <button
-                                onclick="addToCart('{{ $item->slug }}', '{{ $item->name }}', {{ $item->price }}, '{{ $item->image }}'); checkoutWhatsApp();"
+                                onclick="openFrozenDetailModal(this.closest('[data-frozen-category]'))"
                                 class="font-nexa-bold italic w-full py-4 rounded-2xl bg-letiarepa-gold hover:bg-letiarepa-gold/90 text-black font-nexa font-black text-2xl tracking-[2px] uppercase transition-all shadow-lg shadow-letiarepa-gold/20"
                                 style="-webkit-text-stroke: 1px currentColor; text-shadow: 0 0 0.5px currentColor;">
                                 {{ __('frozen.order_now') }}
