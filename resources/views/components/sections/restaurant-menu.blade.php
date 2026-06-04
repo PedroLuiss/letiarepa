@@ -181,6 +181,7 @@
                     </div>
                 @endforeach
             </div>
+            <div id="restaurant-pagination" class="flex items-center justify-center gap-2 mt-12 opacity-0 pointer-events-none transition-all duration-300"></div>
         </div>
     </div>
 </section>
