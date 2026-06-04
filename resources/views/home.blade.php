@@ -14,4 +14,5 @@
 
     <x-sections.team :teamMembers="$teamMembers" />
     <x-sections.frozen-modal />
+    <x-sections.frozen-detail-modal />
 @endsection

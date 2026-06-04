@@ -77,10 +77,13 @@
         </aside>
         <div class="relative flex items-center justify-center min-h-[600px]">
             @php $firstPkg = $cateringPackages->first(); @endphp
+            <div class="skeleton absolute inset-0 rounded-xl" id="sk-catering-main"></div>
             <img id="catering-main-image"
                 src="/{{ $firstPkg ? $firstPkg->image : 'letiarepa/images/catering-ifografia.png' }}"
                 alt="{{ __('catering.image_alt') }}"
-                class="w-full max-w-[650px] object-contain drop-shadow-[0_35px_50px_rgba(0,0,0,0.8)] z-10">
+                class="w-full max-w-[650px] object-contain drop-shadow-[0_35px_50px_rgba(0,0,0,0.8)] relative z-10 opacity-0 transition duration-500"
+                onload="this.style.opacity='1'; document.getElementById('sk-catering-main')?.classList.add('skeleton-hidden')"
+                onerror="this.style.opacity='1'; document.getElementById('sk-catering-main')?.classList.add('skeleton-hidden')" />
         </div>
     </div>
 </section>

@@ -192,3 +192,33 @@ input[type="checkbox"]:checked {
     scrollbar-width: thin;
     scrollbar-color: #CC9438 #0A0A0A;
 }
+
+/* ─── Skeleton Shimmer ──────────────────────────────────────────── */
+@keyframes skeleton-shimmer {
+    0% { background-position: -200% 0; }
+    100% { background-position: 200% 0; }
+}
+
+.skeleton {
+    background: #1a1a1a;
+}
+
+.skeleton::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(
+        90deg,
+        transparent 0%,
+        rgba(204, 147, 56, 0.15) 50%,
+        transparent 100%
+    );
+    background-size: 200% 100%;
+    animation: skeleton-shimmer 1.8s ease-in-out infinite;
+}
+
+.skeleton-hidden {
+    opacity: 0 !important;
+    pointer-events: none !important;
+    transition: opacity 0.4s ease;
+}

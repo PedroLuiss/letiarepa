@@ -69,21 +69,29 @@
                     <div data-product-card data-product-name="{{ $item->name }}"
                         data-product-desc="{{ $item->description }}" data-product-tab="restaurant"
                         data-product-id="{{ $item->slug }}"
+                        data-product-price="{{ $item->price }}"
+                        data-product-image="{{ $item->image }}"
                         data-category-slug="{{ $item->category->slug }}"
                         class="flex flex-col border border-letiarepa-gold/60 rounded-[9px] p-6 transition-all group hover:bg-white/5 relative overflow-hidden bg-transparent">
 
-                        @if ($hasCarousel)
-                            <div class="carousel-images-container flex flex-col items-center gap-1" style="touch-action:pan-y">
-                                <div class="relative w-full aspect-square max-w-[326px] flex items-center justify-center overflow-hidden">
-                                    <div class="carousel-images-track h-full self-stretch">
-                                        @foreach ($images as $img)
-                                            <img src="/{{ $img->image_path }}" alt="{{ $item->name }}"
-                                                draggable="false"
-                                                class="carousel-img w-full h-full object-contain drop-shadow-[0_20px_30px_rgba(0,0,0,0.6)] transition-transform duration-500 group-hover:scale-105 select-none"
-                                                onerror="this.src='/letiarepa/images/arepas/AREPA-REINA-PEPIADA-MINIATURA.png'" />
-                                        @endforeach
+                            @if ($hasCarousel)
+                                <div class="carousel-images-container flex flex-col items-center gap-1" style="touch-action:pan-y">
+                                    <div class="relative w-full aspect-square max-w-[326px] flex items-center justify-center overflow-hidden">
+                                        <div class="skeleton absolute inset-0 rounded-xl" id="sk-{{ $item->slug }}"></div>
+                                        <div class="carousel-images-track h-full self-stretch relative z-10">
+                                            @foreach ($images as $img)
+                                                <img src="/{{ $img->image_path }}" alt="{{ $item->name }}"
+                                                    draggable="false"
+                                                    class="carousel-img w-full h-full object-contain drop-shadow-[0_20px_30px_rgba(0,0,0,0.6)] transition-transform duration-500 group-hover:scale-105 select-none"
+                                                    @if ($loop->first)
+                                                        onload="document.getElementById('sk-{{ $item->slug }}')?.classList.add('skeleton-hidden')"
+                                                        onerror="document.getElementById('sk-{{ $item->slug }}')?.classList.add('skeleton-hidden'); this.src='/letiarepa/images/arepas/AREPA-REINA-PEPIADA-MINIATURA.png'"
+                                                    @else
+                                                        onerror="this.src='/letiarepa/images/arepas/AREPA-REINA-PEPIADA-MINIATURA.png'"
+                                                    @endif />
+                                            @endforeach
+                                        </div>
                                     </div>
-                                </div>
                                 <div class="carousel-dots flex gap-2.5">
                                     @foreach ($images as $i => $img)
                                         <span class="carousel-dot w-4 h-4 rounded-full border border-letiarepa-gold cursor-pointer transition-all duration-300 {{ $i === 0 ? 'bg-letiarepa-gold' : 'bg-transparent' }}"
@@ -94,9 +102,11 @@
                         @else
                             <div class="flex flex-col items-center gap-1">
                                 <div class="relative w-full aspect-square max-w-[326px] flex items-center justify-center">
+                                    <div class="skeleton absolute inset-0 rounded-xl" id="sk-{{ $item->slug }}"></div>
                                     <img src="/{{ $item->image }}" alt="{{ $item->name }}"
-                                        class="w-full h-full object-contain drop-shadow-[0_20px_30px_rgba(0,0,0,0.6)] transition-transform duration-500 group-hover:scale-105"
-                                        onerror="this.src='/letiarepa/images/arepas/AREPA-REINA-PEPIADA-MINIATURA.png'" />
+                                        class="w-full h-full object-contain drop-shadow-[0_20px_30px_rgba(0,0,0,0.6)] transition duration-500 group-hover:scale-105 relative z-10 opacity-0"
+                                        onload="this.style.opacity='1'; document.getElementById('sk-{{ $item->slug }}')?.classList.add('skeleton-hidden')"
+                                        onerror="this.src='/letiarepa/images/arepas/AREPA-REINA-PEPIADA-MINIATURA.png'; this.style.opacity='1'; document.getElementById('sk-{{ $item->slug }}')?.classList.add('skeleton-hidden')" />
                                 </div>
                             </div>
                         @endif

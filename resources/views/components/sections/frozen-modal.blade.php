@@ -15,9 +15,9 @@
         <!-- Header de Navegación (Igual a la imagen) -->
         <div class="w-full max-w-5xl flex justify-end mb-8">
             <div class="flex bg-letiarepa-gold rounded-sm overflow-hidden shadow-lg">
-                <button
+                <button onclick="navigateFrozenModal(-1)"
                     class="px-6 py-2 text-black font-nexa font-black text-xs uppercase border-r border-black/20 hover:bg-black/10 transition-all">{{ __('modal.back') }}</button>
-                <button
+                <button onclick="navigateFrozenModal(1)"
                     class="px-6 py-2 bg-black text-white font-nexa font-black text-xs uppercase hover:bg-white/10 transition-all">{{ __('modal.next') }}</button>
             </div>
         </div>
