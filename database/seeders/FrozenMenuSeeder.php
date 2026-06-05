@@ -6,17 +6,18 @@ use App\Models\FrozenCategory;
 use App\Models\FrozenPresentationItem;
 use App\Models\FrozenProduct;
 use Illuminate\Database\Seeder;
+use Illuminate\Support\Facades\DB;
 
 class FrozenMenuSeeder extends Seeder
 {
     public function run(): void
     {
         // --- Categories ---
-        \DB::statement('SET FOREIGN_KEY_CHECKS=0');
+        DB::statement('SET FOREIGN_KEY_CHECKS=0');
         FrozenPresentationItem::truncate();
         FrozenCategory::truncate();
         FrozenProduct::truncate();
-        \DB::statement('SET FOREIGN_KEY_CHECKS=1');
+        DB::statement('SET FOREIGN_KEY_CHECKS=1');
 
         $catProteinas = FrozenCategory::create([
             'name' => 'PROTEINAS',
@@ -155,6 +156,36 @@ class FrozenMenuSeeder extends Seeder
             'image' => 'letiarepa/images/arepas/detalle/AREPA-REINA-PEPIADA-DETALLE.png',
             'category_slug' => 'empanadas',
             'sort_order' => 7,
+        ]);
+        FrozenProduct::create([
+            'name' => 'EMPANADAS DE QUESO',
+            'slug' => 'empanadas-de-pabellon-con-queso',
+            'description' => 'Empanadas de harina de maíz rellenas de queso.',
+            'price' => 7.00,
+            'presentation' => '6 unidades',
+            'image' => 'letiarepa/images/arepas/detalle/AREPA-REINA-PEPIADA-DETALLE.png',
+            'category_slug' => 'empanadas',
+            'sort_order' => 8,
+        ]);
+        FrozenProduct::create([
+            'name' => 'EMPANADAS DE QUESO',
+            'slug' => 'empanadas-de-pabellon',
+            'description' => 'Empanadas de harina de maíz rellenas de queso.',
+            'price' => 7.00,
+            'presentation' => '6 unidades',
+            'image' => 'letiarepa/images/arepas/detalle/AREPA-REINA-PEPIADA-DETALLE.png',
+            'category_slug' => 'empanadas',
+            'sort_order' => 9,
+        ]);
+        FrozenProduct::create([
+            'name' => 'EMPANADAS DE QUESO',
+            'slug' => 'empanadas-de-peluass',
+            'description' => 'Empanadas de harina de maíz rellenas de queso.',
+            'price' => 7.00,
+            'presentation' => '6 unidades',
+            'image' => 'letiarepa/images/arepas/detalle/AREPA-REINA-PEPIADA-DETALLE.png',
+            'category_slug' => 'empanadas',
+            'sort_order' => 10,
         ]);
     }
 }

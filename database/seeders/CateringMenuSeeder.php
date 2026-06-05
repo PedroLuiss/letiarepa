@@ -5,6 +5,7 @@ namespace Database\Seeders;
 use App\Models\CateringPackage;
 use App\Models\CateringPackageItem;
 use Illuminate\Database\Seeder;
+use Illuminate\Support\Facades\DB;
 
 class CateringMenuSeeder extends Seeder
 {
@@ -29,10 +30,10 @@ class CateringMenuSeeder extends Seeder
 
     public function run(): void
     {
-        \DB::statement('SET FOREIGN_KEY_CHECKS=0');
+        DB::statement('SET FOREIGN_KEY_CHECKS=0');
         CateringPackageItem::truncate();
         CateringPackage::truncate();
-        \DB::statement('SET FOREIGN_KEY_CHECKS=1');
+        DB::statement('SET FOREIGN_KEY_CHECKS=1');
 
         $this->createPackage('PAQUETE DORADO', 'paquete_dorado', 150.00,
             'letiarepa/images/catering-ifografia.png', 0, [

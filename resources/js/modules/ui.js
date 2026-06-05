@@ -234,6 +234,10 @@ function filterFrozenCategory(slug) {
             card.classList.add('hidden');
         }
     });
+
+    if (window.initFrozenPagination) {
+        window.initFrozenPagination();
+    }
 }
 
 function selectFrozenCategory(slug) {
