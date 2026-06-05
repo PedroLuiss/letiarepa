@@ -200,6 +200,10 @@ function handleSectionSearch(query) {
             card.style.display = 'none';
         }
     });
+
+    if (window.initRestaurantPagination) {
+        window.initRestaurantPagination();
+    }
 }
 
 window.handleSearch = handleSectionSearch;

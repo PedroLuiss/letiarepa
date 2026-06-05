@@ -31,6 +31,10 @@ export function filterRestaurantCategory(catSlug) {
             card.style.display = 'none';
         }
     });
+
+    if (window.initRestaurantPagination) {
+        window.initRestaurantPagination();
+    }
 }
 
 export function showUpcomingAlert(categoryName) {
@@ -230,6 +234,10 @@ function filterFrozenCategory(slug) {
             card.classList.add('hidden');
         }
     });
+
+    if (window.initFrozenPagination) {
+        window.initFrozenPagination();
+    }
 }
 
 function selectFrozenCategory(slug) {

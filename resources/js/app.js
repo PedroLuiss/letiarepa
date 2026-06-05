@@ -7,3 +7,4 @@ import './modules/frozen-modal';
 import './modules/frozen-detail-modal';
 import './modules/carousel';
 import './modules/carousel-images';
+import './modules/pagination';
