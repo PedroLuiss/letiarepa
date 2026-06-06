@@ -1,12 +1,12 @@
 <section data-tab-section="restaurant" class="transition-opacity duration-300">
-    <div class="grid grid-cols-1 lg:grid-cols-[280px_1fr] gap-12 lg:gap-16 items-start">
-        <aside class="flex flex-col">
+    <div class="grid grid-cols-1 lg:grid-cols-[240px_1fr] xl:grid-cols-[280px_1fr] gap-8 md:gap-12 lg:gap-16 items-start">
+        <aside class="flex flex-col lg:sticky lg:top-24">
             <div class="flex flex-col items-start mb-2">
                 <span
                     class="text-letiarepa-gold text-2xl sm:text-4xl font-black italic font-nexa-bold uppercase leading-none tracking-[3px]"
                     style="-webkit-text-stroke: 2.5px currentColor; text-shadow: 0 0 0.5px currentColor;">{{ __('menu.our') }}</span>
                 <h2 style="font-weight: 200;"
-                    class="font-script text-letiarepa-gold text-[100px] leading-[0.8] font-black tracking-[6px] uppercase">
+                    class="font-script text-letiarepa-gold text-[60px] sm:text-[80px] md:text-[100px] xl:text-[100px] leading-[0.8] font-black tracking-[3px] sm:tracking-[6px] uppercase">
                     {{ __('menu.title') }}</h2>
                 <p class="font-nexa text-[11px] text-letiarepa-gold tracking-widest mt-2 lowercase">{{ __('menu.subtitle') }}</p>
             </div>

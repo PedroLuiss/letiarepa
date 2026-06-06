@@ -36,7 +36,7 @@
                 <span
                     class="font-nexa text-[10px] tracking-[0.2em] font-bold text-letiarepa-gold select-none uppercase">{{ __('nav.search') }}</span>
                 <input type="text" id="nav-search" autocomplete="off"
-                    class="w-20 xl:w-28 bg-transparent border-t-0 border-x-0 border-b border-letiarepa-gold text-[11px] text-white focus:ring-0 p-0 pb-1 focus:outline-none focus:border-t-0 focus:border-x-0 focus:border-b focus:border-letiarepa-gold" />
+                    class="w-24 sm:w-28 xl:w-28 bg-transparent border-t-0 border-x-0 border-b border-letiarepa-gold text-[11px] text-white focus:ring-0 p-0 pb-1 focus:outline-none focus:border-t-0 focus:border-x-0 focus:border-b focus:border-letiarepa-gold" />
                 <svg class="w-3.5 h-3.5 text-letiarepa-gold" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
                         d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0" />

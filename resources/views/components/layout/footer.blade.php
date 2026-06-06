@@ -1,7 +1,7 @@
 <footer id="contacto" class="relative text-letiarepa-black py-16 overflow-hidden"
     style="background-image: url('/letiarepa/images/footerbg.jpg'); background-size: cover; background-position: center;">
     <div class="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div class="grid grid-cols-1 lg:grid-cols-[1.2fr_1.8fr_1.2fr] gap-12 lg:gap-16 items-start">
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-[1.2fr_1.8fr_1.2fr] gap-10 md:gap-12 lg:gap-16 items-start text-center md:text-left">
             <div class="flex flex-col items-center lg:items-start">
                 <img src="/letiarepa/images/7-años-footer.png" alt="7 Años" class="w-60 h-auto" />
                 <div class="mt-6 space-y-4 max-w-[280px]">

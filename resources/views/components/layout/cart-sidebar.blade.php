@@ -7,7 +7,7 @@
     class="fixed right-0 top-0 bottom-0 z-50 w-full sm:w-[450px] bg-[#0f0f0f] border-l-2 border-[#c29545]/30 shadow-[0_0_50px_rgba(0,0,0,0.8)] translate-x-full transition-transform duration-500 ease-out flex flex-col">
 
     <!-- HEADER: Estilo "Catering" -->
-    <div class="relative p-8 border-b border-white/5 bg-gradient-to-b from-black to-transparent">
+    <div class="relative p-5 sm:p-8 border-b border-white/5 bg-gradient-to-b from-black to-transparent">
         <div class="flex items-center justify-between">
             <div class="flex flex-col">
                 <span class="text-[10px] text-[#c29545] tracking-[4px] font-bold">{{ __('cart.location') }}</span>
@@ -28,13 +28,13 @@
     </div>
 
     <!-- CUERPO: Lista de items con scroll estilizado -->
-    <div id="cart-items" class="flex-1 overflow-y-auto p-6 space-y-6 scrollbar-thin scrollbar-thumb-[#c29545]/20">
+    <div id="cart-items" class="flex-1 overflow-y-auto p-4 sm:p-6 space-y-6 scrollbar-thin scrollbar-thumb-[#c29545]/20">
         <!-- Los items se inyectan vía JS -->
     </div>
 
     <!-- FOOTER: Resumen y Acción -->
-    <div class="p-8 bg-[#0a0a0a] border-t border-white/5 shadow-[0_-10px_40px_rgba(0,0,0,0.5)]">
-        <div class="flex items-end justify-between mb-8">
+    <div class="p-5 sm:p-8 bg-[#0a0a0a] border-t border-white/5 shadow-[0_-10px_40px_rgba(0,0,0,0.5)]">
+        <div class="flex items-end justify-between mb-6 sm:mb-8">
             <div class="flex flex-col">
                 <span class="text-[10px] text-white/40 tracking-widest uppercase mb-1 font-bold">{{ __('cart.estimated_total') }}</span>
                 <div class="flex items-baseline gap-1">
@@ -67,7 +67,7 @@
             </div>
         </button>
 
-        <p class="mt-6 text-[9px] text-center text-white/30 uppercase tracking-[2px]">
+        <p class="mt-4 sm:mt-6 text-[9px] text-center text-white/30 uppercase tracking-[2px]">
             {!! __('cart.checkout_note', ['linebreak' => '<br>']) !!}
         </p>
     </div>

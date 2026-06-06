@@ -6,13 +6,24 @@ let visibleCount = 3;
 let isDragging = false;
 let startX = 0;
 
+function getVisibleCount() {
+    const w = window.innerWidth;
+    if (w < 768) return 1;
+    if (w < 1024) return 2;
+    return 3;
+}
+
 function getGap() {
-    return window.innerWidth >= 1024 ? 56 : 40;
+    const w = window.innerWidth;
+    if (w < 768) return 16;
+    if (w < 1024) return 32;
+    return 56;
 }
 
 function calculateCardWidth() {
     if (!viewport || !track) return;
     const gap = getGap();
+    visibleCount = getVisibleCount();
     const vpWidth = viewport.offsetWidth;
     cardWidth = (vpWidth - (visibleCount - 1) * gap) / visibleCount;
     for (let i = 0; i < track.children.length; i++) {
@@ -20,6 +31,7 @@ function calculateCardWidth() {
         card.style.flex = `0 0 ${cardWidth}px`;
         card.style.maxWidth = `${cardWidth}px`;
         card.style.minWidth = `${cardWidth}px`;
+        card.style.marginRight = (i < track.children.length - 1) ? `${gap}px` : '0';
         card.querySelectorAll('img').forEach(img => {
             img.style.userSelect = 'none';
             img.style.webkitUserDrag = 'none';
@@ -55,7 +67,7 @@ function updateDots() {
     let html = '';
     for (let i = 0; i < count; i++) {
         const active = i === currentPos;
-        html += `<span data-dot="${i}" class="w-3.5 h-3.5 rounded-full ${active ? 'bg-letiarepa-gold' : 'border border-letiarepa-gold bg-transparent'} inline-block cursor-pointer transition-all duration-300"></span>`;
+        html += `<span data-dot="${i}" class="w-3 h-3 sm:w-3.5 sm:h-3.5 rounded-full ${active ? 'bg-letiarepa-gold' : 'border border-letiarepa-gold bg-transparent'} inline-block cursor-pointer transition-all duration-300"></span>`;
     }
     dotsContainer.innerHTML = html;
     dotsContainer.querySelectorAll('[data-dot]').forEach(el => {
@@ -129,7 +141,12 @@ function initCarousel() {
     window.addEventListener('resize', () => {
         clearTimeout(resizeTimer);
         resizeTimer = setTimeout(() => {
+            const newCount = getVisibleCount();
+            const countChanged = newCount !== visibleCount;
             calculateCardWidth();
+            if (countChanged && currentPos > getMaxPos()) {
+                currentPos = getMaxPos();
+            }
             setSliderPosition(false);
         }, 150);
     });
