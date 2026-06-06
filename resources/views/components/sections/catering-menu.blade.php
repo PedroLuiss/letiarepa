@@ -3,12 +3,12 @@
         <span
             class="text-letiarepa-gold text-2xl sm:text-5xl font-black italic font-nexa-bold uppercase leading-none tracking-[3px]"
             style="-webkit-text-stroke: 1.5px currentColor; text-shadow: 0 0 0.5px currentColor;">{{ __('catering.events') }}</span>
-        <h2 class="font-script text-letiarepa-gold text-[160px] leading-[0.8] font-black tracking-[6px] uppercase">
+        <h2 class="font-script text-letiarepa-gold text-[80px] sm:text-[110px] md:text-[140px] xl:text-[160px] leading-[0.8] font-black tracking-[3px] sm:tracking-[6px] uppercase">
             {{ __('catering.title') }}</h2>
         <p class="font-nexa text-[16px] text-letiarepa-gold tracking-widest mt-[-10px] lowercase">{{ __('catering.subtitle') }}</p>
     </div>
-    <div class="grid grid-cols-1 lg:grid-cols-[300px_1fr] gap-12 lg:gap-16 items-start">
-        <aside class="flex flex-col gap-3 sticky top-24 select-none">
+    <div class="grid grid-cols-1 lg:grid-cols-[240px_1fr] xl:grid-cols-[300px_1fr] gap-8 md:gap-12 lg:gap-16 items-start">
+        <aside class="flex flex-col gap-3 lg:sticky lg:top-24 select-none">
 
             <hr class="border-white/35 w-full my-0">
             <div class="relative w-full group">
