@@ -48,7 +48,7 @@
                         <div id="cat-{{ $cat->slug }}"
                             class="flex flex-col gap-3 mt-4 pl-4 overflow-hidden transition-all duration-300 {{ $isFirst ? '' : 'hidden' }}">
                             @foreach ($cat->menuItems as $item)
-                                <button onclick="selectRestaurantCategory('{{ $cat->slug }}')"
+                                <button onclick="showMenuItemImage('{{ $item->slug }}', '{{ $item->image }}')"
                                     class="text-left font-nexa text-[13px] text-letiarepa-gold hover:text-white transition-colors uppercase tracking-widest">-
                                     {{ $item->name }}</button>
                             @endforeach

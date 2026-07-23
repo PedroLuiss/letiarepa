@@ -103,14 +103,14 @@ class RestaurantMenuSeeder extends Seeder
             3
         );
 
-        // PARRILLAS — 1 image each
+        // PARRILLAS — Usar imágenes reales de la carpeta Parrillas
         $this->createItem(
             $catParrillas->id,
             'PARRILLA MIXTA',
             'parrilla-mixta',
             'Carne, pollo, chorizo y vegetales asados a la parrilla, servidos con guasacaca y arepas.',
             28.00,
-            [$fallback],
+            ['letiarepa/images/Parrillas/Yaracuyana-1.jpg'],
             0
         );
 
@@ -120,7 +120,7 @@ class RestaurantMenuSeeder extends Seeder
             'parrilla-pollo',
             'Pechuga de pollo marinada a la parrilla, acompañada de vegetales salteados y papas.',
             18.00,
-            [$fallback],
+            ['letiarepa/images/Parrillas/Yaracuyana-2.jpg'],
             1
         );
 
@@ -130,18 +130,18 @@ class RestaurantMenuSeeder extends Seeder
             'parrilla-res',
             'Carne asada al carbón, servida con chimichurri, vegetales asados y arepa.',
             22.00,
-            [$fallback],
+            ['letiarepa/images/Parrillas/Yaracuyana-3.jpg'],
             2
         );
 
-        // PATACON — 1 image each
+        // PATACON — Usar imágenes reales de la carpeta Patacones
         $this->createItem(
             $catPatacon->id,
             'PATACÓN DE POLLO',
             'patacon-pollo',
             'Patacón de plátano verde relleno de pollo mechado, lechuga, tomate y salsas.',
             14.00,
-            [$fallback],
+            ['letiarepa/images/Patacones/Patacon-de-pollo -1.jpg'],
             0
         );
 
@@ -151,7 +151,7 @@ class RestaurantMenuSeeder extends Seeder
             'patacon-carne',
             'Patacón de plátano verde relleno de carne mechada, queso amarillo y ensalada.',
             15.00,
-            [$fallback],
+            ['letiarepa/images/Patacones/patacon-carne.jpg'],
             1
         );
 
@@ -161,18 +161,18 @@ class RestaurantMenuSeeder extends Seeder
             'patacon-mixto',
             'Patacón de plátano verde relleno de carne y pollo, con todos los acompañantes.',
             16.00,
-            [$fallback],
+            ['letiarepa/images/Patacones/Patacon-de-pollo-2.jpg'],
             2
         );
 
-        // CACHAPAS — 1 image each
+        // CACHAPAS — Usar imágenes reales de la carpeta cachapas
         $this->createItem(
             $catCachapas->id,
             'CACHAPA CON QUESO',
             'cachapa-queso',
             'Cachapa de maíz dulce rellena de queso blanco, crema de leche y mantequilla.',
             11.00,
-            [$fallback],
+            ['letiarepa/images/cachapas/Cachapa-de-queso 1.jpg'],
             0
         );
 
@@ -182,7 +182,7 @@ class RestaurantMenuSeeder extends Seeder
             'cachapa-carne',
             'Cachapa de maíz dulce rellena de carne mechada y queso blanco.',
             15.00,
-            [$fallback],
+            ['letiarepa/images/cachapas/Cachapa-carne-mechada-1.jpg'],
             1
         );
 
@@ -192,18 +192,18 @@ class RestaurantMenuSeeder extends Seeder
             'cachapa-pollo',
             'Cachapa de maíz dulce rellena de pollo mechado y queso blanco.',
             14.00,
-            [$fallback],
+            ['letiarepa/images/cachapas/cachapa-de-mechada-2.jpg'],
             2
         );
 
-        // BURGERS — 1 image each
+        // BURGERS — Usar imágenes reales de la carpeta Hamburgesas
         $this->createItem(
             $catBurgers->id,
             'HAMBURGUESA CLÁSICA',
             'burger-clasica',
             'Carne de res, lechuga, tomate, cebolla, pepinillos y nuestra salsa especial.',
             12.00,
-            [$fallback],
+            ['letiarepa/images/Hamburgesas/hamburguesa-criolla.jpg'],
             0
         );
 
@@ -213,7 +213,7 @@ class RestaurantMenuSeeder extends Seeder
             'burger-queso',
             'Carne de res, queso amarillo, lechuga, tomate y salsa especial.',
             13.00,
-            [$fallback],
+            ['letiarepa/images/Hamburgesas/hamburguesa-picahna.jpg'],
             1
         );
 
@@ -223,18 +223,18 @@ class RestaurantMenuSeeder extends Seeder
             'burger-especial',
             'Doble carne, doble queso, tocineta, huevo, lechuga, tomate y nuestra salsa de la casa.',
             16.00,
-            [$fallback],
+            ['letiarepa/images/Hamburgesas/hamburguesa-triple.jpg'],
             2
         );
 
-        // PEPITOS — 1 image each
+        // PEPITOS — Usar imágenes reales de la carpeta Pepitos
         $this->createItem(
             $catPepitos->id,
             'PEPITO DE CARNE',
             'pepito-carne',
             'Pan artesanal relleno de carne mechada, queso amarillo, vegetales y salsas.',
             14.00,
-            [$fallback],
+            ['letiarepa/images/Pepitos/pepito-guaro.jpg'],
             0
         );
 
@@ -244,7 +244,7 @@ class RestaurantMenuSeeder extends Seeder
             'pepito-pollo',
             'Pan artesanal relleno de pollo mechado, queso amarillo, vegetales y salsas.',
             13.00,
-            [$fallback],
+            ['letiarepa/images/Pepitos/pepito-mar-y-tierra.jpg'],
             1
         );
 
@@ -254,7 +254,7 @@ class RestaurantMenuSeeder extends Seeder
             'pepito-mixto',
             'Pan artesanal relleno de carne y pollo, queso amarillo, vegetales y salsas.',
             15.00,
-            [$fallback],
+            ['letiarepa/images/Pepitos/pepito-parrillero.jpg'],
             2
         );
         $this->createItem(
@@ -263,7 +263,7 @@ class RestaurantMenuSeeder extends Seeder
             'pepito-mixto1',
             'Pan artesanal relleno de carne y pollo, queso amarillo, vegetales y salsas.',
             15.00,
-            [$fallback],
+            ['letiarepa/images/Pepitos/pepito-guaro-3.jpg'],
             3
         );
         $this->createItem(
@@ -272,7 +272,7 @@ class RestaurantMenuSeeder extends Seeder
             'pepito-mixto2',
             'Pan artesanal relleno de carne y pollo, queso amarillo, vegetales y salsas.',
             15.00,
-            [$fallback],
+            ['letiarepa/images/Pepitos/pepito-guaro-4.jpg'],
             3
         );
         $this->createItem(
@@ -281,7 +281,7 @@ class RestaurantMenuSeeder extends Seeder
             'pepito-mixto3',
             'Pan artesanal relleno de carne y pollo, queso amarillo, vegetales y salsas.',
             15.00,
-            [$fallback],
+            ['letiarepa/images/Pepitos/pepito-guaro-3.jpg'],
             4
         );
         $this->createItem(
@@ -290,18 +290,18 @@ class RestaurantMenuSeeder extends Seeder
             'pepito-mixto4',
             'Pan artesanal relleno de carne y pollo, queso amarillo, vegetales y salsas.',
             15.00,
-            [$fallback],
+            ['letiarepa/images/Pepitos/pepito-guaro-4.jpg'],
             5
         );
 
-        // APERITIVOS — 1 image each
+        // APERITIVOS — Usar imágenes reales de la carpeta Aperitivos
         $this->createItem(
             $catAperitivos->id,
             'TEQUEÑOS (6 UND)',
             'tequenos',
             '6 tequeños de queso blanco fritos, servidos con salsa de ajo.',
             9.00,
-            [$fallback],
+            ['letiarepa/images/Aperitivos/Tequeños-2.jpg'],
             0
         );
 
@@ -311,7 +311,7 @@ class RestaurantMenuSeeder extends Seeder
             'empanadas',
             '2 empanadas de carne o pollo, servidas con guasacaca.',
             8.00,
-            [$fallback],
+            ['letiarepa/images/Aperitivos/Empanadas.jpg'],
             1
         );
 
@@ -321,18 +321,18 @@ class RestaurantMenuSeeder extends Seeder
             'yoyos',
             'Yoyos de plátano dulce rellenos de queso blanco, servidos con crema de leche.',
             7.00,
-            [$fallback],
+            ['letiarepa/images/Aperitivos/Pastel-1.jpg'],
             2
         );
 
-        // BEBIDAS — 1 image each
+        // BEBIDAS — Usar imágenes reales de la carpeta Bebidas
         $this->createItem(
             $catBebidas->id,
             'COCA COLA',
             'coca-cola',
             'Coca Cola personal 355ml.',
             2.00,
-            [$fallback],
+            ['letiarepa/images/Bebidas/Toddy.jpg'],
             0
         );
 
@@ -342,7 +342,7 @@ class RestaurantMenuSeeder extends Seeder
             'agua',
             'Agua embotellada 500ml.',
             2.00,
-            [$fallback],
+            ['letiarepa/images/Bebidas/Jugos.jpg'],
             1
         );
 
@@ -352,7 +352,7 @@ class RestaurantMenuSeeder extends Seeder
             'jugo-natural',
             'Jugo natural de parchita, mango o guayaba.',
             4.00,
-            [$fallback],
+            ['letiarepa/images/Bebidas/Jugo-parchita.jpg'],
             2
         );
     }
