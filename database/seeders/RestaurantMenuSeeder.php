@@ -325,35 +325,75 @@ class RestaurantMenuSeeder extends Seeder
             2
         );
 
-        // BEBIDAS — Usar imágenes reales de la carpeta Bebidas
+        // BEBIDAS — 7 productos usando las imágenes reales de la carpeta Bebidas
         $this->createItem(
             $catBebidas->id,
-            'COCA COLA',
-            'coca-cola',
-            'Coca Cola personal 355ml.',
-            2.00,
-            ['letiarepa/images/Bebidas/Toddy.jpg'],
+            'CHICHA TRADICIONAL',
+            'chicha-tradicional',
+            'Bebida tradicional venezolana de arroz, leche y canela.',
+            3.50,
+            ['letiarepa/images/Bebidas/Chicha-1.jpg'],
             0
         );
 
         $this->createItem(
             $catBebidas->id,
-            'AGUA',
-            'agua',
-            'Agua embotellada 500ml.',
-            2.00,
-            ['letiarepa/images/Bebidas/Jugos.jpg'],
+            'CHICHA ESPECIAL',
+            'chicha-especial',
+            'Chicha artesanal con vainilla y leche condensada.',
+            4.00,
+            ['letiarepa/images/Bebidas/Chicha-2.jpg'],
             1
         );
 
         $this->createItem(
             $catBebidas->id,
-            'JUGO NATURAL',
-            'jugo-natural',
-            'Jugo natural de parchita, mango o guayaba.',
+            'JUGO DE GUANÁBANA',
+            'jugo-guanabana',
+            'Refrescante jugo natural de guanábana.',
+            4.00,
+            ['letiarepa/images/Bebidas/Jugo-guanabana.jpg'],
+            2
+        );
+
+        $this->createItem(
+            $catBebidas->id,
+            'JUGO DE MORA',
+            'jugo-mora',
+            'Jugo natural de mora, dulce y antioxidante.',
+            4.00,
+            ['letiarepa/images/Bebidas/Jugo-Mora.jpg'],
+            3
+        );
+
+        $this->createItem(
+            $catBebidas->id,
+            'JUGO DE PARCHITA',
+            'jugo-parchita',
+            'Jugo natural de parchita (maracuyá), tropical y refrescante.',
             4.00,
             ['letiarepa/images/Bebidas/Jugo-parchita.jpg'],
-            2
+            4
+        );
+
+        $this->createItem(
+            $catBebidas->id,
+            'TODDY',
+            'toddy',
+            'Bebida chocolatada fría, cremosa y deliciosa.',
+            3.00,
+            ['letiarepa/images/Bebidas/Toddy.jpg'],
+            5
+        );
+
+        $this->createItem(
+            $catBebidas->id,
+            'JUGO NATURAL MIXTO',
+            'jugo-natural-mixto',
+            'Combinación de jugos naturales de la estación.',
+            4.50,
+            ['letiarepa/images/Bebidas/Jugos.jpg'],
+            6
         );
     }
 }
