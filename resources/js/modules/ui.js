@@ -392,9 +392,13 @@ export function showMenuItemImage(slug, imagePath) {
             'YOYOS DE PLÁTANO': ['yoyos', 'plátano'],
             
             // Bebidas
-            'COCA COLA': ['coca', 'cola'],
-            'AGUA': ['agua'],
-            'JUGO NATURAL': ['jugo', 'chicha', 'parchita', 'mora', 'guanabana'],
+            'CHICHA TRADICIONAL': ['chicha'],
+            'CHICHA ESPECIAL': ['chicha'],
+            'JUGO DE GUANÁBANA': ['guanabana'],
+            'JUGO DE MORA': ['mora'],
+            'JUGO DE PARCHITA': ['parchita'],
+            'TODDY': ['toddy'],
+            'JUGO NATURAL MIXTO': ['jugos'],
             
             // Parrillas
             'PARRILLA MIXTA': ['yaracuyana', 'parrilla'],

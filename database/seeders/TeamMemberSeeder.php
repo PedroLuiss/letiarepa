@@ -9,44 +9,46 @@ class TeamMemberSeeder extends Seeder
 {
     public function run(): void
     {
+        $description = '"Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet dolore magna aliquam erat volutpat."';
+
         TeamMember::create([
             'name' => 'JOSMAR MENDOZA',
-            'title' => 'C.E.O',
-            'description' => '"Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet dolore magna aliquam erat volutpat."',
-            'image' => null,
+            'title' => 'FUNDADOR',
+            'description' => $description,
+            'image' => '/letiarepa/images/Team/Josmar-Mendoza-Founder.png',
             'sort_order' => 0,
         ]);
 
         TeamMember::create([
             'name' => 'JULIO PAREDES',
-            'title' => 'FUNDADOR',
-            'description' => '"Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet dolore magna aliquam erat volutpat."',
-            'image' => null,
+            'title' => 'ATENCIÓN AL CLIENTE',
+            'description' => $description,
+            'image' => '/letiarepa/images/Team/Julio-Paredes-Chef-Founder.png',
             'sort_order' => 1,
         ]);
 
         TeamMember::create([
             'name' => 'MARÍA QUIÑONES',
             'title' => 'ATENCIÓN AL CLIENTE',
-            'description' => '"Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet dolore magna aliquam erat volutpat."',
-            'image' => null,
+            'description' => $description,
+            'image' => '/letiarepa/images/Team/Maria-Quiñones-Customer-Service.png',
             'sort_order' => 2,
         ]);
 
         TeamMember::create([
             'name' => 'CARLOS GÓMEZ',
-            'title' => 'CHEF EJECUTIVO',
-            'description' => '"Apasionado por la cocina venezolana, cada plato que preparamos lleva el sabor de casa y el corazón de nuestra tierra."',
-            'image' => null,
+            'title' => 'ATENCIÓN AL CLIENTE',
+            'description' => $description,
+            'image' => '/letiarepa/images/Team/Carlos-Gonzalez-Kitchen-Lead.png',
             'sort_order' => 3,
         ]);
 
-        TeamMember::create([
+        /*TeamMember::create([
             'name' => 'ANA TORRES',
-            'title' => 'COORDINADORA DE EVENTOS',
-            'description' => '"Hacemos de cada evento una experiencia inolvidable con el auténtico sabor venezolano que nos caracteriza."',
+            'title' => 'ATENCIÓN AL CLIENTE',
+            'description' => $description,
             'image' => null,
             'sort_order' => 4,
-        ]);
+        ]);*/
     }
 }
