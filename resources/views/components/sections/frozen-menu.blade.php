@@ -120,7 +120,7 @@
                                             </div>
                                         </div>
                                     </div>
-                                    <button onclick="checkoutWhatsApp()"
+                                    <button onclick="addToCart('{{ $cat->combo_slug }}', '{{ $cat->combo_name }}', {{ $cat->combo_price }}, '{{ $cat->combo_image }}'); checkoutWhatsApp();"
                                         class="font-nexa-bold italic w-full py-2 rounded-2xl bg-letiarepa-gold hover:bg-letiarepa-gold/90 text-black font-nexa font-black text-2xl tracking-[2px] uppercase transition-all shadow-lg shadow-letiarepa-gold/20"
                                         style="-webkit-text-stroke: 1px currentColor; text-shadow: 0 0 0.5px currentColor;">
                                         {{ __('frozen.order_now') }}
