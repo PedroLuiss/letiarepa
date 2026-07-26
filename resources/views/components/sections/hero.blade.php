@@ -73,13 +73,18 @@
                         class="w-80 sm:w-96 lg:w-[500px] h-auto object-contain drop-shadow-[0_35px_35px_rgba(0,0,0,0.5)] transition-all duration-700" />
                     <img id="hero-img-catering" src="/letiarepa/images/cateringheader.png" alt="{{ __('hero.img_catering_alt') }}"
                         class="hidden w-80 sm:w-112 lg:w-[600px] h-auto object-contain drop-shadow-[0_45px_45px_rgba(0,0,0,0.6)] transition-all duration-700" />
-                    <div id="hero-container-frozen" class="hidden flex flex-col items-center">
-                        <img src="/letiarepa/images/productos-congelados-header.png" alt="{{ __('hero.img_frozen_alt') }}"
-                            class="w-72 sm:w-80 lg:w-[450px] h-auto object-contain drop-shadow-[0_35px_35px_rgba(0,0,0,0.7)] transition-all duration-700 rotate-[-5deg]" />
-                        <div class="flex gap-3 mt-8">
-                            <span class="w-3 h-3 rounded-full bg-letiarepa-gold"></span>
-                            <span class="w-3 h-3 rounded-full border border-letiarepa-gold bg-transparent"></span>
-                            <span class="w-3 h-3 rounded-full border border-letiarepa-gold bg-transparent"></span>
+                    <div id="hero-container-frozen" class="hidden flex flex-col items-center carousel-images-container w-72 sm:w-80 lg:w-[450px]" data-autoplay="true" data-autoplay-ms="3200" style="touch-action:pan-y">
+                        <div class="w-full overflow-hidden rounded-2xl">
+                            <div class="carousel-images-track">
+                                <img src="/letiarepa/images/producto-congelado-miniatura-mechada.png" alt="{{ __('hero.img_frozen_alt') }}"
+                                    class="carousel-img w-full h-auto object-contain drop-shadow-[0_35px_35px_rgba(0,0,0,0.7)] transition-all duration-700 rotate-[-5deg]" />
+                                <img src="/letiarepa/images/producto-congelado-miniatura-pollo.png" alt="{{ __('hero.img_frozen_alt') }}"
+                                    class="carousel-img w-full h-auto object-contain drop-shadow-[0_35px_35px_rgba(0,0,0,0.7)] transition-all duration-700 rotate-[-5deg]" />
+                            </div>
+                        </div>
+                        <div class="carousel-dots flex gap-3 mt-8">
+                            <button type="button" class="carousel-dot w-3 h-3 rounded-full bg-letiarepa-gold border border-letiarepa-gold transition-all duration-300" data-index="0" aria-label="Imagen 1"></button>
+                            <button type="button" class="carousel-dot w-3 h-3 rounded-full bg-transparent border border-letiarepa-gold transition-all duration-300" data-index="1" aria-label="Imagen 2"></button>
                         </div>
                     </div>
                 </div>

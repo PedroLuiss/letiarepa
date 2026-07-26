@@ -225,10 +225,27 @@ function initHeaderScroll() {
     }, { passive: true });
 }
 
-function filterFrozenCategory(slug) {
+let activeFrozenCategory = 'all';
+let activeFrozenProductId = null;
+
+function setFrozenPresentationSelection(productId) {
+    const activeClass = 'w-full text-left text-[12px] font-nexa-bold uppercase text-letiarepa-gold tracking-wide border border-letiarepa-gold/60 bg-letiarepa-gold/10 rounded-lg px-2 py-1 transition-all';
+    const idleClass = 'w-full text-left text-[12px] text-letiarepa-gold font-nexa uppercase opacity-80 hover:opacity-100 transition-all px-1 py-0.5';
+
+    document.querySelectorAll('[id^="fsidebar-item-"]').forEach(el => {
+        const isActive = productId && el.dataset.productId === productId;
+        el.className = isActive ? activeClass : idleClass;
+    });
+}
+
+function applyFrozenGridFilters() {
     const cards = document.querySelectorAll('#frozen-products-grid > [data-frozen-category]');
+
     cards.forEach(card => {
-        if (slug === 'all' || card.dataset.frozenCategory === slug) {
+        const matchesCategory = activeFrozenCategory === 'all' || card.dataset.frozenCategory === activeFrozenCategory;
+        const matchesProduct = !activeFrozenProductId || card.dataset.productId === activeFrozenProductId;
+
+        if (matchesCategory && matchesProduct) {
             card.classList.remove('hidden');
         } else {
             card.classList.add('hidden');
@@ -240,7 +257,21 @@ function filterFrozenCategory(slug) {
     }
 }
 
-function selectFrozenCategory(slug) {
+function filterFrozenCategory(slug) {
+    activeFrozenCategory = slug;
+    activeFrozenProductId = null;
+    setFrozenPresentationSelection(null);
+    applyFrozenGridFilters();
+}
+
+function selectFrozenCategory(slug, keepProductSelection = false) {
+    activeFrozenCategory = slug;
+
+    if (!keepProductSelection) {
+        activeFrozenProductId = null;
+        setFrozenPresentationSelection(null);
+    }
+
     document.querySelectorAll('[id^="fsidebar-cat-"]').forEach(el => {
         const catSlug = el.id.replace('fsidebar-cat-', '');
         const icon = document.getElementById('ficon-cat-' + catSlug);
@@ -271,7 +302,15 @@ function selectFrozenCategory(slug) {
             if (content) content.classList.add('hidden');
         }
     });
-    filterFrozenCategory(slug);
+
+    applyFrozenGridFilters();
+}
+
+function selectFrozenPresentation(categorySlug, productId) {
+    selectFrozenCategory(categorySlug, true);
+    activeFrozenProductId = productId;
+    setFrozenPresentationSelection(productId);
+    applyFrozenGridFilters();
 }
 
 // Function to show a temporary message to the user
@@ -438,13 +477,18 @@ window.showUpcomingAlert = showUpcomingAlert;
 window.selectCateringPackage = selectCateringPackage;
 window.selectRestaurantCategory = selectRestaurantCategory;
 window.selectFrozenCategory = selectFrozenCategory;
+window.selectFrozenPresentation = selectFrozenPresentation;
 window.filterFrozenCategory = filterFrozenCategory;
 window.showMenuItemImage = showMenuItemImage;
 window.showAllFrozen = function() {
-    filterFrozenCategory('all');
+    activeFrozenCategory = 'all';
+    activeFrozenProductId = null;
+    setFrozenPresentationSelection(null);
     const firstCat = document.querySelector('[id^="fsidebar-cat-"]');
     if (firstCat) {
         window.selectFrozenCategory(firstCat.id.replace('fsidebar-cat-', ''));
+    } else {
+        applyFrozenGridFilters();
     }
 };
 window.showAllRestaurant = function() {

@@ -25,7 +25,7 @@
                 <div
                     class="absolute w-[200px] h-[200px] sm:w-[350px] sm:h-[350px] md:w-[450px] md:h-[450px] lg:w-[600px] lg:h-[600px] bg-letiarepa-gold/5 blur-[80px] sm:blur-[120px] rounded-full">
                 </div>
-                <img id="modal-frozen-detail-img" src="/letiarepa/images/arepas/detalle/AREPA-DE-PABELLON-DETALLE.png"
+                <img id="modal-frozen-detail-img" src="/letiarepa/images/producto-congelado-miniatura-mechada.png"
                     alt="{{ __('modal.product_alt') }}"
                     class="relative z-10 w-full max-w-[280px] sm:max-w-[420px] md:max-w-[500px] lg:max-w-[600px] max-h-[40vh] sm:max-h-[50vh] md:max-h-none h-auto object-contain drop-shadow-[0_35px_45px_rgba(0,0,0,0.8)] sm:drop-shadow-[0_45px_55px_rgba(0,0,0,0.8)] rotate-[-5deg] hover:rotate-0 transition-transform duration-700">
             </div>

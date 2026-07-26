@@ -78,7 +78,7 @@ class FrozenMenuSeeder extends Seeder
             'description' => 'Deliciosa carne mechada, cocida con una receta tradicional venezolana.',
             'price' => 13.00,
             'presentation' => '1 LIBRA',
-            'image' => 'letiarepa/images/arepas/detalle/AREPA-DE-PABELLON-DETALLE.png',
+            'image' => 'letiarepa/images/producto-congelado-miniatura-mechada.png',
             'category_slug' => 'proteinas',
             'sort_order' => 0,
         ]);
@@ -89,7 +89,7 @@ class FrozenMenuSeeder extends Seeder
             'description' => 'Delicioso pollo mechado, cocido con una receta tradicional venezolana.',
             'price' => 13.00,
             'presentation' => '1 LIBRA',
-            'image' => 'letiarepa/images/arepas/detalle/AREPA-REINA-PEPIADA-DETALLE.png',
+            'image' => 'letiarepa/images/producto-congelado-miniatura-pollo.png',
             'category_slug' => 'proteinas',
             'sort_order' => 1,
         ]);
@@ -101,7 +101,7 @@ class FrozenMenuSeeder extends Seeder
             'description' => 'Tequeños crujientes rellenos de queso blanco.',
             'price' => 8.00,
             'presentation' => '6 unidades',
-            'image' => 'letiarepa/images/arepas/detalle/AREPA-DE-PABELLON-DETALLE.png',
+            'image' => 'letiarepa/images/Aperitivos/Tequeños-2.jpg',
             'category_slug' => 'tequenos',
             'sort_order' => 2,
         ]);
@@ -111,7 +111,7 @@ class FrozenMenuSeeder extends Seeder
             'description' => 'Tequeños dulces rellenos de chocolate.',
             'price' => 9.00,
             'presentation' => '6 unidades',
-            'image' => 'letiarepa/images/arepas/detalle/AREPA-DE-PABELLON-DETALLE.png',
+            'image' => 'letiarepa/images/Aperitivos/Tequeños-2.jpg',
             'category_slug' => 'tequenos',
             'sort_order' => 3,
         ]);
@@ -121,7 +121,7 @@ class FrozenMenuSeeder extends Seeder
             'description' => 'Tequeños rellenos de plátano maduro.',
             'price' => 8.00,
             'presentation' => '6 unidades',
-            'image' => 'letiarepa/images/arepas/detalle/AREPA-DE-PABELLON-DETALLE.png',
+            'image' => 'letiarepa/images/Aperitivos/Tequeños-2.jpg',
             'category_slug' => 'tequenos',
             'sort_order' => 4,
         ]);
@@ -133,7 +133,7 @@ class FrozenMenuSeeder extends Seeder
             'description' => 'Empanadas de harina de maíz rellenas de carne mechada.',
             'price' => 7.00,
             'presentation' => '6 unidades',
-            'image' => 'letiarepa/images/arepas/detalle/AREPA-REINA-PEPIADA-DETALLE.png',
+            'image' => 'letiarepa/images/Aperitivos/Empanadas.jpg',
             'category_slug' => 'empanadas',
             'sort_order' => 5,
         ]);
@@ -143,7 +143,7 @@ class FrozenMenuSeeder extends Seeder
             'description' => 'Empanadas de harina de maíz rellenas de pollo mechado.',
             'price' => 7.00,
             'presentation' => '6 unidades',
-            'image' => 'letiarepa/images/arepas/detalle/AREPA-REINA-PEPIADA-DETALLE.png',
+            'image' => 'letiarepa/images/Aperitivos/Empanadas.jpg',
             'category_slug' => 'empanadas',
             'sort_order' => 6,
         ]);
@@ -153,7 +153,7 @@ class FrozenMenuSeeder extends Seeder
             'description' => 'Empanadas de harina de maíz rellenas de queso.',
             'price' => 7.00,
             'presentation' => '6 unidades',
-            'image' => 'letiarepa/images/arepas/detalle/AREPA-REINA-PEPIADA-DETALLE.png',
+            'image' => 'letiarepa/images/Aperitivos/Empanadas.jpg',
             'category_slug' => 'empanadas',
             'sort_order' => 7,
         ]);
@@ -163,7 +163,7 @@ class FrozenMenuSeeder extends Seeder
             'description' => 'Empanadas de harina de maíz rellenas de queso.',
             'price' => 7.00,
             'presentation' => '6 unidades',
-            'image' => 'letiarepa/images/arepas/detalle/AREPA-REINA-PEPIADA-DETALLE.png',
+            'image' => 'letiarepa/images/Aperitivos/Empanadas.jpg',
             'category_slug' => 'empanadas',
             'sort_order' => 8,
         ]);
@@ -173,7 +173,7 @@ class FrozenMenuSeeder extends Seeder
             'description' => 'Empanadas de harina de maíz rellenas de queso.',
             'price' => 7.00,
             'presentation' => '6 unidades',
-            'image' => 'letiarepa/images/arepas/detalle/AREPA-REINA-PEPIADA-DETALLE.png',
+            'image' => 'letiarepa/images/Aperitivos/Empanadas.jpg',
             'category_slug' => 'empanadas',
             'sort_order' => 9,
         ]);
@@ -183,7 +183,7 @@ class FrozenMenuSeeder extends Seeder
             'description' => 'Empanadas de harina de maíz rellenas de queso.',
             'price' => 7.00,
             'presentation' => '6 unidades',
-            'image' => 'letiarepa/images/arepas/detalle/AREPA-REINA-PEPIADA-DETALLE.png',
+            'image' => 'letiarepa/images/Aperitivos/Empanadas.jpg',
             'category_slug' => 'empanadas',
             'sort_order' => 10,
         ]);
