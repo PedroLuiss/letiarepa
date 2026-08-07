@@ -1,5 +1,25 @@
 let activeFrozenItem = null;
 
+function isParrillaItem(id, categorySlug) {
+    return categorySlug === 'parrillas' || (id || '').startsWith('parrilla-');
+}
+
+function setParrillaSizeVisibility(show) {
+    const sizeWrapper = document.getElementById('modal-size-wrapper');
+    const sizeDivider = document.getElementById('modal-size-divider');
+    const sizeSelect = document.getElementById('modal-size-select');
+    if (!sizeWrapper || !sizeDivider || !sizeSelect) return;
+
+    if (show) {
+        sizeWrapper.classList.remove('hidden');
+        sizeDivider.classList.remove('hidden');
+        sizeSelect.value = 'Grande';
+    } else {
+        sizeWrapper.classList.add('hidden');
+        sizeDivider.classList.add('hidden');
+    }
+}
+
 // Mapa de ingredientes por producto
 const ingredientsMap = {
     'pabellon': ['CARNE MECHADA', 'CARAOTAS (FRIJOLES NEGROS)', 'PLÁTANOS MADUROS', 'QUESO BLANCO.', 'MANTEQUILLA'],
@@ -10,8 +30,8 @@ const ingredientsMap = {
     'pollo_mechado_frozen': ['1 LIBRA DE POLLO MECHADO']
 };
 
-export function openFrozenModal(id, nombre, precio, imagen) {
-    activeFrozenItem = { id, nombre, precio, imagen };
+export function openFrozenModal(id, nombre, precio, imagen, categorySlug = '') {
+    activeFrozenItem = { id, nombre, precio, imagen, categorySlug };
 
     // Limpiar el nombre (remover "AREPA DE ")
     const cleanName = nombre.replace('AREPA DE ', '');
@@ -19,6 +39,7 @@ export function openFrozenModal(id, nombre, precio, imagen) {
     document.getElementById('modal-frozen-price').textContent = `$ ${parseFloat(precio).toFixed(0)}`;
     document.getElementById('modal-frozen-img').src = `/${imagen}`;
     document.getElementById('qty-modal').value = 1;
+    setParrillaSizeVisibility(isParrillaItem(id, categorySlug));
 
     // Generar Ingredientes Dinámicos
     const container = document.getElementById('ingredients-container');
@@ -67,9 +88,18 @@ export function changeQtyModal(delta) {
 export function addFrozenToCart() {
     if (!activeFrozenItem) return;
     const qty = parseInt(document.getElementById('qty-modal').value);
+
+    const isParrilla = isParrillaItem(activeFrozenItem.id, activeFrozenItem.categorySlug);
+    const selectedSize = document.getElementById('modal-size-select')?.value;
+    const optionName = isParrilla && selectedSize ? `Tamaño: ${selectedSize}` : null;
+
+    const mainQtyInput = document.getElementById(`qty-${activeFrozenItem.id}`);
+    if (mainQtyInput) {
+        mainQtyInput.value = qty;
+    }
     
     // Aquí usamos la lógica global de cart.js
-    window.addToCart(activeFrozenItem.id, activeFrozenItem.nombre, activeFrozenItem.precio, activeFrozenItem.imagen, null, qty);
+    window.addToCart(activeFrozenItem.id, activeFrozenItem.nombre, activeFrozenItem.precio, activeFrozenItem.imagen, optionName);
     closeFrozenModal();
 }
 
@@ -98,8 +128,9 @@ export function navigateFrozenModal(direction) {
     const name = nextCard.dataset.productName;
     const price = nextCard.dataset.productPrice;
     const image = nextCard.dataset.productImage;
+    const categorySlug = nextCard.dataset.categorySlug || '';
     if (slug && name && price != null && image) {
-        openFrozenModal(slug, name, price, image);
+        openFrozenModal(slug, name, price, image, categorySlug);
     }
 }
 

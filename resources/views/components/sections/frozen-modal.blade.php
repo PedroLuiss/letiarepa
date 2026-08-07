@@ -63,6 +63,19 @@
 
                 <hr class="w-full border-white/20 rounded-2xl border-1 mb-4 sm:mb-2">
 
+                <div id="modal-size-wrapper" class="w-full mb-3 sm:mb-2 hidden">
+                    <h4 class="font-nexa font-black text-letiarepa-gold text-xs sm:text-sm uppercase tracking-widest mb-3">
+                        TAMAÑO
+                    </h4>
+                    <select id="modal-size-select"
+                        class="w-full bg-transparent border border-letiarepa-gold/50 rounded-xl py-2.5 px-4 text-xs text-white focus:outline-none focus:border-letiarepa-gold transition-all uppercase">
+                        <option value="Grande" class="bg-letiarepa-black text-white">Grande</option>
+                        <option value="Mediana" class="bg-letiarepa-black text-white">Mediana</option>
+                    </select>
+                </div>
+
+                <hr id="modal-size-divider" class="w-full border-white/20 rounded-2xl border-1 mb-4 sm:mb-2 hidden">
+
                 <!-- Nota Adicional del Cliente (compartida en todo el pedido) -->
                 <div class="w-full mb-3 sm:mb-2">
                     <h4 class="font-nexa font-black text-letiarepa-gold text-xs sm:text-sm uppercase tracking-widest mb-3">

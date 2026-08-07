@@ -48,9 +48,15 @@
                         <div id="cat-{{ $cat->slug }}"
                             class="flex flex-col gap-3 mt-4 pl-4 overflow-hidden transition-all duration-300 {{ $isFirst ? '' : 'hidden' }}">
                             @foreach ($cat->menuItems as $item)
+                                @php
+                                    $sidebarItemName = $item->name;
+                                    if ($cat->slug === 'parrillas') {
+                                        $sidebarItemName .= ' (G/M)';
+                                    }
+                                @endphp
                                 <button onclick="showMenuItemImage('{{ $item->slug }}', '{{ $item->image }}')"
                                     class="text-left font-nexa text-[13px] text-letiarepa-gold hover:text-white transition-colors uppercase tracking-widest">-
-                                    {{ $item->name }}</button>
+                                    {{ $sidebarItemName }}</button>
                             @endforeach
                         </div>
                     </div>
@@ -144,7 +150,7 @@
 
                             <div class="w-full space-y-4">
                                 <button
-                                    onclick="openFrozenModal('{{ $item->slug }}', '{{ $item->name }}', {{ $item->price }}, '{{ $item->image }}')"
+                                    onclick="openFrozenModal('{{ $item->slug }}', '{{ $item->name }}', {{ $item->price }}, '{{ $item->image }}', '{{ $item->category->slug }}')"
                                     class="font-nexa-bold italic w-full py-4 rounded-2xl bg-letiarepa-gold hover:bg-letiarepa-gold/90 text-black font-nexa font-black text-3xl tracking-[2px] uppercase transition-all shadow-lg shadow-letiarepa-gold/20"
                                     style="-webkit-text-stroke: 1px currentColor; text-shadow: 0 0 0.5px currentColor;">
                                     {{ __('menu.order_now') }}
