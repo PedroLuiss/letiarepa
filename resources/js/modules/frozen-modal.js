@@ -1,25 +1,5 @@
 let activeFrozenItem = null;
 
-function isParrillaItem(id, categorySlug) {
-    return categorySlug === 'parrillas' || (id || '').startsWith('parrilla-');
-}
-
-function setParrillaSizeVisibility(show) {
-    const sizeWrapper = document.getElementById('modal-size-wrapper');
-    const sizeDivider = document.getElementById('modal-size-divider');
-    const sizeSelect = document.getElementById('modal-size-select');
-    if (!sizeWrapper || !sizeDivider || !sizeSelect) return;
-
-    if (show) {
-        sizeWrapper.classList.remove('hidden');
-        sizeDivider.classList.remove('hidden');
-        sizeSelect.value = 'Grande';
-    } else {
-        sizeWrapper.classList.add('hidden');
-        sizeDivider.classList.add('hidden');
-    }
-}
-
 // Mapa de ingredientes por producto
 const ingredientsMap = {
     'pabellon': ['CARNE MECHADA', 'CARAOTAS (FRIJOLES NEGROS)', 'PLÁTANOS MADUROS', 'QUESO BLANCO.', 'MANTEQUILLA'],
@@ -30,8 +10,54 @@ const ingredientsMap = {
     'pollo_mechado_frozen': ['1 LIBRA DE POLLO MECHADO']
 };
 
-export function openFrozenModal(id, nombre, precio, imagen, categorySlug = '') {
-    activeFrozenItem = { id, nombre, precio, imagen, categorySlug };
+// Sabores disponibles por producto de bebidas; imagen de respaldo cuando no hay foto propia del sabor
+const flavorMap = {
+    'jugos-naturales': [
+        { label: 'Parchita', image: 'letiarepa/images/Bebidas/Jugo-parchita.jpg' },
+        { label: 'Mango', image: 'letiarepa/images/Bebidas/Jugos.jpg' },
+        { label: 'Mora', image: 'letiarepa/images/Bebidas/Jugo-Mora.jpg' },
+        { label: 'Guanábana', image: 'letiarepa/images/Bebidas/Jugo-guanabana.jpg' },
+        { label: 'Tamarindo', image: 'letiarepa/images/Bebidas/Jugos.jpg' },
+    ],
+    'sodas-internacional': [
+        { label: 'Coca-Cola', image: 'letiarepa/images/Bebidas/coca-cola.jpg' },
+        { label: 'Frescolita', image: 'letiarepa/images/Bebidas/coca-cola.jpg' },
+        { label: 'Malta', image: 'letiarepa/images/Bebidas/coca-cola.jpg' },
+    ],
+};
+
+// Slugs de bebidas: no aplica selección de ingredientes
+const bebidaSlugs = ['jugos-naturales', 'chicha-venezolana', 'toddy', 'sodas-internacional'];
+
+function setupFlavorSelector(id) {
+    const wrapper = document.getElementById('modal-flavor-wrapper');
+    const divider = document.getElementById('modal-flavor-divider');
+    const select = document.getElementById('modal-flavor-select');
+    if (!wrapper || !divider || !select) return;
+
+    const flavors = flavorMap[id];
+    if (!flavors) {
+        wrapper.classList.add('hidden');
+        divider.classList.add('hidden');
+        select.innerHTML = '';
+        return;
+    }
+
+    select.innerHTML = flavors.map(f => `<option value="${f.label}" class="bg-letiarepa-black text-white">${f.label}</option>`).join('');
+    wrapper.classList.remove('hidden');
+    divider.classList.remove('hidden');
+
+    select.onchange = () => {
+        const chosen = flavors.find(f => f.label === select.value);
+        if (chosen) {
+            document.getElementById('modal-frozen-img').src = `/${chosen.image}`;
+        }
+    };
+    select.onchange();
+}
+
+export function openFrozenModal(id, nombre, precio, imagen) {
+    activeFrozenItem = { id, nombre, precio, imagen };
 
     // Limpiar el nombre (remover "AREPA DE ")
     const cleanName = nombre.replace('AREPA DE ', '');
@@ -39,7 +65,13 @@ export function openFrozenModal(id, nombre, precio, imagen, categorySlug = '') {
     document.getElementById('modal-frozen-price').textContent = `$ ${parseFloat(precio).toFixed(0)}`;
     document.getElementById('modal-frozen-img').src = `/${imagen}`;
     document.getElementById('qty-modal').value = 1;
-    setParrillaSizeVisibility(isParrillaItem(id, categorySlug));
+    setupFlavorSelector(id);
+
+    const ingredientsWrapper = document.getElementById('modal-ingredients-wrapper');
+    const ingredientsDivider = document.getElementById('modal-ingredients-divider');
+    const isBebida = bebidaSlugs.includes(id);
+    if (ingredientsWrapper) ingredientsWrapper.classList.toggle('hidden', isBebida);
+    if (ingredientsDivider) ingredientsDivider.classList.toggle('hidden', isBebida);
 
     // Generar Ingredientes Dinámicos
     const container = document.getElementById('ingredients-container');
@@ -89,15 +121,14 @@ export function addFrozenToCart() {
     if (!activeFrozenItem) return;
     const qty = parseInt(document.getElementById('qty-modal').value);
 
-    const isParrilla = isParrillaItem(activeFrozenItem.id, activeFrozenItem.categorySlug);
-    const selectedSize = document.getElementById('modal-size-select')?.value;
-    const optionName = isParrilla && selectedSize ? `Tamaño: ${selectedSize}` : null;
-
     const mainQtyInput = document.getElementById(`qty-${activeFrozenItem.id}`);
     if (mainQtyInput) {
         mainQtyInput.value = qty;
     }
-    
+
+    const flavorSelect = document.getElementById('modal-flavor-select');
+    const optionName = flavorMap[activeFrozenItem.id] && flavorSelect?.value ? flavorSelect.value : null;
+
     // Aquí usamos la lógica global de cart.js
     window.addToCart(activeFrozenItem.id, activeFrozenItem.nombre, activeFrozenItem.precio, activeFrozenItem.imagen, optionName);
     closeFrozenModal();
@@ -128,9 +159,8 @@ export function navigateFrozenModal(direction) {
     const name = nextCard.dataset.productName;
     const price = nextCard.dataset.productPrice;
     const image = nextCard.dataset.productImage;
-    const categorySlug = nextCard.dataset.categorySlug || '';
     if (slug && name && price != null && image) {
-        openFrozenModal(slug, name, price, image, categorySlug);
+        openFrozenModal(slug, name, price, image);
     }
 }
 

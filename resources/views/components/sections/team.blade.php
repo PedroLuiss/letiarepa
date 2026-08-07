@@ -25,8 +25,16 @@
                         <div class="bg-white pt-16 sm:pt-20 md:pt-24 pb-6 sm:pb-8 md:pb-10 px-4 sm:px-6 md:px-8 text-center flex flex-col items-center relative">
                             <div class="absolute top-0 left-1/2 -translate-x-1/2 -translate-y-1/2 w-24 h-24 sm:w-32 sm:h-32 md:w-40 md:h-40 rounded-full border-[3px] border-white overflow-hidden shadow-xl @if ($member->image) bg-gray-200 @else bg-letiarepa-gold @endif flex items-center justify-center">
                                 @if ($member->image)
+                                @php
+                                    $facePosition = 'center';
+                                    if (str_contains($member->image, 'Carlos-Gonzalez')) {
+                                        $facePosition = '50% 12%';
+                                    } elseif (str_contains($member->image, 'Julio-Paredes')) {
+                                        $facePosition = '50% 15%';
+                                    }
+                                @endphp
                                 <img src="{{ $member->image }}" alt="{{ $member->name }}" draggable="false"
-                                    style="object-position: {{ str_contains($member->image, 'Carlos-Gonzalez') ? '50% 12%' : 'center' }};"
+                                    style="object-position: {{ $facePosition }};"
                                     class="w-full h-full object-cover select-none">
                                 @else
                                 <span class="text-3xl sm:text-4xl md:text-5xl font-black font-nexa text-white drop-shadow-lg">{{ $initials }}</span>

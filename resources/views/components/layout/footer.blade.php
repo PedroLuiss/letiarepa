@@ -45,8 +45,8 @@
                         <img src="/letiarepa/images/icon-ig.png" alt="{{ __('social.instagram') }}" class="w-full h-full" />
                     </a>
                 </div>
-                <div
-                    class="w-full max-w-[240px] rounded-2xl overflow-hidden border-2 border-letiarepa-black shadow-xl group">
+                <a href="https://maps.apple.com/place?map=h&place-id=I68B0102FA2F82ABF&address=5811+W+Irlo+Bronson+Memorial+Hwy%2C+Besame%2C+FL++34746%2C+Estados+Unidos&coordinate=28.333542%2C-81.516941&name=LetiArepa&_provider=9902" target="_blank" rel="noopener noreferrer"
+                    class="w-full max-w-[240px] rounded-2xl overflow-hidden border-2 border-letiarepa-black shadow-xl group block">
                     <div id="random-us-map" class="w-full h-32 bg-gray-200 relative">
                         <div class="absolute inset-0 flex items-center justify-center">
                             <div class="text-center">
@@ -57,7 +57,7 @@
                             </div>
                         </div>
                     </div>
-                </div>
+                </a>
                 <div class="flex flex-col items-center lg:items-end gap-1 mt-3 text-center lg:text-right">
                     <a href="tel:+14072574019"
                         class="font-nexa font-bold text-[13px] tracking-wide hover:text-letiarepa-gold transition-colors">{{ __('footer.phone') }}</a>
