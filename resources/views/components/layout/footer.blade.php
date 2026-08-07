@@ -38,21 +38,12 @@
                     <img src="/letiarepa/images/logo-footer.png" alt="Leti Repa" class="w-48 h-auto mb-2 ml-auto" />
                 </div>
                 <div class="flex gap-4">
-                    @php $socialNetworks = ['instagram' => '#', 'facebook' => '#', 'twitter' => '#', 'whatsapp' => '#']; @endphp
-                    @foreach ($socialNetworks as $net => $link)
-                        <a href="{{ $link }}"
-                            class="w-10 h-10 flex items-center justify-center hover:scale-110 transition-transform shadow-lg">
-                            @if ($net === 'instagram')
-                                <img src="/letiarepa/images/icon-ig.png" alt="{{ __('social.instagram') }}" class="w-full h-full" />
-                            @elseif($net === 'facebook')
-                                <img src="/letiarepa/images/icon-fb.png" alt="{{ __('social.facebook') }}" class="w-full h-full" />
-                            @elseif($net === 'twitter')
-                                <img src="/letiarepa/images/icon-X.png" alt="{{ __('social.twitter') }}" class="w-full h-full" />
-                            @elseif($net === 'whatsapp')
-                                <img src="/letiarepa/images/icon-ws.png" alt="{{ __('social.whatsapp') }}" class="w-full h-full" />
-                            @endif
-                        </a>
-                    @endforeach
+                    <a href="https://www.instagram.com/letiarepaorlando?igsh=MXJpbHp5Y3U5cWJ6dg=="
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        class="w-10 h-10 flex items-center justify-center hover:scale-110 transition-transform shadow-lg">
+                        <img src="/letiarepa/images/icon-ig.png" alt="{{ __('social.instagram') }}" class="w-full h-full" />
+                    </a>
                 </div>
                 <div
                     class="w-full max-w-[240px] rounded-2xl overflow-hidden border-2 border-letiarepa-black shadow-xl group">
