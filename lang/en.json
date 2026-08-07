@@ -73,6 +73,8 @@
     "modal.doordash": "DOORDASH",
     "modal.add_to_cart": "ADD TO CART",
     "modal.checkout_now": "GO PAY NOW !!!",
+    "modal.additional_notes": "ADDITIONAL NOTES",
+    "modal.additional_notes_placeholder": "Any note for your order? (optional)",
     "modal.product_alt": "Product",
 
     "team.our": "Our",
@@ -98,6 +100,8 @@
     "footer.service_frozen": "Frozen products:",
     "footer.service_frozen_desc": "We know what it's like to come home tired... with no time, no energy, but eager to give the best to your family. That's why we created Leti Arepa Frozen Foods: a real solution for your day-to-day, without sacrificing flavor, quality, or tradition.",
     "footer.loading_map": "Loading map...",
+    "footer.phone": "(407) 257-4019",
+    "footer.contact_email_label": "Contact us:",
     "footer.rights": "All Rights Reserved by: :brand_full",
 
     "alert.upcoming": "Coming soon! Our delicious :category menu will be available to order. Thanks for your patience! 🥟🇻🇪",

@@ -129,8 +129,20 @@ export function goToRestaurantPage(page) {
     showRestaurantPage(page);
 }
 
+// Jumps to whichever page holds the given card (e.g. when clicked from the category sidebar) and reports whether the page changed.
+export function goToRestaurantPageForCard(card) {
+    const cards = getVisibleRestaurantCards();
+    const index = cards.indexOf(card);
+    if (index === -1) return false;
+    const page = Math.floor(index / PER_PAGE) + 1;
+    const changed = page !== restaurantCurrentPage;
+    if (changed) showRestaurantPage(page);
+    return changed;
+}
+
 window.initRestaurantPagination = initRestaurantPagination;
 window.goToRestaurantPage = goToRestaurantPage;
+window.goToRestaurantPageForCard = goToRestaurantPageForCard;
 
 /* ─── Frozen Pagination ─────────────────────────────────────── */
 

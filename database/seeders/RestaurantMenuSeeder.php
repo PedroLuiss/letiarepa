@@ -338,22 +338,12 @@ class RestaurantMenuSeeder extends Seeder
 
         $this->createItem(
             $catBebidas->id,
-            'CHICHA ESPECIAL',
-            'chicha-especial',
-            'Chicha artesanal con vainilla y leche condensada.',
-            4.00,
-            ['letiarepa/images/Bebidas/Chicha-2.jpg'],
-            1
-        );
-
-        $this->createItem(
-            $catBebidas->id,
             'JUGO DE GUANÁBANA',
             'jugo-guanabana',
             'Refrescante jugo natural de guanábana.',
             4.00,
             ['letiarepa/images/Bebidas/Jugo-guanabana.jpg'],
-            2
+            1
         );
 
         $this->createItem(
@@ -363,7 +353,7 @@ class RestaurantMenuSeeder extends Seeder
             'Jugo natural de mora, dulce y antioxidante.',
             4.00,
             ['letiarepa/images/Bebidas/Jugo-Mora.jpg'],
-            3
+            2
         );
 
         $this->createItem(
@@ -373,6 +363,16 @@ class RestaurantMenuSeeder extends Seeder
             'Jugo natural de parchita (maracuyá), tropical y refrescante.',
             4.00,
             ['letiarepa/images/Bebidas/Jugo-parchita.jpg'],
+            3
+        );
+
+        $this->createItem(
+            $catBebidas->id,
+            'JUGO DE MANGO',
+            'jugo-mango',
+            'Jugo natural de mango, dulce y tropical.',
+            4.00,
+            ['letiarepa/images/Bebidas/Jugos.jpg'],
             4
         );
 
@@ -394,6 +394,16 @@ class RestaurantMenuSeeder extends Seeder
             4.50,
             ['letiarepa/images/Bebidas/Jugos.jpg'],
             6
+        );
+
+        $this->createItem(
+            $catBebidas->id,
+            'SODA',
+            'soda',
+            'Refresco frío, servido bien helado.',
+            2.50,
+            ['letiarepa/images/Bebidas/coca-cola.jpg'],
+            7
         );
     }
 }

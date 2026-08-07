@@ -313,37 +313,6 @@ function selectFrozenPresentation(categorySlug, productId) {
     applyFrozenGridFilters();
 }
 
-// Function to show a temporary message to the user
-function showImageLocationMessage(message) {
-    // Remove any existing message
-    const existingMsg = document.getElementById('image-location-message');
-    if (existingMsg) {
-        existingMsg.remove();
-    }
-    
-    // Create message element
-    const msgElement = document.createElement('div');
-    msgElement.id = 'image-location-message';
-    msgElement.className = 'fixed top-24 right-4 z-50 bg-letiarepa-gold/90 text-black px-4 py-3 rounded-lg shadow-lg font-nexa text-sm max-w-xs transition-all duration-300';
-    msgElement.textContent = message;
-    
-    // Add to document
-    document.body.appendChild(msgElement);
-    
-    // Auto-remove after 3 seconds
-    setTimeout(() => {
-        if (msgElement.parentNode) {
-            msgElement.style.opacity = '0';
-            msgElement.style.transform = 'translateY(-10px)';
-            setTimeout(() => {
-                if (msgElement.parentNode) {
-                    msgElement.remove();
-                }
-            }, 300);
-        }
-    }, 3000);
-}
-
 // Function to show menu item image when clicked in sidebar
 export function showMenuItemImage(slug, imagePath) {
     // Find the product card with matching slug
@@ -357,97 +326,24 @@ export function showMenuItemImage(slug, imagePath) {
     });
     
     if (targetCard) {
-        // Scroll to the card
-        targetCard.scrollIntoView({ behavior: 'smooth', block: 'center' });
-        
-        // Highlight the card temporarily
-        targetCard.classList.add('bg-white/10', 'border-letiarepa-gold');
-        setTimeout(() => {
-            targetCard.classList.remove('bg-white/10', 'border-letiarepa-gold');
-        }, 2000);
-        
-        // Get the item name to search for images
-        const itemName = targetCard.getAttribute('data-product-name');
-        const categorySlug = targetCard.getAttribute('data-category-slug');
-        
-        // Map category slugs to folder names
-        const categoryToFolder = {
-            'arepa': 'arepas',
-            'parrillas': 'Parrillas',
-            'patacon': 'Patacones',
-            'cachapas': 'cachapas',
-            'burgers': 'Hamburgesas',
-            'pepitos': 'Pepitos',
-            'aperitivos': 'Aperitivos',
-            'bebidas': 'Bebidas'
+        // If the item lives on a hidden pagination page, jump there first so the scroll below actually lands on it
+        const pageChanged = window.goToRestaurantPageForCard ? window.goToRestaurantPageForCard(targetCard) : false;
+
+        const revealCard = () => {
+            // Scroll to the card
+            targetCard.scrollIntoView({ behavior: 'smooth', block: 'center' });
+
+            // Highlight the card temporarily
+            targetCard.classList.add('bg-white/10', 'border-letiarepa-gold');
+            setTimeout(() => {
+                targetCard.classList.remove('bg-white/10', 'border-letiarepa-gold');
+            }, 2000);
         };
-        
-        const folderName = categoryToFolder[categorySlug] || categorySlug;
-        
-        // Map item names to image keywords
-        const itemToImageKeywords = {
-            // Aperitivos
-            'TEQUEÑOS (6 UND)': ['tequeños', 'tequenos'],
-            'EMPANADAS (2 UND)': ['empanada', 'empanadas'],
-            'YOYOS DE PLÁTANO': ['yoyos', 'plátano'],
-            
-            // Bebidas
-            'CHICHA TRADICIONAL': ['chicha'],
-            'CHICHA ESPECIAL': ['chicha'],
-            'JUGO DE GUANÁBANA': ['guanabana'],
-            'JUGO DE MORA': ['mora'],
-            'JUGO DE PARCHITA': ['parchita'],
-            'TODDY': ['toddy'],
-            'JUGO NATURAL MIXTO': ['jugos'],
-            
-            // Parrillas
-            'PARRILLA MIXTA': ['yaracuyana', 'parrilla'],
-            'PARRILLA DE POLLO': ['pollo', 'parrilla'],
-            'PARRILLA DE RES': ['res', 'parrilla'],
-            
-            // Patacones
-            'PATACÓN DE POLLO': ['patacon', 'pollo'],
-            'PATACÓN DE CARNE': ['patacon', 'carne'],
-            'PATACÓN MIXTO': ['patacon', 'mixto'],
-            
-            // Cachapas
-            'CACHAPA CON QUESO': ['cachapa', 'queso'],
-            'CACHAPA CON CARNE': ['cachapa', 'carne'],
-            'CACHAPA CON POLLO': ['cachapa', 'pollo'],
-            
-            // Burgers
-            'HAMBURGUESA CLÁSICA': ['hamburguesa', 'criolla'],
-            'HAMBURGUESA CON QUESO': ['hamburguesa', 'queso'],
-            'HAMBURGUESA ESPECIAL': ['hamburguesa', 'especial', 'triple'],
-            
-            // Pepitos
-            'PEPITO DE CARNE': ['pepito', 'carne'],
-            'PEPITO DE POLLO': ['pepito', 'pollo'],
-            'PEPITO MIXTO': ['pepito', 'mixto'],
-            'PEPITO MIXTO1': ['pepito', 'mixto'],
-            'PEPITO MIXTO2': ['pepito', 'mixto'],
-            'PEPITO MIXTO3': ['pepito', 'mixto'],
-            'PEPITO MIXTO4': ['pepito', 'mixto'],
-            
-            // Arepas (already have images in database)
-            'AREPA DE PABELLÓN': ['pabellon'],
-            'AREPA DE REINA PEPIADA': ['reina', 'pepiada'],
-            'AREPA DE LETIAREPA': ['letiarepa'],
-            'AREPA PELUA': ['pelua']
-        };
-        
-        // Get keywords for this item
-        const keywords = itemToImageKeywords[itemName] || [];
-        
-        // Show information about where to find the image
-        if (folderName && keywords.length > 0) {
-            console.log(`Imágenes para "${itemName}" en: /letiarepa/images/${folderName}/`);
-            console.log(`Palabras clave para buscar: ${keywords.join(', ')}`);
-            console.log(`Ejemplos: ${keywords[0]}-1.jpg, ${keywords[0]}-2.jpg, etc.`);
-            
-            // Show a user-friendly message
-            const message = `Mostrando ${itemName}. Las imágenes están en la carpeta: ${folderName}`;
-            showImageLocationMessage(message);
+
+        if (pageChanged) {
+            setTimeout(revealCard, 350);
+        } else {
+            revealCard();
         }
         
         // If the card has a carousel, show the first image

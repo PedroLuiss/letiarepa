@@ -63,6 +63,18 @@
 
                 <hr class="w-full border-white/20 rounded-2xl border-1 mb-4 sm:mb-2">
 
+                <!-- Nota Adicional del Cliente (compartida en todo el pedido) -->
+                <div class="w-full mb-3 sm:mb-2">
+                    <h4 class="font-nexa font-black text-letiarepa-gold text-xs sm:text-sm uppercase tracking-widest mb-3">
+                        {{ __('modal.additional_notes') }}
+                    </h4>
+                    <textarea rows="2" oninput="syncOrderNotes(this.value)"
+                        placeholder="{{ __('modal.additional_notes_placeholder') }}"
+                        class="order-notes-input w-full bg-transparent border border-letiarepa-gold/50 rounded-xl py-2.5 px-4 text-xs text-white placeholder-white/40 focus:outline-none focus:border-letiarepa-gold transition-all resize-none"></textarea>
+                </div>
+
+                <hr class="w-full border-white/20 rounded-2xl border-1 mb-4 sm:mb-2">
+
                 <!-- Precio Dinámico -->
                 <div class="mb-3 sm:mb-2">
                     <h4 class="text-letiarepa-gold text-3xl sm:text-4xl md:text-5xl font-black uppercase">

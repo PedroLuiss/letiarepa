@@ -67,6 +67,12 @@
                         </div>
                     </div>
                 </div>
+                <div class="flex flex-col items-center lg:items-end gap-1 mt-3 text-center lg:text-right">
+                    <a href="tel:+14072574019"
+                        class="font-nexa font-bold text-[13px] tracking-wide hover:text-letiarepa-gold transition-colors">{{ __('footer.phone') }}</a>
+                    <a href="mailto:atencion.letiarepa@gmail.com"
+                        class="font-nexa font-bold text-[12px] tracking-wide hover:text-letiarepa-gold transition-colors break-all">{{ __('footer.contact_email_label') }} atencion.letiarepa@gmail.com</a>
+                </div>
                 <p class="font-nexa font-black text-[10px] tracking-widest uppercase">{!! __('footer.rights', ['brand_full' => 'Leti Arepa Orlando']) !!}</p>
             </div>
         </div>
