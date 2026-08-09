@@ -324,10 +324,20 @@ class RestaurantMenuSeeder extends Seeder
             $catBebidas->id,
             'SODAS INTERNACIONAL',
             'sodas-internacional',
-            'Elige tu refresco: Coca-Cola, Frescolita o Malta.',
+            'Internacional (Malta, Frescolita, Postobon).',
             3.00,
             ['letiarepa/images/Bebidas/coca-cola.jpg'],
             3
+        );
+
+        $this->createItem(
+            $catBebidas->id,
+            'SODAS NACIONALES',
+            'sodas-nacionales',
+            'Nacional (Coca cola, Sprite).',
+            3.00,
+            ['letiarepa/images/Bebidas/coca-cola.jpg'],
+            4
         );
     }
 }

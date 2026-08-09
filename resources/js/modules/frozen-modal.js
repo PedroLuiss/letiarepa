@@ -20,14 +20,18 @@ const flavorMap = {
         { label: 'Tamarindo', image: 'letiarepa/images/Bebidas/Jugos.jpg' },
     ],
     'sodas-internacional': [
-        { label: 'Coca-Cola', image: 'letiarepa/images/Bebidas/coca-cola.jpg' },
-        { label: 'Frescolita', image: 'letiarepa/images/Bebidas/coca-cola.jpg' },
-        { label: 'Malta', image: 'letiarepa/images/Bebidas/coca-cola.jpg' },
+        { label: 'Malta', image: 'letiarepa/images/Bebidas/malta.jpg' },
+        { label: 'Frescolita', image: 'letiarepa/images/Bebidas/frescolita.png' },
+        { label: 'Postobon', image: 'letiarepa/images/Bebidas/postobon.jpg' },
+    ],
+    'sodas-nacionales': [
+        { label: 'Coca cola', image: 'letiarepa/images/Bebidas/coca-cola.jpg' },
+        { label: 'Sprite', image: 'letiarepa/images/Bebidas/sprite.png' },
     ],
 };
 
 // Slugs de bebidas: no aplica selección de ingredientes
-const bebidaSlugs = ['jugos-naturales', 'chicha-venezolana', 'toddy', 'sodas-internacional'];
+const bebidaSlugs = ['jugos-naturales', 'chicha-venezolana', 'toddy', 'sodas-internacional', 'sodas-nacionales'];
 
 function setupFlavorSelector(id) {
     const wrapper = document.getElementById('modal-flavor-wrapper');

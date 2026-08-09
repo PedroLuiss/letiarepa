@@ -27,14 +27,18 @@
                                 @if ($member->image)
                                 @php
                                     $facePosition = 'center';
+                                    $faceScale = '1';
                                     if (str_contains($member->image, 'Carlos-Gonzalez')) {
                                         $facePosition = '50% 12%';
                                     } elseif (str_contains($member->image, 'Julio-Paredes')) {
                                         $facePosition = '50% 15%';
+                                    } elseif (str_contains($member->image, 'Maria-Quiñones')) {
+                                        $facePosition = '50% 20%';
+                                        $faceScale = '0.9';
                                     }
                                 @endphp
                                 <img src="{{ $member->image }}" alt="{{ $member->name }}" draggable="false"
-                                    style="object-position: {{ $facePosition }};"
+                                    style="object-position: {{ $facePosition }}; transform: scale({{ $faceScale }});"
                                     class="w-full h-full object-cover select-none">
                                 @else
                                 <span class="text-3xl sm:text-4xl md:text-5xl font-black font-nexa text-white drop-shadow-lg">{{ $initials }}</span>
@@ -54,7 +58,7 @@
         </div>
         <div id="team-dots" class="flex justify-center gap-3 mt-8 sm:mt-12 md:mt-16"></div>
         <div class="flex justify-center mt-12 sm:mt-16 md:mt-24">
-            <p class="font-display text-letiarepa-gold text-3xl sm:text-4xl md:text-5xl xl:text-6xl leading-none drop-shadow-lg text-center px-4">{{ __('team.thanks') }}</p>
+            <p class="font-nexa-bold text-letiarepa-gold text-3xl sm:text-4xl md:text-5xl xl:text-6xl leading-tight tracking-wide uppercase drop-shadow-lg text-center px-4">{{ __('team.thanks') }}</p>
         </div>
     </div>
 </section>
