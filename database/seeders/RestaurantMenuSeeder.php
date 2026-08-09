@@ -326,7 +326,7 @@ class RestaurantMenuSeeder extends Seeder
             'sodas-internacional',
             'Internacional (Malta, Frescolita, Postobon).',
             3.00,
-            ['letiarepa/images/Bebidas/coca-cola.jpg'],
+            ['letiarepa/images/Bebidas/malta.jpg'],
             3
         );
 
