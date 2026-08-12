@@ -56,7 +56,7 @@ class RestaurantMenuSeeder extends Seeder
             'AREPA DE PABELLÓN',
             'pabellon',
             'Carne mechada, caraotas, plátanos maduros, queso blanco.',
-            13.00,
+            14.99,
             [
                 'letiarepa/images/arepas/AREPA-DE-PABELLON-MINIATURA.png',
                 'letiarepa/images/arepas/detalle/AREPA-DE-PABELLON-DETALLE.png',
@@ -69,7 +69,7 @@ class RestaurantMenuSeeder extends Seeder
             'AREPA DE REINA PEPIADA',
             'reina_pepiada',
             'Pollo mechado, aguacate (Palta), mayonesa, queso blanco.',
-            12.00,
+            14.49,
             [
                 'letiarepa/images/arepas/AREPA-REINA-PEPIADA-MINIATURA.png',
                 'letiarepa/images/arepas/detalle/AREPA-REINA-PEPIADA-DETALLE.png',
@@ -82,7 +82,7 @@ class RestaurantMenuSeeder extends Seeder
             'LETIAREPA',
             'letiarepa',
             'Carne asada, pico de gallo (ensalada típica), queso blanco.',
-            14.00,
+            14.75,
             [
                 'letiarepa/images/arepas/AREPA-LETIAREPA-MINIATURA.png',
                 'letiarepa/images/arepas/detalle/AREPA-LETIAREPA-DETALLE.png',
@@ -95,7 +95,7 @@ class RestaurantMenuSeeder extends Seeder
             'AREPA PELUA',
             'pelua',
             'Carne mechada, queso amarillo.',
-            12.00,
+            12.99,
             [
                 'letiarepa/images/arepas/AREPA-DE-PABELLON-MINIATURA.png',
                 'letiarepa/images/arepas/detalle/AREPA-REINA-PEPIADA-DETALLE.png',
@@ -109,7 +109,7 @@ class RestaurantMenuSeeder extends Seeder
             'PARRILLA YARACUYANA',
             'parrilla-mixta',
             'Carne, pollo, chorizo y vegetales asados a la parrilla, servidos con guasacaca y arepas.',
-            28.00,
+            32.99,
             ['letiarepa/images/Parrillas/Yaracuyana-1.jpg'],
             0
         );
@@ -119,7 +119,7 @@ class RestaurantMenuSeeder extends Seeder
             'PARRILLA INDIVIDUAL',
             'parrilla-pollo',
             'Pechuga de pollo marinada a la parrilla, acompañada de vegetales salteados y papas.',
-            18.00,
+            21.99,
             ['letiarepa/images/Parrillas/Yaracuyana-2.jpg'],
             1
         );
@@ -129,7 +129,7 @@ class RestaurantMenuSeeder extends Seeder
             'PARRILLA GRANDE',
             'parrilla-res',
             'Carne asada al carbón, servida con chimichurri, vegetales asados y arepa.',
-            22.00,
+            59.99,
             ['letiarepa/images/Parrillas/Yaracuyana-3.jpg'],
             2
         );
@@ -140,7 +140,7 @@ class RestaurantMenuSeeder extends Seeder
             'PATACÓN DE CARNE',
             'patacon-carne',
             'Patacón de plátano verde relleno de carne mechada, queso amarillo y ensalada.',
-            15.00,
+            16.99,
             ['letiarepa/images/Patacones/patacon-carne.jpg'],
             0
         );
@@ -150,7 +150,7 @@ class RestaurantMenuSeeder extends Seeder
             'PATACÓN DE POLLO',
             'patacon-pollo',
             'Patacón de plátano verde relleno de pollo mechado, lechuga, tomate y salsas.',
-            14.00,
+            14.99,
             ['letiarepa/images/Patacones/Patacon-de-pollo -1.jpg'],
             1
         );
@@ -160,7 +160,7 @@ class RestaurantMenuSeeder extends Seeder
             'PATACÓN MIXTO',
             'patacon-mixto',
             'Patacón de plátano verde relleno de carne y pollo, con todos los acompañantes.',
-            16.00,
+            17.99,
             ['letiarepa/images/Patacones/Patacon-de-pollo-2.jpg'],
             2
         );
@@ -171,7 +171,7 @@ class RestaurantMenuSeeder extends Seeder
             'CACHAPA CON QUESO',
             'cachapa-queso',
             'Cachapa de maíz dulce rellena de queso blanco, crema de leche y mantequilla.',
-            11.00,
+            13.99,
             ['letiarepa/images/cachapas/Cachapa-de-queso 1.jpg'],
             0
         );
@@ -181,7 +181,7 @@ class RestaurantMenuSeeder extends Seeder
             'CACHAPA CON CARNE',
             'cachapa-carne',
             'Cachapa de maíz dulce rellena de carne mechada y queso blanco.',
-            15.00,
+            16.99,
             ['letiarepa/images/cachapas/Cachapa-carne-mechada-1.jpg'],
             1
         );
@@ -191,7 +191,7 @@ class RestaurantMenuSeeder extends Seeder
             'CACHAPA CON POLLO',
             'cachapa-pollo',
             'Cachapa de maíz dulce rellena de pollo mechado y queso blanco.',
-            14.00,
+            14.99,
             ['letiarepa/images/cachapas/cachapa-de-mechada-2.jpg'],
             2
         );
@@ -202,7 +202,7 @@ class RestaurantMenuSeeder extends Seeder
             'BURGER CRIOLLA',
             'burger-clasica',
             'Carne de res, lechuga, tomate, cebolla, pepinillos y nuestra salsa especial.',
-            12.00,
+            18.49,
             ['letiarepa/images/Hamburgesas/hamburguesa-criolla.jpg'],
             0
         );
@@ -212,7 +212,7 @@ class RestaurantMenuSeeder extends Seeder
             'BURGER PICAÑA',
             'burger-queso',
             'Carne de res, queso amarillo, lechuga, tomate y salsa especial.',
-            13.00,
+            18.49,
             ['letiarepa/images/Hamburgesas/hamburguesa-picahna.jpg'],
             1
         );
@@ -222,7 +222,7 @@ class RestaurantMenuSeeder extends Seeder
             'BURGER DE CARNE O POLLO',
             'burger-especial',
             'Doble carne, doble queso, tocineta, huevo, lechuga, tomate y nuestra salsa de la casa.',
-            16.00,
+            14.99,
             ['letiarepa/images/Hamburgesas/hamburguesa-triple.jpg'],
             2
         );
@@ -233,7 +233,7 @@ class RestaurantMenuSeeder extends Seeder
             'PEPITO GUARO',
             'pepito-guaro',
             'Pan artesanal relleno de carne mechada, queso amarillo, vegetales y salsas.',
-            14.00,
+            28.99,
             ['letiarepa/images/Pepitos/pepito-guaro.jpg'],
             0
         );
@@ -243,7 +243,7 @@ class RestaurantMenuSeeder extends Seeder
             'PEPITO PARRILLERO',
             'pepito-parrillero',
             'Pan artesanal relleno de carne y pollo, queso amarillo, vegetales y salsas.',
-            15.00,
+            27.99,
             ['letiarepa/images/Pepitos/pepito-parrillero.jpg'],
             1
         );
@@ -253,7 +253,7 @@ class RestaurantMenuSeeder extends Seeder
             'PEPITO MAR Y TIERRA',
             'pepito-mar-y-tierra',
             'Pan artesanal relleno de pollo mechado, queso amarillo, vegetales y salsas.',
-            13.00,
+            28.99,
             ['letiarepa/images/Pepitos/pepito-mar-y-tierra.jpg'],
             2
         );
@@ -264,7 +264,7 @@ class RestaurantMenuSeeder extends Seeder
             'TEQUEÑOS (5)',
             'tequenos',
             '5 tequeños de queso blanco fritos, servidos con salsa de ajo.',
-            9.00,
+            11.49,
             ['letiarepa/images/Aperitivos/Tequeños-2.jpg'],
             0
         );
@@ -274,7 +274,7 @@ class RestaurantMenuSeeder extends Seeder
             'EMPANADA (1)',
             'empanadas',
             '1 empanada de carne o pollo, servida con guasacaca.',
-            8.00,
+            5.99,
             ['letiarepa/images/Aperitivos/Empanadas.jpg'],
             1
         );
@@ -284,7 +284,7 @@ class RestaurantMenuSeeder extends Seeder
             'PASTEL (1)',
             'pastel',
             '1 pastel artesanal, servido con crema de leche.',
-            7.00,
+            5.99,
             ['letiarepa/images/Aperitivos/Pastel-1.jpg'],
             2
         );
@@ -295,7 +295,7 @@ class RestaurantMenuSeeder extends Seeder
             'JUGOS NATURALES',
             'jugos-naturales',
             'Elige tu sabor: parchita, mango, mora, guanábana o tamarindo.',
-            4.00,
+            8.49,
             ['letiarepa/images/Bebidas/Jugo-parchita.jpg'],
             0
         );
@@ -305,7 +305,7 @@ class RestaurantMenuSeeder extends Seeder
             'CHICHA VENEZOLANA',
             'chicha-venezolana',
             'Bebida tradicional venezolana de arroz, leche y canela.',
-            3.50,
+            7.50,
             ['letiarepa/images/Bebidas/Chicha-1.jpg'],
             1
         );
@@ -315,7 +315,7 @@ class RestaurantMenuSeeder extends Seeder
             'TODDY',
             'toddy',
             'Bebida chocolatada fría, cremosa y deliciosa.',
-            3.00,
+            8.99,
             ['letiarepa/images/Bebidas/Toddy.jpg'],
             2
         );
@@ -325,7 +325,7 @@ class RestaurantMenuSeeder extends Seeder
             'SODAS INTERNACIONAL',
             'sodas-internacional',
             'Internacional (Malta, Frescolita, Postobon).',
-            3.00,
+            3.75,
             ['letiarepa/images/Bebidas/malta.jpg'],
             3
         );
@@ -335,7 +335,7 @@ class RestaurantMenuSeeder extends Seeder
             'SODAS NACIONALES',
             'sodas-nacionales',
             'Nacional (Coca cola, Sprite).',
-            3.00,
+            2.76,
             ['letiarepa/images/Bebidas/coca-cola.jpg'],
             4
         );
