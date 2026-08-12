@@ -139,7 +139,7 @@
                             <div class="mb-3">
                                 <h4 class="text-1xl font-nexa font-black text-white uppercase tracking-[5px]"
                                     style="-webkit-text-stroke: 2px currentColor; text-shadow: 0 0 0.5px currentColor;">
-                                    {{ __('menu.cost') }} ${{ number_format($item->price, 0) }}</h4>
+                                    {{ __('menu.cost') }} ${{ number_format($item->price, 2) }}</h4>
                             </div>
 
                             <div class="w-full space-y-4">

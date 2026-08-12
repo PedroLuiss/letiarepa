@@ -66,7 +66,7 @@ export function openFrozenModal(id, nombre, precio, imagen) {
     // Limpiar el nombre (remover "AREPA DE ")
     const cleanName = nombre.replace('AREPA DE ', '');
     document.getElementById('modal-frozen-name').textContent = cleanName;
-    document.getElementById('modal-frozen-price').textContent = `$ ${parseFloat(precio).toFixed(0)}`;
+    document.getElementById('modal-frozen-price').textContent = `$ ${parseFloat(precio).toFixed(2)}`;
     document.getElementById('modal-frozen-img').src = `/${imagen}`;
     document.getElementById('qty-modal').value = 1;
     setupFlavorSelector(id);
