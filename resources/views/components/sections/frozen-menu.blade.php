@@ -18,14 +18,17 @@
 
             <!-- Buscador Estilizado -->
             <div class="relative w-full group">
-                <input type="text" placeholder="{{ __('frozen.search_placeholder') }}"
+                <input type="text" id="frozen-search" placeholder="{{ __('frozen.search_placeholder') }}"
                     class="w-full bg-transparent border border-letiarepa-gold/50 rounded-xl py-2.5 px-4 text-xs text-white/70 placeholder-letiarepa-gold/80 focus:outline-none focus:border-letiarepa-gold transition-all"
-                    oninput="handleSearch(this.value)">
+                    oninput="handleFrozenSearch(this.value)">
                 <svg class="w-4 h-4 text-letiarepa-gold absolute right-4 top-1/2 -translate-y-1/2 opacity-50"
                     fill="none" viewBox="0 0 24 24" stroke="currentColor">
                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
                         d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0" />
                 </svg>
+                <div id="frozen-search-dropdown"
+                    class="search-dropdown absolute left-0 right-0 top-full mt-3 w-full max-h-[60vh] overflow-y-auto opacity-0 pointer-events-none transition-all duration-200 z-50">
+                </div>
             </div>
 
             <hr class="border-white/35 w-full my-0">

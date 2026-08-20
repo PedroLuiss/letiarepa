@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\CateringPackage;
+use App\Models\FrozenCategory;
 use App\Models\FrozenProduct;
 use App\Models\RestaurantMenuItem;
 use Illuminate\Http\JsonResponse;
@@ -51,6 +52,8 @@ class SearchController extends Controller
             ->limit(8)
             ->get();
 
+        $frozenCategoryNames = FrozenCategory::query()->whereIn('slug', $frozenItems->pluck('category_slug'))->pluck('name', 'slug');
+
         $results = [];
 
         foreach ($restaurantItems as $item) {
@@ -62,6 +65,8 @@ class SearchController extends Controller
                 'image' => $item->image,
                 'price' => (float) $item->price,
                 'description' => $item->description,
+                'category' => $item->category?->name,
+                'category_slug' => $item->category?->slug,
             ];
         }
 
@@ -74,6 +79,8 @@ class SearchController extends Controller
                 'image' => $item->image,
                 'price' => (float) $item->price,
                 'description' => $item->description,
+                'category' => $frozenCategoryNames[$item->category_slug] ?? null,
+                'category_slug' => $item->category_slug,
             ];
         }
 
