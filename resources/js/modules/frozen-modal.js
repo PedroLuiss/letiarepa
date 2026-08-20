@@ -10,15 +10,72 @@ const ingredientsMap = {
     'pollo_mechado_frozen': ['1 LIBRA DE POLLO MECHADO']
 };
 
+// Sabores disponibles por producto de bebidas; imagen de respaldo cuando no hay foto propia del sabor
+const flavorMap = {
+    'jugos-naturales': [
+        { label: 'Parchita', image: 'letiarepa/images/Bebidas/Jugo-parchita.jpg' },
+        { label: 'Mango', image: 'letiarepa/images/Bebidas/Jugos.jpg' },
+        { label: 'Mora', image: 'letiarepa/images/Bebidas/Jugo-Mora.jpg' },
+        { label: 'Guanábana', image: 'letiarepa/images/Bebidas/Jugo-guanabana.jpg' },
+        { label: 'Tamarindo', image: 'letiarepa/images/Bebidas/Jugos.jpg' },
+    ],
+    'sodas-internacional': [
+        { label: 'Malta', image: 'letiarepa/images/Bebidas/malta.jpg' },
+        { label: 'Frescolita', image: 'letiarepa/images/Bebidas/frescolita.png' },
+        { label: 'Postobon', image: 'letiarepa/images/Bebidas/postobon.jpg' },
+    ],
+    'sodas-nacionales': [
+        { label: 'Coca cola', image: 'letiarepa/images/Bebidas/coca-cola.jpg' },
+        { label: 'Sprite', image: 'letiarepa/images/Bebidas/sprite.png' },
+    ],
+};
+
+// Slugs de bebidas: no aplica selección de ingredientes
+const bebidaSlugs = ['jugos-naturales', 'chicha-venezolana', 'toddy', 'sodas-internacional', 'sodas-nacionales'];
+
+function setupFlavorSelector(id) {
+    const wrapper = document.getElementById('modal-flavor-wrapper');
+    const divider = document.getElementById('modal-flavor-divider');
+    const select = document.getElementById('modal-flavor-select');
+    if (!wrapper || !divider || !select) return;
+
+    const flavors = flavorMap[id];
+    if (!flavors) {
+        wrapper.classList.add('hidden');
+        divider.classList.add('hidden');
+        select.innerHTML = '';
+        return;
+    }
+
+    select.innerHTML = flavors.map(f => `<option value="${f.label}" class="bg-letiarepa-black text-white">${f.label}</option>`).join('');
+    wrapper.classList.remove('hidden');
+    divider.classList.remove('hidden');
+
+    select.onchange = () => {
+        const chosen = flavors.find(f => f.label === select.value);
+        if (chosen) {
+            document.getElementById('modal-frozen-img').src = `/${chosen.image}`;
+        }
+    };
+    select.onchange();
+}
+
 export function openFrozenModal(id, nombre, precio, imagen) {
     activeFrozenItem = { id, nombre, precio, imagen };
 
     // Limpiar el nombre (remover "AREPA DE ")
     const cleanName = nombre.replace('AREPA DE ', '');
     document.getElementById('modal-frozen-name').textContent = cleanName;
-    document.getElementById('modal-frozen-price').textContent = `$ ${parseFloat(precio).toFixed(0)}`;
+    document.getElementById('modal-frozen-price').textContent = `$ ${parseFloat(precio).toFixed(2)}`;
     document.getElementById('modal-frozen-img').src = `/${imagen}`;
     document.getElementById('qty-modal').value = 1;
+    setupFlavorSelector(id);
+
+    const ingredientsWrapper = document.getElementById('modal-ingredients-wrapper');
+    const ingredientsDivider = document.getElementById('modal-ingredients-divider');
+    const isBebida = bebidaSlugs.includes(id);
+    if (ingredientsWrapper) ingredientsWrapper.classList.toggle('hidden', isBebida);
+    if (ingredientsDivider) ingredientsDivider.classList.toggle('hidden', isBebida);
 
     // Generar Ingredientes Dinámicos
     const container = document.getElementById('ingredients-container');
@@ -67,9 +124,17 @@ export function changeQtyModal(delta) {
 export function addFrozenToCart() {
     if (!activeFrozenItem) return;
     const qty = parseInt(document.getElementById('qty-modal').value);
-    
+
+    const mainQtyInput = document.getElementById(`qty-${activeFrozenItem.id}`);
+    if (mainQtyInput) {
+        mainQtyInput.value = qty;
+    }
+
+    const flavorSelect = document.getElementById('modal-flavor-select');
+    const optionName = flavorMap[activeFrozenItem.id] && flavorSelect?.value ? flavorSelect.value : null;
+
     // Aquí usamos la lógica global de cart.js
-    window.addToCart(activeFrozenItem.id, activeFrozenItem.nombre, activeFrozenItem.precio, activeFrozenItem.imagen, null, qty);
+    window.addToCart(activeFrozenItem.id, activeFrozenItem.nombre, activeFrozenItem.precio, activeFrozenItem.imagen, optionName);
     closeFrozenModal();
 }
 

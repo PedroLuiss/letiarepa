@@ -54,8 +54,43 @@
                             @if ($cat->presentationItems->count() > 0)
                                 <div class="pl-4 space-y-2 mt-4 mb-0">
                                     <p class="text-[11px] text-letiarepa-gold font-black uppercase tracking-widest">{{ __('frozen.presentations') }}</p>
+                                    @php
+                                        $presentationProductMap = [];
+
+                                        if ($cat->slug === 'proteinas') {
+                                            $presentationProductMap = [
+                                                '1 LIBRA DE CARNE MECHADA' => 'carne_mechada_frozen',
+                                                '1 LIBRA DE POLLO MECHADO' => 'pollo_mechado_frozen',
+                                            ];
+                                        } elseif ($cat->slug === 'tequenos') {
+                                            $presentationProductMap = [
+                                                '6 UNIDADES' => 'tequenos-de-queso',
+                                                '12 UNIDADES' => 'tequenos-de-chocolate',
+                                                '24 UNIDADES' => 'tequenos-de-platano',
+                                            ];
+                                        } elseif ($cat->slug === 'empanadas') {
+                                            $presentationProductMap = [
+                                                '6 UNIDADES' => 'empanadas-de-carne',
+                                                '12 UNIDADES' => 'empanadas-de-pollo',
+                                                '24 UNIDADES' => 'empanadas-de-queso',
+                                            ];
+                                        }
+                                    @endphp
+
                                     @foreach ($cat->presentationItems as $pi)
-                                        <p class="text-[12px] text-letiarepa-gold font-nexa uppercase opacity-80">- {{ $pi->name }}</p>
+                                        @php
+                                            $presentationName = mb_strtoupper(trim($pi->name));
+                                            $presentationProductSlug = $presentationProductMap[$presentationName] ?? null;
+                                        @endphp
+
+                                        @if ($presentationProductSlug)
+                                            <button id="fsidebar-item-{{ $cat->slug }}-{{ $presentationProductSlug }}"
+                                                data-product-id="{{ $presentationProductSlug }}"
+                                                onclick="selectFrozenPresentation('{{ $cat->slug }}', '{{ $presentationProductSlug }}')"
+                                                class="w-full text-left text-[12px] text-letiarepa-gold font-nexa uppercase opacity-80 hover:opacity-100 transition-all px-1 py-0.5">- {{ $pi->name }}</button>
+                                        @else
+                                            <p class="text-[12px] text-letiarepa-gold font-nexa uppercase opacity-80">- {{ $pi->name }}</p>
+                                        @endif
                                     @endforeach
                                 </div>
                             @endif
@@ -85,7 +120,7 @@
                                             </div>
                                         </div>
                                     </div>
-                                    <button onclick="checkoutWhatsApp()"
+                                    <button onclick="addToCart('{{ $cat->combo_slug }}', '{{ $cat->combo_name }}', {{ $cat->combo_price }}, '{{ $cat->combo_image }}'); checkoutWhatsApp();"
                                         class="font-nexa-bold italic w-full py-2 rounded-2xl bg-letiarepa-gold hover:bg-letiarepa-gold/90 text-black font-nexa font-black text-2xl tracking-[2px] uppercase transition-all shadow-lg shadow-letiarepa-gold/20"
                                         style="-webkit-text-stroke: 1px currentColor; text-shadow: 0 0 0.5px currentColor;">
                                         {{ __('frozen.order_now') }}

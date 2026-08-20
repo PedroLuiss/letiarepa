@@ -65,7 +65,7 @@
                                         </div>
                                     </div>
                                 </div>
-                                <button onclick="checkoutWhatsApp()"
+                                <button onclick="addToCart('{{ $pkg->slug }}', '{{ $pkg->name }}', {{ $pkg->price }}, '{{ $pkg->image }}'); checkoutWhatsApp();"
                                     class="font-nexa-bold italic w-full py-2 rounded-2xl bg-letiarepa-gold hover:bg-letiarepa-gold/90 text-black font-nexa font-black text-2xl tracking-[2px] uppercase transition-all shadow-lg shadow-letiarepa-gold/20"
                                     style="-webkit-text-stroke: 1px currentColor; text-shadow: 0 0 0.5px currentColor;">{{ __('catering.order_now') }}</button>
                             </div>
@@ -73,6 +73,16 @@
                     </div>
                     <hr class="border-white/35 w-full my-0">
                 @endforeach
+            </div>
+
+            <!-- Nota Adicional del Cliente (compartida en todo el pedido) -->
+            <div class="w-full">
+                <h4 class="font-nexa font-black text-letiarepa-gold text-xs uppercase tracking-widest mb-3">
+                    {{ __('modal.additional_notes') }}
+                </h4>
+                <textarea rows="2" oninput="syncOrderNotes(this.value)"
+                    placeholder="{{ __('modal.additional_notes_placeholder') }}"
+                    class="order-notes-input w-full bg-transparent border border-letiarepa-gold/50 rounded-xl py-2.5 px-4 text-xs text-white placeholder-white/40 focus:outline-none focus:border-letiarepa-gold transition-all resize-none"></textarea>
             </div>
         </aside>
         <div class="relative flex items-center justify-center min-h-[600px]">

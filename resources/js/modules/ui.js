@@ -137,26 +137,15 @@ function loadRandomUSMap() {
     const mapContainer = document.getElementById('random-us-map');
     if (!mapContainer) return;
 
-    const usLocations = [
-        { lat: 28.5383, lng: -81.3792 }, { lat: 40.7128, lng: -74.0060 },
-        { lat: 34.0522, lng: -118.2437 }, { lat: 41.8781, lng: -87.6298 },
-        { lat: 29.7604, lng: -95.3698 }, { lat: 33.4484, lng: -112.0740 },
-        { lat: 39.7392, lng: -104.9903 }, { lat: 47.6062, lng: -122.3321 },
-        { lat: 25.7617, lng: -80.1918 }, { lat: 36.1627, lng: -86.7816 },
-        { lat: 37.7749, lng: -122.4194 }, { lat: 32.7157, lng: -117.1611 },
-        { lat: 30.2672, lng: -97.7431 }, { lat: 42.3601, lng: -71.0589 },
-        { lat: 38.9072, lng: -77.0369 }, { lat: 33.7490, lng: -84.3880 },
-        { lat: 39.9612, lng: -82.9988 }, { lat: 35.2271, lng: -80.8431 },
-        { lat: 43.6532, lng: -79.3832 }, { lat: 19.4326, lng: -99.1332 }
-    ];
-
-    const randomLocation = usLocations[Math.floor(Math.random() * usLocations.length)];
-    const mapUrl = `https://maps.google.com/maps?q=${randomLocation.lat},${randomLocation.lng}&z=12&output=embed`;
+    // Ubicación fija del restaurante: 5811 W Irlo Bronson Memorial Hwy, Kissimmee, FL 34746
+    const restaurantLocation = { lat: 28.333542, lng: -81.516941 };
+    const mapUrl = `https://maps.google.com/maps?q=${restaurantLocation.lat},${restaurantLocation.lng}&z=15&output=embed`;
     const iframe = document.createElement('iframe');
     iframe.src = mapUrl;
     iframe.width = "100%";
     iframe.height = "128";
     iframe.style.border = "0";
+    iframe.style.pointerEvents = "none"; // el clic lo maneja el <a> que envuelve el mapa
     iframe.loading = "lazy";
     iframe.referrerPolicy = "no-referrer-when-downgrade";
     iframe.allowFullscreen = true;
@@ -225,10 +214,27 @@ function initHeaderScroll() {
     }, { passive: true });
 }
 
-function filterFrozenCategory(slug) {
+let activeFrozenCategory = 'all';
+let activeFrozenProductId = null;
+
+function setFrozenPresentationSelection(productId) {
+    const activeClass = 'w-full text-left text-[12px] font-nexa-bold uppercase text-letiarepa-gold tracking-wide border border-letiarepa-gold/60 bg-letiarepa-gold/10 rounded-lg px-2 py-1 transition-all';
+    const idleClass = 'w-full text-left text-[12px] text-letiarepa-gold font-nexa uppercase opacity-80 hover:opacity-100 transition-all px-1 py-0.5';
+
+    document.querySelectorAll('[id^="fsidebar-item-"]').forEach(el => {
+        const isActive = productId && el.dataset.productId === productId;
+        el.className = isActive ? activeClass : idleClass;
+    });
+}
+
+function applyFrozenGridFilters() {
     const cards = document.querySelectorAll('#frozen-products-grid > [data-frozen-category]');
+
     cards.forEach(card => {
-        if (slug === 'all' || card.dataset.frozenCategory === slug) {
+        const matchesCategory = activeFrozenCategory === 'all' || card.dataset.frozenCategory === activeFrozenCategory;
+        const matchesProduct = !activeFrozenProductId || card.dataset.productId === activeFrozenProductId;
+
+        if (matchesCategory && matchesProduct) {
             card.classList.remove('hidden');
         } else {
             card.classList.add('hidden');
@@ -240,7 +246,21 @@ function filterFrozenCategory(slug) {
     }
 }
 
-function selectFrozenCategory(slug) {
+function filterFrozenCategory(slug) {
+    activeFrozenCategory = slug;
+    activeFrozenProductId = null;
+    setFrozenPresentationSelection(null);
+    applyFrozenGridFilters();
+}
+
+function selectFrozenCategory(slug, keepProductSelection = false) {
+    activeFrozenCategory = slug;
+
+    if (!keepProductSelection) {
+        activeFrozenProductId = null;
+        setFrozenPresentationSelection(null);
+    }
+
     document.querySelectorAll('[id^="fsidebar-cat-"]').forEach(el => {
         const catSlug = el.id.replace('fsidebar-cat-', '');
         const icon = document.getElementById('ficon-cat-' + catSlug);
@@ -271,7 +291,71 @@ function selectFrozenCategory(slug) {
             if (content) content.classList.add('hidden');
         }
     });
-    filterFrozenCategory(slug);
+
+    applyFrozenGridFilters();
+}
+
+function selectFrozenPresentation(categorySlug, productId) {
+    selectFrozenCategory(categorySlug, true);
+    activeFrozenProductId = productId;
+    setFrozenPresentationSelection(productId);
+    applyFrozenGridFilters();
+}
+
+// Function to show menu item image when clicked in sidebar
+export function showMenuItemImage(slug, imagePath) {
+    // Find the product card with matching slug
+    const cards = document.querySelectorAll('[data-product-card][data-product-tab="restaurant"]');
+    let targetCard = null;
+    
+    cards.forEach(card => {
+        if (card.getAttribute('data-product-id') === slug) {
+            targetCard = card;
+        }
+    });
+    
+    if (targetCard) {
+        // If the item lives on a hidden pagination page, jump there first so the scroll below actually lands on it
+        const pageChanged = window.goToRestaurantPageForCard ? window.goToRestaurantPageForCard(targetCard) : false;
+
+        const revealCard = () => {
+            // Scroll to the card
+            targetCard.scrollIntoView({ behavior: 'smooth', block: 'center' });
+
+            // Highlight the card temporarily
+            targetCard.classList.add('bg-white/10', 'border-letiarepa-gold');
+            setTimeout(() => {
+                targetCard.classList.remove('bg-white/10', 'border-letiarepa-gold');
+            }, 2000);
+        };
+
+        if (pageChanged) {
+            setTimeout(revealCard, 350);
+        } else {
+            revealCard();
+        }
+        
+        // If the card has a carousel, show the first image
+        const carouselImg = targetCard.querySelector('.carousel-img');
+        if (carouselImg) {
+            // Reset carousel to first image
+            const carouselTrack = targetCard.querySelector('.carousel-images-track');
+            if (carouselTrack) {
+                carouselTrack.style.transform = 'translateX(0%)';
+            }
+            // Update dots
+            const dots = targetCard.querySelectorAll('.carousel-dot');
+            dots.forEach((dot, index) => {
+                if (index === 0) {
+                    dot.classList.add('bg-letiarepa-gold');
+                    dot.classList.remove('bg-transparent');
+                } else {
+                    dot.classList.remove('bg-letiarepa-gold');
+                    dot.classList.add('bg-transparent');
+                }
+            });
+        }
+    }
 }
 
 // Function to show a temporary message to the user
@@ -438,13 +522,18 @@ window.showUpcomingAlert = showUpcomingAlert;
 window.selectCateringPackage = selectCateringPackage;
 window.selectRestaurantCategory = selectRestaurantCategory;
 window.selectFrozenCategory = selectFrozenCategory;
+window.selectFrozenPresentation = selectFrozenPresentation;
 window.filterFrozenCategory = filterFrozenCategory;
 window.showMenuItemImage = showMenuItemImage;
 window.showAllFrozen = function() {
-    filterFrozenCategory('all');
+    activeFrozenCategory = 'all';
+    activeFrozenProductId = null;
+    setFrozenPresentationSelection(null);
     const firstCat = document.querySelector('[id^="fsidebar-cat-"]');
     if (firstCat) {
         window.selectFrozenCategory(firstCat.id.replace('fsidebar-cat-', ''));
+    } else {
+        applyFrozenGridFilters();
     }
 };
 window.showAllRestaurant = function() {

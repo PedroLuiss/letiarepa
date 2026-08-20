@@ -1,4 +1,6 @@
 function initImageCarousel(container) {
+    if (container.dataset.carouselReady === 'true') return;
+
     const track = container.querySelector('.carousel-images-track');
     const dots = container.querySelector('.carousel-dots');
     if (!track || !dots) return;
@@ -11,6 +13,7 @@ function initImageCarousel(container) {
     let isDragging = false;
     let startX = 0;
     let translateX = 0;
+    let autoTimer = null;
 
     track.style.display = 'flex';
     track.style.flex = '1';
@@ -41,6 +44,22 @@ function initImageCarousel(container) {
         updateDots();
     }
 
+    function stopAutoplay() {
+        if (autoTimer) {
+            clearInterval(autoTimer);
+            autoTimer = null;
+        }
+    }
+
+    function startAutoplay() {
+        if (container.dataset.autoplay !== 'true') return;
+        const everyMs = parseInt(container.dataset.autoplayMs || '3500', 10);
+        stopAutoplay();
+        autoTimer = setInterval(() => {
+            goTo(current + 1);
+        }, Number.isNaN(everyMs) ? 3500 : everyMs);
+    }
+
     function updateDots() {
         dots.querySelectorAll('.carousel-dot').forEach((dot, i) => {
             dot.className = `w-4 h-4 rounded-full border border-letiarepa-gold cursor-pointer transition-all duration-300 ${i === current ? 'bg-letiarepa-gold' : 'bg-transparent'}`;
@@ -55,6 +74,7 @@ function initImageCarousel(container) {
 
     container.addEventListener('pointerdown', e => {
         if (e.target.closest('a, button, input, textarea, select')) return;
+        stopAutoplay();
         isDragging = true;
         startX = e.clientX;
         track.style.transition = 'none';
@@ -78,16 +98,23 @@ function initImageCarousel(container) {
         } else {
             goTo(current);
         }
+        startAutoplay();
     });
 
     container.addEventListener('pointercancel', () => {
         if (isDragging) {
             isDragging = false;
             goTo(current);
+            startAutoplay();
         }
     });
 
+    container.addEventListener('mouseenter', stopAutoplay);
+    container.addEventListener('mouseleave', startAutoplay);
+
     goTo(0);
+    startAutoplay();
+    container.dataset.carouselReady = 'true';
 }
 
 function initAllImageCarousels() {

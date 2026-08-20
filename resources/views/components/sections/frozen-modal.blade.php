@@ -47,10 +47,10 @@
                     </h3>
                 </div>
 
-                <hr class="w-full border-white/20 rounded-2xl border-1 mb-4 sm:mb-2">
+                <hr id="modal-ingredients-divider" class="w-full border-white/20 rounded-2xl border-1 mb-4 sm:mb-2">
 
                 <!-- Selección de Ingredientes (Dinámicos) -->
-                <div class="w-full mb-3 sm:mb-2">
+                <div id="modal-ingredients-wrapper" class="w-full mb-3 sm:mb-2">
                     <h4
                         class="font-nexa font-black text-letiarepa-gold text-lg sm:text-xl uppercase tracking-widest mb-4 sm:mb-6 leading-none">
                         {!! __('modal.select_ingredients', ['linebreak' => '<br>']) !!}
@@ -59,6 +59,29 @@
                     <div id="ingredients-container" class="flex flex-col gap-3 sm:gap-4">
                         <!-- Se llena vía JS -->
                     </div>
+                </div>
+
+                <hr class="w-full border-white/20 rounded-2xl border-1 mb-4 sm:mb-2">
+
+                <div id="modal-flavor-wrapper" class="w-full mb-3 sm:mb-2 hidden">
+                    <h4 class="font-nexa font-black text-letiarepa-gold text-xs sm:text-sm uppercase tracking-widest mb-3">
+                        SABOR
+                    </h4>
+                    <select id="modal-flavor-select"
+                        class="w-full bg-transparent border border-letiarepa-gold/50 rounded-xl py-2.5 px-4 text-xs text-white focus:outline-none focus:border-letiarepa-gold transition-all uppercase">
+                    </select>
+                </div>
+
+                <hr id="modal-flavor-divider" class="w-full border-white/20 rounded-2xl border-1 mb-4 sm:mb-2 hidden">
+
+                <!-- Nota Adicional del Cliente (compartida en todo el pedido) -->
+                <div class="w-full mb-3 sm:mb-2">
+                    <h4 class="font-nexa font-black text-letiarepa-gold text-xs sm:text-sm uppercase tracking-widest mb-3">
+                        {{ __('modal.additional_notes') }}
+                    </h4>
+                    <textarea rows="2" oninput="syncOrderNotes(this.value)"
+                        placeholder="{{ __('modal.additional_notes_placeholder') }}"
+                        class="order-notes-input w-full bg-transparent border border-letiarepa-gold/50 rounded-xl py-2.5 px-4 text-xs text-white placeholder-white/40 focus:outline-none focus:border-letiarepa-gold transition-all resize-none"></textarea>
                 </div>
 
                 <hr class="w-full border-white/20 rounded-2xl border-1 mb-4 sm:mb-2">

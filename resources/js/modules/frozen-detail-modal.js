@@ -11,7 +11,7 @@ export function openFrozenDetailModal(card) {
     activeFrozenDetailItem = { id, nombre, precio, imagen };
 
     document.getElementById('modal-frozen-detail-name').textContent = nombre;
-    document.getElementById('modal-frozen-detail-price').textContent = `$ ${precio.toFixed(0)}`;
+    document.getElementById('modal-frozen-detail-price').textContent = `$ ${precio.toFixed(2)}`;
     document.getElementById('modal-frozen-detail-img').src = `/${imagen}`;
     document.getElementById('modal-frozen-detail-description').textContent = descripcion;
     document.getElementById('modal-frozen-detail-presentation').textContent = presentacion;

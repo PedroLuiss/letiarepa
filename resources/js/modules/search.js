@@ -86,7 +86,7 @@ function renderSearchResults(data) {
                         ${item.description ? `<p class="text-white/40 font-nexa text-[10px] truncate">${escapeHtml(item.description)}</p>` : ''}
                     </div>
                     <div class="shrink-0 text-right">
-                        <span class="text-letiarepa-gold font-nexa font-black text-xs">$${parseFloat(item.price || 0).toFixed(0)}</span>
+                        <span class="text-letiarepa-gold font-nexa font-black text-xs">$${parseFloat(item.price || 0).toFixed(2)}</span>
                     </div>
                 </button>
             `).join('')}

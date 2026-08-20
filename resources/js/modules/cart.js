@@ -1,4 +1,5 @@
 let cart = [];
+let orderNotes = '';
 
 function loadCart() {
     try {
@@ -7,12 +8,27 @@ function loadCart() {
     } catch (e) {
         cart = [];
     }
+    orderNotes = localStorage.getItem('letiarepa_order_notes') || '';
     updateCartBadge();
+    syncOrderNotesInputs();
 }
 
 function saveCart() {
     localStorage.setItem('letiarepa_cart', JSON.stringify(cart));
     updateCartBadge();
+}
+
+// Reflects the shared note into every order-notes textarea currently in the DOM (arepas/frozen/catering).
+function syncOrderNotesInputs() {
+    document.querySelectorAll('.order-notes-input').forEach(el => {
+        if (el.value !== orderNotes) el.value = orderNotes;
+    });
+}
+
+export function syncOrderNotes(text) {
+    orderNotes = text;
+    localStorage.setItem('letiarepa_order_notes', text);
+    syncOrderNotesInputs();
 }
 
 export function addToCart(id, nombre, precio, imagen, optionName = null) {
@@ -181,13 +197,21 @@ export function checkoutWhatsApp() {
     message += `\n─────────────────────────\n`;
     message += `💰 *Total del Pedido: $${subtotal.toFixed(2)}*\n`;
     message += `─────────────────────────\n\n`;
+
+    if (orderNotes.trim()) {
+        message += `📝 *Nota adicional del cliente:*\n${orderNotes.trim()}\n\n`;
+    }
+
     message += `Por favor, confírmenme el pedido y las instrucciones de retiro. ¡Muchas gracias!`;
 
     const whatsappNumber = document.querySelector('meta[name="whatsapp-number"]')?.content || '584141578602';
     const whatsappUrl = `https://wa.me/${whatsappNumber}?text=${encodeURIComponent(message)}`;
 
     cart = [];
+    orderNotes = '';
+    localStorage.removeItem('letiarepa_order_notes');
     saveCart();
+    syncOrderNotesInputs();
     renderCart();
     toggleCart(false);
 
@@ -202,6 +226,7 @@ window.toggleCart = toggleCart;
 window.updateCartQuantity = updateCartQuantity;
 window.removeFromCart = removeFromCart;
 window.checkoutWhatsApp = checkoutWhatsApp;
+window.syncOrderNotes = syncOrderNotes;
 
 document.addEventListener('DOMContentLoaded', () => {
     loadCart();

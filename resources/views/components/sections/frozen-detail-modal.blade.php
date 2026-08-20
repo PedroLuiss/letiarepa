@@ -25,7 +25,7 @@
                 <div
                     class="absolute w-[200px] h-[200px] sm:w-[350px] sm:h-[350px] md:w-[450px] md:h-[450px] lg:w-[600px] lg:h-[600px] bg-letiarepa-gold/5 blur-[80px] sm:blur-[120px] rounded-full">
                 </div>
-                <img id="modal-frozen-detail-img" src="/letiarepa/images/arepas/detalle/AREPA-DE-PABELLON-DETALLE.png"
+                <img id="modal-frozen-detail-img" src="/letiarepa/images/producto-congelado-miniatura-mechada.png"
                     alt="{{ __('modal.product_alt') }}"
                     class="relative z-10 w-full max-w-[280px] sm:max-w-[420px] md:max-w-[500px] lg:max-w-[600px] max-h-[40vh] sm:max-h-[50vh] md:max-h-none h-auto object-contain drop-shadow-[0_35px_45px_rgba(0,0,0,0.8)] sm:drop-shadow-[0_45px_55px_rgba(0,0,0,0.8)] rotate-[-5deg] hover:rotate-0 transition-transform duration-700">
             </div>
@@ -47,6 +47,18 @@
                     <p id="modal-frozen-detail-presentation"
                         class="text-letiarepa-gold font-nexa-bold text-lg sm:text-2xl uppercase tracking-tight mt-1">
                     </p>
+                </div>
+
+                <hr class="w-full border-white/20 rounded-2xl border-1 mb-4 sm:mb-2">
+
+                <!-- Nota Adicional del Cliente (compartida en todo el pedido) -->
+                <div class="w-full mb-3 sm:mb-2">
+                    <h4 class="font-nexa font-black text-letiarepa-gold text-xs sm:text-sm uppercase tracking-widest mb-3">
+                        {{ __('modal.additional_notes') }}
+                    </h4>
+                    <textarea rows="2" oninput="syncOrderNotes(this.value)"
+                        placeholder="{{ __('modal.additional_notes_placeholder') }}"
+                        class="order-notes-input w-full bg-transparent border border-letiarepa-gold/50 rounded-xl py-2.5 px-4 text-xs text-white placeholder-white/40 focus:outline-none focus:border-letiarepa-gold transition-all resize-none"></textarea>
                 </div>
 
                 <hr class="w-full border-white/20 rounded-2xl border-1 mb-4 sm:mb-2">

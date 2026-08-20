@@ -25,7 +25,21 @@
                         <div class="bg-white pt-16 sm:pt-20 md:pt-24 pb-6 sm:pb-8 md:pb-10 px-4 sm:px-6 md:px-8 text-center flex flex-col items-center relative">
                             <div class="absolute top-0 left-1/2 -translate-x-1/2 -translate-y-1/2 w-24 h-24 sm:w-32 sm:h-32 md:w-40 md:h-40 rounded-full border-[3px] border-white overflow-hidden shadow-xl @if ($member->image) bg-gray-200 @else bg-letiarepa-gold @endif flex items-center justify-center">
                                 @if ($member->image)
-                                <img src="{{ $member->image }}" alt="{{ $member->name }}" draggable="false" class="w-full h-full object-cover select-none">
+                                @php
+                                    $facePosition = 'center';
+                                    $faceScale = '1';
+                                    if (str_contains($member->image, 'Carlos-Gonzalez')) {
+                                        $facePosition = '50% 12%';
+                                    } elseif (str_contains($member->image, 'Julio-Paredes')) {
+                                        $facePosition = '50% 15%';
+                                    } elseif (str_contains($member->image, 'Maria-Quiñones')) {
+                                        $facePosition = '50% 20%';
+                                        $faceScale = '0.9';
+                                    }
+                                @endphp
+                                <img src="{{ $member->image }}" alt="{{ $member->name }}" draggable="false"
+                                    style="object-position: {{ $facePosition }}; transform: scale({{ $faceScale }});"
+                                    class="w-full h-full object-cover select-none">
                                 @else
                                 <span class="text-3xl sm:text-4xl md:text-5xl font-black font-nexa text-white drop-shadow-lg">{{ $initials }}</span>
                                 @endif
@@ -44,7 +58,7 @@
         </div>
         <div id="team-dots" class="flex justify-center gap-3 mt-8 sm:mt-12 md:mt-16"></div>
         <div class="flex justify-center mt-12 sm:mt-16 md:mt-24">
-            <p class="font-display text-letiarepa-gold text-3xl sm:text-4xl md:text-5xl xl:text-6xl leading-none drop-shadow-lg text-center px-4">{{ __('team.thanks') }}</p>
+            <p class="font-nexa-bold text-letiarepa-gold text-3xl sm:text-4xl md:text-5xl xl:text-6xl leading-tight tracking-wide uppercase drop-shadow-lg text-center px-4">{{ __('team.thanks') }}</p>
         </div>
     </div>
 </section>
