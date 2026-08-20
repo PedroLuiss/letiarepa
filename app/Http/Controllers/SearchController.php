@@ -14,7 +14,7 @@ class SearchController extends Controller
     {
         $query = trim((string) $request->query('q', ''));
 
-        if (mb_strlen($query) < 2) {
+        if (mb_strlen($query) < 1) {
             return response()->json([
                 'query' => $query,
                 'results' => [],
