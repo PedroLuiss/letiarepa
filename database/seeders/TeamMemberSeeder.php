@@ -36,7 +36,7 @@ class TeamMemberSeeder extends Seeder
         ]);
 
         TeamMember::create([
-            'name' => 'CARLOS GÓMEZ',
+            'name' => 'CARLOS GONZÁLEZ',
             'title' => 'ATENCIÓN AL CLIENTE',
             'description' => $description,
             'image' => '/letiarepa/images/Team/Carlos-Gonzalez-Kitchen-Lead.png',
